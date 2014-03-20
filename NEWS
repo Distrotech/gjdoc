@@ -1,0 +1,187 @@
+New in release 0.7.9
+
+* Add com.sun.tools.javadoc.Main to emulate javadoc.
+* GJDoc can handle the enumerations in java.util.concurrent.TimeUnit
+  (by ignoring them)
+
+New in release 0.7.8
+
+* Naughty 1.5 release
+
+* GJDoc can now successfully run against the new 1.5-based version
+  of GNU Classpath, including generics, annotations and enumerations.
+* Includes gjdoc/25876: Basic annotation support for gjdoc contributed
+  by Stephan Michels
+
+New in release 0.7.7
+
+* Bug fix release
+  - gjdoc/24457: NPE for @see tag
+  - gjdoc/24474: StackOverflowError in reflexive expressions
+  - gjdoc/24501: gjdoc doesn't compile
+  - gjdoc/24508: Files weren't generated for packages with names like *.java
+  - gjdoc/24509: gjdoc is not able to use the javadocs from java.sun.com
+  - gjdoc/24510: gjdoc have problems the -linkoffline
+  - gjdoc/24507: The overview-summary.html are not generated
+  - gjdoc/24553: Problem with @link tags in parameter descriptions
+  - gjdoc/24722: Problems with single line comments between method arguments
+
+  Thanks to Stephan Michels, David Gilbert, Julian Scheid and Michael Koch
+  for reporting bugs, suggesting and testing fixes and preparing the release.
+
+New in release 0.7.6
+
+* Better output for classes in the unnamed package.
+
+* Now uses platform default encoding if -charset isn't specified.
+
+* Fixed parsing of strings in constant field values, backslashes in
+  single quotes, and inline tags at the beginning of line within
+  out-of-line tags.
+
+* Wrapper script now tested to work on bash, zsh, posh, tcsh, ksh,
+  pdksh, and sash.
+
+* Improved XHTML compatiblity of generated output; new option
+  -validhtml.
+
+* Graceful handling of empty/incomplete javadoc tags.
+
+* Better handling of unresolvable single-class imports.
+
+* Proper links to nested class documentation pages, removed
+  superfluent nested class headers from output, added links to
+  overridden methods.
+
+* Fixed formatting of @version tags.
+
+* Added date of generation to About page.
+
+* Minor cleanups and performance improvements.
+
+* Credits are now in the AUTHORS file.
+
+
+New in release 0.7.5
+
+* Option -group works now.  Previously, package patterns never
+  matched.  Thanks to Wolfgang Baer for reporting this.
+
+* System.exit() is now only called in the main() method, enabling use
+  of gjdoc via reflection.  Thanks to Wolfgang Baer for reporting
+  this.
+
+* -link/-linkoffline facility works better now.  Previously, external
+  types haven't always been hyperlinked properly.  Thanks to Mark
+  Wielaard for reporting this.
+
+* Unavailable external documentation sets are handled gracefully now.
+  Thanks to Jack Bates for reporting this.
+
+* Command line option keywords are now treated as case-insensitive.
+  Thanks to Andrew Overholt for reporting this and to Thomas
+  Fitzsimmons for insisting on this change.
+
+* Missing whitespace after type dimension specifiers (as in
+  "int[]foo;") is now accepted.  Thanks to Andrew Overholt for
+  reporting this.
+
+* If a package directory exists in more than one -sourcepath root
+  directory, the contents of all package directories are now merged
+  properly.  Thanks to some guy on #classpath for reporting this.
+
+* The build is now looking for antlr.jar in /usr/share/antlr/lib.
+  This is where it is located on Gentoo.  Thanks to David Gilbert for
+  reporting this.
+
+* Option -all has been revised and works now for classes in the
+  default package.  Thanks to Antti-Juhani Kaijanaho for reporting
+  this.
+
+* For option -all, gjdoc now makes sure that source files are in the
+  proper package with respect to the specified -sourcepath.
+
+* Bogus "<>" empty type parameter information that was generated under
+  certain circumstances is now omitted.
+
+* Ordering of usage types on the class use pages is now deterministic.
+
+* Removed debug message "no member found for xyz".
+
+* Minor performance enhancements.
+
+
+New in release 0.7.4
+
+* Gjdoc now supports type variables at the class level (e.g. List<E>,
+  Pair<A,B>).  Thanks to Andrew John Hughes for implementing this.
+
+* Comma-separated field definitions and static field values involving
+  brackets and braces are now parsed correctly.  Thanks to David
+  Gilbert for reporting this.
+
+* The class documentation page now lists inner classes properly.
+
+* The wrapper script now passes options prefixed with -J to the
+  virtual machine.  This is especially useful for increasing the
+  maximum heap size to avoid OutOfMemoryErrors when running gjdoc on
+  large trees.  Thanks to Wolfgang Baer for reporting this.
+
+* The bytecode build now properly includes XmlDoclet classes when
+  --enable-xmldoclet is specified at configure time.  Thanks to 
+  Wolfgang Baer for reporting this.
+
+
+New in release 0.7.3
+
+* Fixed a critical bug in gjdoc.sh.in which would fail due to a broken
+  classpath.
+
+* gjdoc.sh.in now tries to use the VM configured using JAVA or
+  installed at /usr/bin/java first and only falls back to the one used
+  during build if no VM is found this way. Thanks to Jerry Haltom.
+
+
+New in release 0.7.2
+
+* Fixed a bug which omitted the last declared thrown exception in
+  interface method declarations.
+
+* Class discovery via reflection is now disabled by default to avoid
+  unintended side effects during class loading. Re-enable using option
+  -reflection.
+
+* Build: jar files are now put into $(datadir)/java instead of
+  $(datadir)/java/ext (so by default, jar files now end up in
+  $PREFIX/share/java).
+
+* Minor bug fixes.
+
+
+New in release 0.7.1
+
+* Man page and rudimentary Info manual
+
+* Fixed support for -encoding, -title, -nocomment
+
+* Now sets exit code properly on failure
+
+* Fixes for several minor build problems, mostly related to jar file
+  assembly and tool detection.
+
+* Bytecode wrapper script now includes antlr.jar on the classpath
+
+
+New in release 0.7.1-pre3
+
+* Add option --with-antlr-jar to configure
+
+* Look in /usr/lib for antlr.jar
+
+* Detect gij
+
+* Detect fastjar
+
+* Fixed wrapper script for bytecode version
+
+* Various other improvements to build

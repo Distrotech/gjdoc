@@ -1,0 +1,43 @@
+The following people contributed code and patches to GNU Gjdoc:
+
+Alex Lancaster (alexl@gnu.org)
+Andrew John Hughes (gnu_andrew@member.fsf.org)
+Andrew Overholt (overholt@redhat.com)
+Arnaud Vandyck (avdyk@gnu.org)
+Casey Marshall (csm@gnu.org)
+Christopher Oezbek (oezi@oezi.de)
+Dalibor Topic (robilad@kaffe.org)
+Jerry Haltom (wasabi@larvalstage.net)
+Julian Scheid (julian@sektor37.de)
+Kalle Olavi Niemitalo (kon@iki.fi)
+Mark Howard (mh@debian.org)
+Mark Wielaard (mark@klomp.org)
+Michael Koch (konqueror@gmx.de)
+Ross Burton (ross@debian.org)
+Shayne Steele (steele@cs.fsu.edu)
+Ville Skytta <vskytta@gmail.com>
+
+The following people provided feedback and bug reports:
+
+Antti-Juhani Kaijanaho (ajk@debian.org)
+C. Brian Jones (cbj@gnu.org)
+Chris Burdess (dog@bluezoo.org)
+David Gilbert (david.gilbert@object-refinery.com)
+David N. Welton (davidw@dedasys.com)
+Elliott Hughes (enh@jessies.org)
+Grzegorz B. Prokopski (gadek@sablevm.org)
+Jack Bates (ms419@freezone.co.uk)
+Joao Victor (jvital@gmail.com)
+Loic Minier (lool@dooz.org)
+Martin Kittel (debian@martin-kittel.de)
+Paul Jenner (psj.home@ntlworld.com)
+Petteri Raety (betelgeuse@gentoo.org)
+Robert Schuster (theBohemian@gmx.net)
+Roman Kennke (kennke@aicas.com)
+Takashi Okamoto (tora@debian.org)
+Wolfgang Baer (WBaer@gmx.de)
+Stephan Michels (stephan@apache.org)
+
+If your name doesn't appear on either list, but should, if it appears
+on the wrong list, or if your name or mail address is misspelled,
+please let us know.

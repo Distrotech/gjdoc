@@ -1,0 +1,49 @@
+#!/bin/sh
+
+# gjdoc.sh.in
+# Copyright (C) 2005 Free Software Foundation, Inc.
+# 
+# This file is part of GNU Classpath.
+# 
+# GNU Classpath is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+#  
+# GNU Classpath is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with GNU Classpath; see the file COPYING.  If not, write to the
+# Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+# 02111-1307 USA.
+
+prefix=@prefix@
+datadir=@datadir@
+version=@VERSION@
+ANTLR_JAR=@ANTLR_JAR@
+
+if [ -z "${JAVA}" ]; then
+  if [ -n "$JAVA_HOME" ]; then
+    JAVA="${JAVA_HOME}/bin/java"
+  elif [ -x "${prefix}/bin/java" ]; then
+    JAVA="${prefix}/bin/java"
+  else
+    JAVA=@JAVA@
+  fi
+fi
+
+gjdocpath=${datadir}/java/com-sun-javadoc-${version}.jar:${datadir}/java/com-sun-tools-doclets-Taglet-${version}.jar:${datadir}/java/gnu-classpath-tools-gjdoc-${version}.jar:${ANTLR_JAR}:${CLASSPATH}
+
+for i in ${1+"$@"}; do
+    if test "`echo "$i" | head -c 2`" = "-J"; then
+        len=`expr length "$i"`
+        vmparams="$vmparams '`expr substr "$i" 3 $len`'"
+    else
+        gjdocparams="$gjdocparams '$i'"
+    fi
+done
+
+exec ${SHELL} -c "exec ${JAVA} ${vmparams} -classpath ${gjdocpath} gnu.classpath.tools.gjdoc.Main ${gjdocparams}"

@@ -1,0 +1,2326 @@
+This is gjdoc.info, produced by makeinfo version 4.11 from gjdoc.texi.
+
+Copyright (C) 2005 Free Software Foundation, Inc.
+
+ This documentation is dual-licensed under the GNU Free Documentation
+License and the GNU General Public License.
+
+_GNU Free Documentation License_
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with the Invariant Sections being "GNU General Public
+     License" and "Funding Free Software", the Front-Cover texts being
+     (a) (see below), and with the Back-Cover Texts being (b) (see
+     below).  A copy of the license is included in the section entitled
+     "GNU Free Documentation License".
+
+     (a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+     (b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+        funds for GNU development.
+
+_GNU General Public License_
+     This program is free software; you can redistribute it and/or
+     modify it under the terms of the GNU General Public License as
+     published by the Free Software Foundation; either version 2 of the
+     License, or (at your option) any later version.
+
+     This program is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+     General Public License for more details.
+
+     You should have received a copy of the GNU General Public License
+     along with this program; if not, write to the Free Software
+     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+     02111-1307, USA.
+
+
+INFO-DIR-SECTION Programming
+START-INFO-DIR-ENTRY
+* gcc: (gcc).                  The GNU Compiler Collection.
+END-INFO-DIR-ENTRY
+ This file documents the use of the Gjdoc Java documentation framework.
+
+ Copyright (C) 2005 Free Software Foundation, Inc.
+
+ This documentation is dual-licensed under the GNU Free Documentation
+License and the GNU General Public License.
+
+_GNU Free Documentation License_
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with the Invariant Sections being "GNU General Public
+     License" and "Funding Free Software", the Front-Cover texts being
+     (a) (see below), and with the Back-Cover Texts being (b) (see
+     below).  A copy of the license is included in the section entitled
+     "GNU Free Documentation License".
+
+     (a) The FSF's Front-Cover Text is:
+
+     A GNU Manual
+
+     (b) The FSF's Back-Cover Text is:
+
+     You have freedom to copy and modify this GNU Manual, like GNU
+     software.  Copies published by the Free Software Foundation raise
+        funds for GNU development.
+
+_GNU General Public License_
+     This program is free software; you can redistribute it and/or
+     modify it under the terms of the GNU General Public License as
+     published by the Free Software Foundation; either version 2 of the
+     License, or (at your option) any later version.
+
+     This program is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+     General Public License for more details.
+
+     You should have received a copy of the GNU General Public License
+     along with this program; if not, write to the Free Software
+     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+     02111-1307, USA.
+
+
+
+
+File: gjdoc.info,  Node: Top,  Up: (DIR)
+
+Introduction
+************
+
+This manual documents how to use the Gjdoc documentation framework.  It
+corresponds to Gjdoc version 0.7.9.
+
+* Menu:
+
+* Invoking Gjdoc::  Command options supported by `gjdoc'.
+* Other Doclets::   Using Doclets other than the Standard Doclet.
+* Gjdoc Concepts::  Concepts of the Gjdoc Documentation Framework.
+* Option Index::    Index to command line options.
+* Keyword Index::   Index of concepts and symbol names.
+
+* License::         Conditions for using and copying this documentation.
+
+
+File: gjdoc.info,  Node: Invoking Gjdoc,  Next: Other Doclets,  Prev: Top,  Up: Top
+
+1 Generating HTML Documentation
+*******************************
+
+Gjdoc can be used in two ways: as a stand-alone documentation tool, or
+as a driver for a user-specified Doclet. *Note Other Doclets::.
+
+ In the default mode, Gjdoc will use the Standard Doclet `HtmlDoclet'
+to generate a set of HTML pages.  The canonical usage is:
+
+     gjdoc -s src/java/ -all -d api-docs/
+
+ Here, `src/java/' is the root of your source code class hierarchy,
+`-all' means that all valid Java files found under this root directory
+should be processed, and `api-docs/' is the directory where the
+generated documentation should be placed.
+
+ To learn more about running Doclets other than the Standard Doclet,
+refer to the manual.  *Note Invoking a Custom Doclet::.
+
+* Menu:
+
+* Invoking the Standard Doclet::   How to generate HTML documentation.
+* Invoking a Custom Doclet::       How to run third-party and other
+                                   built-in Doclets.
+
+* Option Summary by Type::         Brief list of all options, grouped by type.
+* Gjdoc Option Summary::           List of all options accepted by Gjdoc.
+
+* Source Set Options::      Select the set of source codes to run Gjdoc on.
+* Source Format Options::   Specify the format of the source codes to document.
+
+* Interlinking Options::    Connection your documentation with other projects.
+* Output Control Options::  Specify the target directory and locale, and more.
+* Generation Options::       Select which pieces of information to generate.
+* Decoration Options::      Add or modify some titles, headers and footers or
+                              override/amend static resources like stylesheets.
+* Taglet Options::          Define your own javadoc @tags
+
+* Virtual Machine Options::
+* Verbosity Options::
+* Doclet Options::
+
+
+File: gjdoc.info,  Node: Invoking the Standard Doclet,  Next: Invoking a Custom Doclet,  Up: Invoking Gjdoc
+
+1.1 Invoking the Standard Doclet
+================================
+
+Running the Gjdoc Standard Doclet `HtmlDoclet' is the default mode of
+operation for Gjdoc.  This section lists the command line options you
+can specify in this mode.  It doesn't distinguish between general Gjdoc
+options and options specific to the Standard Doclet.
+
+ If you want to learn which options are accepted when Gjdoc is used as
+a doclet driver, *Note Invoking a Custom Doclet::.
+
+ *Note Option Index::, for an index to Gjdoc's options.
+
+* Menu:
+
+* Source Set Options::      Select the set of source codes to run Gjdoc on.
+* Source Format Options::   Specify the format of the source codes to document.
+
+* Output Control Options::  Specify the target directory and locale, and more.
+* Generation Options::       Select which pieces of information to generate.
+* Decoration Options::      Add or modify some titles, headers and footers or
+                              override/amend static resources like stylesheets.
+* Taglet Options::          Define your own javadoc @tags
+
+* Virtual Machine Options::
+* Doclet Options::
+
+
+File: gjdoc.info,  Node: Option Summary by Type,  Next: Gjdoc Option Summary,  Prev: Invoking a Custom Doclet,  Up: Invoking Gjdoc
+
+1.2 Option Summary by Type
+==========================
+
+Here is a summary of all the options of both Gjdoc and the Standard
+Doclet, grouped by type.  Explanations are in the following sections.
+
+_Source Set Options_
+     *Note Options For Specifying the Source Files To Operate on:
+     Source Set Options.
+          -sourcepath PATHLIST  -subpackages PKGLIST  -exclude PKGLIST
+
+_Source Format Options_
+     *Note Options For Specifying the Source Format: Source Format
+     Options.
+          -source RELEASE  -encoding ENCODING  -breakiterator
+
+_Interlinking Options_
+     *Note Options For Specifying the Source Files To Operate on:
+     Interlinking Options.
+          -link URL  -linkoffline URL FILE  -noqualifier PKG:PKG:...
+
+_Generation Options_
+     *Note Options Controlling What is Included in the Output:
+     Generation Options.
+          -author  -licensetext  -use  -version  -splitindex  -noindex
+           -nodeprecated  -nodeprecatedlist  -nohelp  -nonavbar
+           -nosince  -notree  -public  -protected  -package  -private
+           -docfilessubdirs  -excludedocfilessubdir DIRNAME
+           -linksource
+
+_Output Options_
+     *Note Options Controlling the Output: Generation Options.
+          -d  -locale NAME  -charset CHARSET  -docencoding CHARSET
+           -validhtml  -baseurl URL
+
+_Decoration Options_
+          -windowtitle TEXT  -doctitle TEXT   -title TEXT
+           -header TEXT  -footer TEXT  -bottom TEXT
+           -helpfile FILE  -stylesheetfile FILE  -addstylesheet FILE
+           -group GROUPHEADING PKGPATTERN:PKGPATTERN:...
+
+_Taglet Options_
+     *Note Options For Specifying user-defined Taglets: Taglet Options.
+          -tagletpath  -taglet CLASSNAME  -tag TAGSPEC
+
+_Doclet Options_
+     *Note Options For Specifying the Doclet to use: Doclet Options.
+          -docletpath  -doclet CLASSNAME
+
+_Verbosity Options_
+     *Note Options Controlling Gjdoc Behavior: Verbosity Options.
+          -quiet  -verbose
+
+_Virtual Machine Options_
+     *Note Options Controlling Gjdoc Behavior: Virtual Machine Options.
+          -classpath
+
+          -bootclasspath
+
+          -J
+     VMOPT
+
+
+* Menu:
+
+* Virtual Machine Options::     Controlling the kind of output:
+                        an executable, object files, assembler files,
+                        or preprocessed source.
+
+
+File: gjdoc.info,  Node: Source Set Options,  Next: Source Format Options,  Prev: Gjdoc Option Summary,  Up: Invoking Gjdoc
+
+1.3 Selecting which Source Files to Process
+===========================================
+
+`-s PATHLIST'
+
+`-sourcepath PATHLIST'
+     Look for source files in the specified directory or directories.
+
+     PATHLIST should be one or more directory paths separated by your
+     platform's path separator (usually `:' or `;').
+
+     If this option is not given, `gjdoc' will look for source files in
+     the current directory.
+
+     The directories specified should be root directories in terms of
+     the Java package system.  For example, if you want to generate
+     documentation for classes in package `foo.bar', you must specify
+     the directory containing the top-level ``foo'' sub-directory, not
+     the directory ``foo/bar/'' in which the Java source files reside.
+
+     The short-hand alias `-s' is specific to `gjdoc' and not
+     compatible to Sun `javadoc'.
+
+`-all'
+     _[EXPERIMENTAL]_ Process all valid Java source files found in the
+     directories listed in the source path and their sub-directories.
+
+     This is an option specific to `gjdoc' and not compatible to Sun
+     `javadoc'.
+
+`-subpackages PKG:PKG:...'
+     Process the classes in the given Java packages and all
+     sub-packages, recursively.  Note that multiple package names must
+     be separated with colons instead of whitespace.
+
+`-exclude PKG:PKG:...'
+     Do not process classes in the given Java packages and all
+     sub-packages, recursively.  This option can be used in conjunction
+     with `-all' or `-subpackages' in order to exclude individual
+     packages or package sub-trees from the output.
+
+`PACKAGES...'
+     Process all classes in the given Java packages.
+
+`SOURCEFILES...'
+     Process the classes in the given Java source files.
+
+
+File: gjdoc.info,  Node: Source Format Options,  Next: Interlinking Options,  Prev: Source Set Options,  Up: Invoking Gjdoc
+
+1.4 Specifying the Format of Input Files
+========================================
+
+`-source RELEASE'
+     Assume that the source files are targeted at the given release of
+     the Java platform.
+
+     RELEASE should be the version number of a Java platform release in
+     the format MAJOR.MINOR, for example `1.4'.
+
+     This option is currently ignored except that an error is raised if
+     a release number other than `1.2', `1.3' or `1.4' is specified.
+
+`-encoding CHARSET'
+     Assume that the source files are encoded using CHARSET.
+
+     Examples for CHARSET are `US-ASCII', `ISO-8859-1' or `UTF-8'.
+
+     The semantics of CHARSET are identical to those of
+     `java.nio.charset.Charset.forName(String)'.
+
+`-breakiterator'
+     Use the locale's java.text.BreakIterator instead of the internal
+     first sentence detector.
+
+     By default, `gjdoc' uses an internal algorithm to determine where
+     a sentence ends. When this option is given, it will instead use
+     the `java.text.BreakIterator' instance for the locale given with
+     `-locale' (or the default locale).
+
+     This option should be specified when applying `gjdoc' to source
+     code commented in a non-latin language for which the default first
+     sentence detector does not work. For all other cases, the default
+     (do not use BreakIterator) produces better results at the time of
+     this writing.
+
+
+File: gjdoc.info,  Node: Interlinking Options,  Next: Output Control Options,  Prev: Source Format Options,  Up: Invoking Gjdoc
+
+1.5 Interlinking with other Documentation Sets
+==============================================
+
+`-link URL'
+     Create hyperlinks to another documentation set.
+
+     By default, `gjdoc' will only create hyperlinks to classes in the
+     source set.  Use this option to additionally create hyperlinks to
+     classes covered by the specified documentation set.
+
+     URL should be the root URL of the other documentation set. For
+     example, to add hyperlinks to GNU Classpath, specify the following:
+
+          -link http://developer.classpath.org/doc/
+
+     The `-link' option can be specified multiple times.
+
+     Note that specifying the `-link' option will cause an HTTP access
+     every time gjdoc is invoked. You can use `-linkoffline' instead to
+     avoid this access.
+
+`-linkoffline URL FILE'
+     Create hyperlinks to another documentation set which is also
+     present on the local file system.
+
+     This option works exactly like `-link', except that it accesses
+     the local file system instead of the network for determining which
+     classes are covered by the linked documentation set.
+
+     When using `-linkoffline' the remote documentation set is not
+     accessed at all, which can significantly speed up generation time
+     depending on your network connection.  The generated hyperlinks to
+     the documentation set however refer to the remote set, not to the
+     local one, so that you can distribute the documentation without
+     any further dependencies.
+
+     The `-linkoffline' option can be specified multiple times.
+
+`-noqualifier PKG:PKG:...'
+     Do not qualify names of classes in the given packages with their
+     package name.
+
+     By default, a class name is displayed unqualified only if the
+     class is part of the source set or a linked documentation set, and
+     qualified with the name of its containing package if it is not.
+     You can use this option to force unqualified names for classes
+     even if they are not part of the documentation set.
+
+     For example, usually a reference to the String class is represented
+     fully-qualified as `java.lang.String' (unless you link to the
+     appropriate documentation set using `-link') because it isn't part
+     of the documentation set.  You can specify `-noqualifier
+     java.lang' to render the same references just as `String'.
+
+     Note that for all unqualified class names, a tooltip is provided
+     when you place your mouse pointer over it in the HTML
+     documentation.
+
+`-noqualifier `all''
+     Omit package name qualifier from all class names.
+
+     Specify this option to omit package name qualifiers altogether,
+
+
+
+File: gjdoc.info,  Node: Generation Options,  Next: Decoration Options,  Prev: Output Control Options,  Up: Invoking Gjdoc
+
+1.6 Selecting which Information to Generate
+===========================================
+
+`-public'
+     Only include public members of public classes in the output.  By
+     default, protected class members are included as well.
+
+`-protected'
+     Include public or protected members of public classes in the
+     output.  This is the default.
+
+`-package'
+     Include public, protected and package-private members of public and
+     package-private classes.
+
+`-private'
+     Include all classes and class members regardless of their access
+     level.
+
+`-splitindex'
+     Generate one index page per letter instead of a single, monolithic
+     index page.
+
+     By default, the index created by the Standard Doclet contains all
+     entries on a single page.  This is fine for small documentation
+     sets, but for large sets you should specify this option.
+
+`-nosince'
+     Ignore `@since' tags in javadoc comments.
+
+     By default, the generated output contains sections listing the
+     version of your API since which the package, class or class member
+     in question exists when this tag is encountered.  Specify this
+     option to omit this information.
+
+`-notree'
+     Do not generate any tree pages.
+
+     By default, the generated output includes one inheritance tree per
+     package, and - if the documentation set consists of multiple
+     packages - a page with the full inheritance tree.  Specify this
+     option to omit generation of these pages.
+
+`-noindex'
+     Do not output the alphabetical index.
+
+     By default, gjdoc generates an alphabetical index of all program
+     elements in the documentation set (packages, classes, inner
+     classes, constructors, methods, and fields).  Specify this option
+     to omit this information.
+
+`-nohelp'
+     Do not generate the help page.
+
+     This option is currently ignored as the Standard Doclet doesn't
+     provide a help page.
+
+`-nodeprecated'
+     Do not output inline information about deprecated packages,
+     classes or class members.
+
+     By default, the Standard Doclet adds a highlighted paragraph with
+     deprecation information to the description of each deprecated
+     program element.  Specify this option to omit this information.
+
+`-nodeprecatedlist'
+     Do not output the summary page for deprecated API elements.
+
+     By default, the Standard Doclet generates a page listing all
+     deprecated API elements along with a deprecation description which
+     usually includes the reason for deprecation and possible
+     alternatives.  Specify this option to omit this information.
+
+`-nonavbar'
+     Do not output the navigation bar, header, and footer.
+
+     By default, each output page is equipped with a top navigation bar
+     (which may include a user-specified header) and a bottom navigation
+     bar (which may include a user-specified footer).  Specify this
+     option to omit this decoration.
+
+`-nocomment'
+     Omit all documentation text from the generated files and output
+     only declarations and program element relationships.
+
+     This option is here for compatibility with `javadoc'.  If you plan
+     on extracting information about your project via `gjdoc', you
+     should consider using a different Doclet for your purposes
+     instead, for example XmlDoclet.  You could also use the Doclet API
+     directly by implementing a new Doclet.
+
+`-linksource'
+     Generate a page with syntax-highlighted source code for each class.
+     By default, this page is not generated.
+
+     The source code can be accessed by clicking on the button labelled
+     "Source" in the navigation bar, or by clicking on the name of a
+     constructor, field, method, or inner class in the detail section
+     of a class documentation page.
+
+`-use'
+     Generate a page with cross-reference information. By default, this
+     page is not generated.
+
+     The cross-reference information can be accessed by clicking on the
+     button labelled `Use' in the navigation bar.
+
+     The `Use' page lists all classes/interfaces in the documentation
+     set that extend/implement the class (type) in question; fields of
+     the type; methods or constructors accepting a parameter of the
+     type; methods returning the type; and methods or constructors
+     throwing the type.
+
+`-author'
+     Include author information in the output.
+
+     When specified, author information as specified using the
+     `@author' tag in javadoc comments is incorporated into the output.
+     By default, `@author' tags are ignored.
+
+`-version'
+     Include version information in the output.
+
+     When specified, version information as specified using the
+     `@version' tag in javadoc comments is incorporated into the
+     output. By default, `@version' tags are ignored.
+
+`-licensetext'
+     Assume that the first comment in each source file contains the
+     license text, and add license information to the footer of each
+     generated class page.
+
+     This is an option specific to `gjdoc' and not compatible to Sun
+     `javadoc'.
+
+     This option is intended for use with free and open source projects
+     where source code is typically prefixed with a boilerplate license
+     comment, when there are legal reasons for including the license in
+     the documentation.
+
+`-docfilessubdirs'
+     Recursively copy all files in the `doc-files' sub-directory of each
+     package directory.
+
+     Usually, only the files in the `doc-files' sub-directory are copied
+     without descending recursively.
+
+     *Note Adding Custom Resources::.
+
+`-excludedocfilessubdir NAME:NAME:...'
+     Do not copy some directories directly under the `doc-files'
+     sub-directories when descending recursively.
+
+     The argument to this option should be a colon-separated list of
+     directory names.
+
+     This option only makes sense if `-docfilessubdirs' is also
+     specified.  In this case, any sub-directory located directly
+     beneath a `doc-files' directory is omitted if listed.
+
+
+
+File: gjdoc.info,  Node: Taglet Options,  Next: Virtual Machine Options,  Prev: Decoration Options,  Up: Invoking Gjdoc
+
+1.7 Custom Documentation Tags
+=============================
+
+`-tagletpath PATHLIST'
+     Search PATHLIST when loading subsequent Taglet classes specified
+     using `-taglet'.
+
+     PATHLIST should be one or more paths to a directory or jar file,
+     separated by your platform's path separator (usually `:' or `;').
+
+`-taglet CLASSNAME'
+     Register a Taglet.
+
+     CLASSNAME should be the fully-qualified name of a Java class
+     implementing `com.sun.tools.doclets.Taglet'.
+
+     The Taglet classes will be loaded from the classpath specified
+     using `-tagletpath', from the classpath specified using
+     `-classpath' and from the default classpath.
+
+     See the documentation of `com.sun.tools.doclets.Taglet' for
+     further information.
+
+     Note that for simple tags, there is also `-tag'.
+
+`-tag TAGSPEC'
+     Register a generic Taglet.
+
+     The format of TAGSPEC must be `<tagname>:<flags>:"<taghead>"'.
+
+     TAGNAME is the tag name to match, without the leading @ sign.
+
+     FLAGS is one or more of the following characters, where each
+     character specifies a source code context in which the tag is to be
+     recognized.
+
+    `a'
+          all contexts
+
+    `c'
+          constructors
+
+    `f'
+          fields
+
+    `m'
+          methods
+
+    `o'
+          overview
+
+    `p'
+          packages
+
+    `t'
+          types (classes, interfaces, exceptions, errors)
+
+    `X'
+          special character which temporarily disables the Taglet
+          altogether.
+
+     TAGHEAD is the string to display in the header of the section
+     devoted to the tag in question.
+
+     For example, to define a tag matching `@cvsid' which is to be
+     accepted in overview, package and type pages and which is labelled
+     with the header `CVS ID', you would specify:
+
+          -tag cvsid:tpo:"CVS ID"
+
+     Let's say that a class javadoc comment contains
+
+          @cvsid $Id: invoke.texi,v 1.3 2005/05/23 21:54:09 julian Exp $
+
+     Then the HTML output will contain something like
+
+          CVS ID:
+            $Id: invoke.texi,v 1.3 2005/05/23 21:54:09 julian Exp $
+
+
+File: gjdoc.info,  Node: Doclet Options,  Prev: Verbosity Options,  Up: Invoking Gjdoc
+
+1.8 Running Other Doclets
+=========================
+
+`-docletpath PATHLIST'
+     Search PATHLIST when loading classes for the Doclet specified
+     using `-doclet'.
+
+     PATHLIST should be one or more paths to a directory or jar file,
+     separated by your platform's path separator (usually `:' or `;').
+
+`-doclet CLASSNAME'
+     Run the specified doclet instead of the standard HtmlDoclet.
+
+     CLASSNAME should be the fully-qualified name of a class which has
+     a public default constructor and contain a method with the
+     following signature:
+
+             import com.sun.javadoc.RootDoc;
+             public static boolean start(RootDoc rootDoc)
+
+     The Doclet classes will be loaded from the classpath specified
+     using `-docletpath', from the classpath specified using
+     `-classpath' and from the default classpath.
+
+     The `start' method should process the information exposed by the
+     Doclet API via `rootDoc' and return `true' on success, `false' on
+     failure.
+
+     If you are using a third-party doclet, refer to its documentation
+     for further instructions.  Note that support for third-party
+     doclets is experimental.  Please report any problems you
+     encounter, or provide feedback when successfully running
+     third-party applets.
+
+     This option can be specified multiple times, in which case all
+     doclets are executed with the same information tree exposed via
+     the Doclet API for each Doclet run.
+
+
+
+File: gjdoc.info,  Node: Decoration Options,  Next: Taglet Options,  Prev: Generation Options,  Up: Invoking Gjdoc
+
+1.9 Adding Information to the Output
+====================================
+
+`-windowtitle TEXT'
+     Use TEXT as the browser window title prefix.
+
+     When specified, the browser window title for each page will be
+     prefixed with TEXT instead of the default string `Generated API
+     Documentation'.
+
+     TEXT should be plain text (it should not contain HTML tags).
+
+`-doctitle TEXT'
+     Set the header text of the overview page to TEXT.
+
+     TEXT should be a short plain text string.
+
+     When generating documentation for a single package, specifying this
+     option forces generation of the overview page.
+
+`-header HTMLTEXT'
+     Add HTMLTEXT to the right upper corner of every generated page.
+     HTMLTEXT is usually set to the name of the project being
+     documented.
+
+`-footer HTMLTEXT'
+     Add HTMLTEXT to the right bottom corner of every generated page.
+     HTMLTEXT is often set to the same value as for `-header'.
+
+`-bottom HTMLTEXT'
+     Add HTMLTEXT to the very bottom of every generated page, spanning
+     the whole width of the page.  When specified, HTMLTEXT usually
+     consists of a copyright notice and/or links to other project pages.
+
+`-addstylesheet FILE'
+     Augment the default CSS style sheets with the user-specified
+     stylesheet FILE.
+
+     The given stylesheet is simply loaded by each HTML page in
+     addition to the default ones, as the last stylesheet.
+
+     Note that the CSS cascading rules apply.  That is, your style
+     properties will only be assigned if they have a higher cascading
+     order than `gjdoc''s default style.  One simple way to make sure
+     that this is the case is to declare your overrides `!important'.
+
+     See `http://www.w3.org/TR/REC-CSS2/cascade.html#cascading-order'.
+
+`-group HEADING PKGWILDCARD:PKGWILDCARD:...'
+     Arrange the given packages in a separate group on the overview
+     page.
+
+     The first argument should be a short plain text which is used as
+     the title of the package group.  The second argument should be a
+     colon-separated list of package wildcards.  The group will consist
+     of all packages in the documentation set whose name matches any of
+     the given wildcards.
+
+     There is only one wildcard character, `*', which matches both
+     letters in package name components and the `.' separating package
+     name components.  For example, `j*regex' would match package
+     `java.util.regex'.  A more useful example would be `javax.swing*'
+     to match `javax.swing' and all of its sub-packages.
+
+     This option can be given multiple times.
+
+     FIXME: Information about group nesting here.
+
+          gjdoc -group "Core Classes" 'java*' \
+                -group "Swing" 'javax.swing*' \
+                -group "XML APIs" 'javax.xml*' \
+                -group "Other Extensions" javax* \
+                ...
+
+`-overview FILE'
+     Add the XHTML body fragment from FILE to the overview page.
+
+     FILE should contain an XHTML fragment with the HTML `body' tag as
+     the root node.  *Note XHTML Fragments::.
+
+     This option can be used to supply a description of the
+     documentation set as a whole.
+
+     When specified, the first sentence of the fragment will be put
+     above the tables listing the documented packages, along with a
+     link to the full copy of the fragment which is put below the
+     tables.  *Note First Sentence Detector::.
+
+     When generating documentation for a single package, specifying this
+     option forces generation of the overview page.
+
+`-stylesheetfile FILE'
+     Use the CSS stylesheet in FILE instead of the default CSS
+     stylesheets.
+
+     If you only want to override parts of the default stylesheets, use
+     `-addstylesheet' instead.
+
+`-title TEXT'
+     _Deprecated._ Use `-doctitle' TEXT instead.
+
+`-helpfile FILE'
+     This option is currently ignored.
+
+     When implemented, it will use the XHTML fragment in FILE for the
+     help page contents instead of the default help text.
+
+
+
+File: gjdoc.info,  Node: Output Control Options,  Next: Generation Options,  Prev: Interlinking Options,  Up: Invoking Gjdoc
+
+1.10 Controlling the Output.
+============================
+
+`-d DIRECTORY'
+     Place all output files into DIRECTORY (and sub-directories).
+     DIRECTORY will be created if it does not exist, including all
+     non-existing parent directories and all required sub-directories.
+
+     If not specified, output will be placed into the current directory.
+
+`-locale NAME'
+     Use locale NAME instead of the default locale for all purposes.
+
+     NAME should be a locale specifier in the form `ll_CC[_VAR]' where
+     `ll' is a lowercase two-letter ISO-639 language code, `CC' is an
+     optional uppercase two-letter ISO-3166 country code, and `VAR' is
+     an optional variant code.  For example, `en' specifies English,
+     `en_US' specifies US English, and `en_US_WIN' specifies a deviant
+     variant of the US English locale.
+
+     Note that the semantics of this option correspond exactly to those
+     of the constructors of class `java.util.Locale'.
+
+     This option currently only determines which Collator is being used
+     for sorting output elements.  This means that the locale will only
+     have an effect when you are using non-ASCII characters in
+     identifiers.
+
+`-charset CHARSET'
+     _Deprecated._ Override the specified encoding in output XHTML
+     files with the one given by `charset'.
+
+     If this option is not given, the encoding specification in output
+     XHTML is chosen to match the encoding used when writing the file
+     (the encoding given with `-docencoding', or your platform's default
+     encoding).
+
+     The semantics for CHARSET are specified here:
+     `http://www.w3.org/TR/2000/REC-xml-20001006#NT-EncName'.  For all
+     practical purposes, they are identical to those of the other
+     options accepting charset parameters.
+
+     This option is here for compatibility with `javadoc' and should be
+     avoided.
+
+`-docencoding CHARSET'
+     Use the given charset encoding when writing output files instead of
+     your platform's default encoding.
+
+     Examples for CHARSET are `US-ASCII', `ISO-8859-1' or `UTF-8'.
+
+     The semantics of this option correspond exactly to those of the
+     constructors of class `java.util.Locale'.
+
+`-validhtml'
+     Force generation of valid XHTML code.  This breaks compatibility to
+     the traditional Javadoc tool to some extent.
+
+     If this option is specified, anchor names will be mangled so that
+     they are valid according to the XHTML 1.1 specification.  However,
+     a documentation set generated with this option cannot be linked to
+     properly using the traditional Javadoc tool.  It can be linked to
+     just fine using Gjdoc, though.
+
+     Without this option, anchor names for executable class members use
+     the traditional format, for example: "foo(String,int[])".  This is
+     compatible to the traditional Javadoc tool, but according to both
+     the HTML 4.0 and XHTML 1.0 and 1.1 specifications, this format
+     includes illegal characters.  Parentheses, square brackets, and
+     the comma are not allowed in anchor names.
+
+`-baseurl URL'
+     Hardwire a page URL relative to URL into each generated page.
+
+     If you are generating documentation which will exclusively be
+     available at a certain URL, you should use this option to specify
+     this URL.
+
+     This can help avoid certain redirect attacks used by spammers, and
+     it can be helpful for certain web clients.
+
+
+
+File: gjdoc.info,  Node: Verbosity Options,  Next: Doclet Options,  Prev: Virtual Machine Options,  Up: Invoking Gjdoc
+
+1.11 Verbosity Options
+======================
+
+`-quiet'
+     Suppress all output except for warnings and error messages.
+
+`-verbose'
+     Be very verbose about what `gjdoc' is doing.
+
+     This option is currently ignored.
+
+
+
+File: gjdoc.info,  Node: Virtual Machine Options,  Next: Verbosity Options,  Prev: Taglet Options,  Up: Invoking Gjdoc
+
+1.12 Virtual Machine Options
+============================
+
+Sun's `javadoc' tool seems to be based on `javac' and as such it seems
+to operate on the VM level.  `gjdoc', in contrast, is a pure Java
+application.
+
+ Therefore, `gjdoc' can only fake, or simulate, the following VM-level
+options.
+
+`-classpath PATHLIST'
+     Set the Virtual Machine `classpath' to PATHLIST.
+
+     In most cases you should use `-docletpath' or `-tagletpath'
+     instead of this option.
+
+     PATHLIST should be one or more paths to a directory or jar file,
+     separated by your platform's path separator (usually `:' or `;').
+
+     If this option is not intercepted at the wrapper level, `gjdoc'
+     currently fakes it by calling
+     `System.setProperty("java.class.path", PATHLIST);' and outputs a
+     warning.
+
+`-bootclasspath PATHLIST'
+     Set the Virtual Machine `bootclasspath' to PATHLIST.
+
+     If this option is not intercepted at the wrapper level, `gjdoc'
+     outputs a warning.
+
+`-JVMOPT'
+     Pass an arbitrary parameter to the Virtual Machine `gjdoc' runs on.
+
+     If this option is not intercepted at the wrapper level, `gjdoc'
+     tries to emulate the option and outputs a warning.
+
+     Currently, only the VM option `-D' for setting system properties
+     is emulated.
+
+
+
+File: gjdoc.info,  Node: Invoking a Custom Doclet,  Next: Option Summary by Type,  Prev: Invoking the Standard Doclet,  Up: Invoking Gjdoc
+
+1.13 Invoking a Custom Doclet
+=============================
+
+For invoking one of the other doclets shipping with `gjdoc' or a
+third-party doclet, the canonical usage is:
+
+     gjdoc -s src/java/ -all \
+       -docletpath /path/to/doclet.jar -doclet foo.BarDoclet \
+       (more Gjdoc core options and Doclet-specific options here)
+
+ `/path/to/doclet.jar' is a placeholder for a class path specifying
+where the Doclet classes and dependencies can be found and
+`foo.BarDoclet' is the fully-qualified name of the Doclet's main class.
+
+
+File: gjdoc.info,  Node: Gjdoc Option Summary,  Next: Source Set Options,  Prev: Option Summary by Type,  Up: Invoking Gjdoc
+
+1.14 Gjdoc Option Summary
+=========================
+
+
+File: gjdoc.info,  Node: Other Doclets,  Next: Gjdoc Concepts,  Prev: Invoking Gjdoc,  Up: Top
+
+2 Generating Other Output Types
+*******************************
+
+* Menu:
+
+* Built-in Doclets::
+* Third-party Doclets::
+
+
+File: gjdoc.info,  Node: Built-in Doclets,  Next: Third-party Doclets,  Up: Other Doclets
+
+2.1 Using the Built-in Doclets
+==============================
+
+* Menu:
+
+* Using XmlDoclet::
+* Using TexiDoclet::
+* Using IspellDoclet::
+* Using DebugDoclet::
+
+
+File: gjdoc.info,  Node: Using TexiDoclet,  Next: Using IspellDoclet,  Prev: Using XmlDoclet,  Up: Built-in Doclets
+
+2.1.1 TexiDoclet: Generating Info, PDF, and other formats
+---------------------------------------------------------
+
+Missing.
+
+
+File: gjdoc.info,  Node: Using XmlDoclet,  Next: Using TexiDoclet,  Up: Built-in Doclets
+
+2.1.2 XmlDoclet: Generating XML Documentation
+---------------------------------------------
+
+Missing.
+
+
+File: gjdoc.info,  Node: Using IspellDoclet,  Next: Using DebugDoclet,  Prev: Using TexiDoclet,  Up: Built-in Doclets
+
+2.1.3 IspellDoclet: Spell-checking Source Code
+----------------------------------------------
+
+Missing.
+
+
+File: gjdoc.info,  Node: Using DebugDoclet,  Prev: Using IspellDoclet,  Up: Built-in Doclets
+
+2.1.4 DebugDoclet: Inspecting the Doclet API
+--------------------------------------------
+
+Missing.
+
+
+File: gjdoc.info,  Node: Third-party Doclets,  Prev: Built-in Doclets,  Up: Other Doclets
+
+2.2 Using Third-Party Doclets
+=============================
+
+* Menu:
+
+* DocBook Doclet::
+* PDFDoclet::
+* JUnitDoclet::
+
+
+File: gjdoc.info,  Node: DocBook Doclet,  Next: PDFDoclet,  Up: Third-party Doclets
+
+2.2.1 DocBook Doclet
+--------------------
+
+Missing.
+
+
+File: gjdoc.info,  Node: PDFDoclet,  Next: JUnitDoclet,  Prev: DocBook Doclet,  Up: Third-party Doclets
+
+2.2.2 PDFDoclet
+---------------
+
+Missing.
+
+
+File: gjdoc.info,  Node: JUnitDoclet,  Prev: PDFDoclet,  Up: Third-party Doclets
+
+2.2.3 JUnitDoclet
+-----------------
+
+Missing.
+
+
+File: gjdoc.info,  Node: Gjdoc Concepts,  Next: Option Index,  Prev: Other Doclets,  Up: Top
+
+3 Advanced Concepts
+*******************
+
+* Menu:
+
+* Writing Doclets::
+* Taglets::
+* XHTML Fragments::
+* First Sentence Detector::
+* Adding Custom Resources::
+
+
+File: gjdoc.info,  Node: Taglets,  Next: XHTML Fragments,  Prev: Writing Doclets,  Up: Gjdoc Concepts
+
+3.1 Adding Custom Tags to the Documentation
+===========================================
+
+Missing.
+
+
+File: gjdoc.info,  Node: Writing Doclets,  Next: Taglets,  Up: Gjdoc Concepts
+
+3.2 Writing Doclets
+===================
+
+If the various Doclets already available don't suit your needs, you can
+write a custom Doclet yourself.
+
+* Menu:
+
+* Doclet Invocation Interface::
+* Using AbstractDoclet::
+* GNU Doclet SPI::
+
+
+File: gjdoc.info,  Node: Doclet Invocation Interface,  Next: Using AbstractDoclet,  Up: Writing Doclets
+
+3.2.1 Implementing the Doclet Invocation Interface
+--------------------------------------------------
+
+A Doclet is a class that contains a method with the following signature:
+
+     public static boolean start(RootDoc rootDoc);
+
+ ROOTDOC is the root of an object hierarchy containing the information
+`gjdoc' extracted from the source files.  See the Doclet API for more
+details.
+
+ `start' should process all the information and return `true' on
+success, `false' on failure.
+
+ For printing status information, the Doclet should use methods
+`printNotice', `printWarning' and `printError' instead of `System.err'.
+The Doclet can opt to use `System.out' for redirectable output.
+
+
+File: gjdoc.info,  Node: Using AbstractDoclet,  Next: GNU Doclet SPI,  Prev: Doclet Invocation Interface,  Up: Writing Doclets
+
+3.2.2 Deriving Your Doclet from AbstractDoclet
+----------------------------------------------
+
+You may want your Doclet to provide functionality similar to
+HtmlDoclet.  For example, you may want it to support Taglets, generate
+Index, Tree, and Uses pages, or show other cross-reference information
+like `Overrides' and `All Implementing Classes'.
+
+ This information is not directly provided by the Doclet API, so your
+Doclet would normally have to assemble it itself.  For example, it
+would have to add the names of all program elements to a list and sort
+this list in order to create the Index page.
+
+ If you want to provide this information or part of it, you should
+consider deriving your class from
+`gnu.classpath.tools.doclets.AbstractDoclet'.  This class provides the
+following benefits:
+
+   * Handles options `-tag', `-taglet', `-tagletpath' (Taglets)
+
+   * Provides standard taglets for @version, @author, @since, @serial,
+     @deprecated, @see, @param, @return and handles all related options
+     (`-version', `-author', `-nosince', `-nodeprecated')
+
+   * Handles option `-d' (destination directory)
+
+   * Handles option `-noqualifier' (classes to omit qualifier for)
+
+   * Handles options `-docfilessubdirs' and `-excludedocfilessubdir'
+     (resource copying)
+
+   * Can generate a full index or an index split by first letter
+
+   * Can generate a full tree and package trees
+
+   * Can generate cross-reference information
+
+   * Can aggregate interface information (all superinterfaces, all
+     subinterfaces, all implementing classes)
+
+   * Provides convenient access to constructors, fields, methods, and
+     inner classes sorted by name/signature instead of the default sort
+     order.
+
+   * Provides various other convenience methods
+
+
+ If you derive from `AbstractDoclet', there are a number of things you
+need to take care of:
+
+   *
+ you should not implement the `start(RootDoc)' method as it is already
+defined by `AbstractDoclet' so that it can care about parsing the
+options.
+
+ Instead, you implement method `run()', `getOptions()' and the other
+abstract methods to define your Doclet's behavior.
+
+ Note that all information provided by `AbstractDoclet' is evaluated
+lazily.  That is, if your Doclet doesn't need to create an Index page,
+then `AbstractDoclet' will not spend resources on creating the
+corresponding information.
+
+ See the API documentation for
+`gnu.classpath.tools.doclets.AbstractDoclet' for more details.
+
+ You should be aware that if you base your Doclet on `AbstractDoclet'
+then you have to bundle this and all related classes with your Doclet,
+with all implications such as possible licensing issues.  Otherwise,
+your Doclet will only be runnable on `gjdoc' and not on other
+documentation systems.  Also note that `AbstractDoclet' has not been
+extensively tested in environments other than `gjdoc'.
+
+
+File: gjdoc.info,  Node: GNU Doclet SPI,  Prev: Using AbstractDoclet,  Up: Writing Doclets
+
+3.2.3 Preparing for the GNU Doclet Service Provider Interface
+-------------------------------------------------------------
+
+In addition to the standard Doclet invocation interface described
+above, `gjdoc' also offers a Service Provider Interface conforming to
+the Java standard.  Adding support for this interface to your Doclet
+simplifies usage for `gjdoc' users because it makes your Doclet
+"discoverable".
+
+ In order to provide the alternate interface, you have to add a class
+implementing `gnu.classpath.tools.gjdoc.spi.DocletSpi' to your Doclet
+classes, and bundle all Doclet classes in a Jar file along with a file
+named `META_INF/services/gnu.classpath.tools.gjdoc.spi.DocletSpi' which
+contains the name of your class implementing DocletSpi on a single line.
+
+ Note that if your Doclet depends on third-party classes bundled in
+separate Jar files, you can link in these classes using the
+`Class-path:' Manifest attribute of your Doclet Jar.
+
+ Your Doclet can then be invoked in one of the following ways:
+     gjdoc -docletjar /path/to/doclet.jar
+     gjdoc -docletpath /path/to/doclet.jar -docletname DOCLETNAME
+     gjdoc -docletname DOCLETNAME
+
+ Here, DOCLETNAME is the name of your doclet as returned by
+`DocletSpi.getDocletName()'.
+
+ The last example will only work if your Doclet Jar is in `gjdoc''s
+`doclets' directory or if it is on the classpath.
+
+
+File: gjdoc.info,  Node: XHTML Fragments,  Next: First Sentence Detector,  Prev: Taglets,  Up: Gjdoc Concepts
+
+3.3 Well-formed Documentation Fragments
+=======================================
+
+For many Doclets it is advantagous if the HTML code in the comments and
+HTML code passed via the command line is well-formed.  For example,
+HtmlDoclet outputs XHTML code, and XmlDoclet XML code, both of which
+results in invalid files if the user-specified HTML isn't wellformed.
+
+ Unfortunately, comments were never required to contain well-formed
+HTML code, which means that every Doclet must deal with non-wellformed
+code as well.
+
+ The `gjdoc' built-in Doclets deal with this problem by "fixing" the
+HTML code - making sure that all tags are closed, attribute values are
+provided and quoted, tags are properly nested, etc.
+
+ This approach works OK in most instances, but since it uses some crude
+heuristics it can sometimes produce undesirable result.
+
+ Therefore, in order to make sure that your comments are always
+properly formatted, make sure they are well-formed as described in
+XHTML 1.0: Documents must be well-formed (http://www.w3.org/TR/xhtml1/#h-4.1).
+
+ In addition, you should use meaningful tags instead of text formatting
+tags to make your output look better in other output formats derived
+from your HTML code.  For example, you should use the <em> tag instead
+of <b> if you want to emphasize text.
+
+
+File: gjdoc.info,  Node: First Sentence Detector,  Next: Adding Custom Resources,  Prev: XHTML Fragments,  Up: Gjdoc Concepts
+
+3.4 How Gjdoc Determines where the First Sentence Ends
+======================================================
+
+For a package, class or member summary, `gjdoc' only shows the first
+sentence of the documentation comment in question.  Because `gjdoc' is
+not human, it is not always obvious to `gjdoc' where the first sentence
+ends.
+
+ You might be tempted to say that the first sentence ends at the first
+occurrence of a punctuation character like `.' or `!'. However,
+consider examples like this:
+     This work, by Thomas J. Shahan et al., is about the middle ages.
+
+ As you can see, it is not trivial to determine the end of the sentence.
+
+ `gjdoc' gives you the choice between two approaches.  By default it
+uses built-in heuristics which should be compatible to Sun's `javadoc'
+tool.  This approach works quiet well in most cases, at least for
+english comments.
+
+ Alternatively, you can specify option `-breakiterator' in which case
+`gjdoc' will use
+`java.text.BreakIterator.getSentenceInstance(LOCALE).next()' to find
+the end of sentence, where LOCALE is the locale specified by option
+`-locale' or the default locale if none specified.
+
+ _NOT YET IMPLEMENTED:_
+
+ `gjdoc' also allows you to explicitly delineate the first sentence by
+putting it in a `<span>' tag with the CSS class `first-sentence'.  For
+example:
+     /**
+      *  <span class="first-sentence">This. is. the. first.
+      *  sentence.</span> This is the second sentence.
+      */
+
+ Note that this will only work with `gjdoc', but shouldn't hurt when
+using another documentation system since the `<span>' tag usually
+doesn't show up in the output.
+
+
+File: gjdoc.info,  Node: Adding Custom Resources,  Prev: First Sentence Detector,  Up: Gjdoc Concepts
+
+3.5 Adding Images and Other Resources
+=====================================
+
+Sometimes you want to decorate your documentation with secondary
+resources such as images, SVG graphics, applets, and so on.  To do so,
+simply put the required files in a subdirectory 'doc-files' in the
+package directory corresponding to the documentation entry you want to
+decorate, and refer to it with the URL `doc-files/FILENAME'.
+
+ For example, if you want to add an image to the description of class
+`baz.FooBar', create a directory `doc-files' in the directory `baz'
+containing `FooBar.java' and put your file, say `diagram.png', into
+that directory.  Then, add the HTML code like this to a comment in
+`FooBar.java':
+     <img src="doc-files/diagram.png" width="200" height="150"
+       alt="Foo Diagram"/>
+
+ This works because the `doc-files' subdirectories will be copied to
+the target documentation directory every time you generate the
+documentation.
+
+ Note however that by default, the `doc-files' directory will not be
+copied deeply.  In other words, if you create subdirectories under
+`doc-files' they will not be copied and any resources located in these
+subdirectories will not be accessible in your generated documentation.
+You can specify option `-docfilessubdirs' to remove this limitation.
+
+ Sometimes you want to use option `-docfilessubdirs', but there are
+certain directories which you don't want to be copied, for example
+because they contain source files for the resources in `doc-files'.
+For cases like this, use `-excludedocfilessubdir' to specify
+directories to be omitted.
+
+
+File: gjdoc.info,  Node: License,  Prev: Keyword Index,  Up: Top
+
+License
+*******
+
+This documentation is dual-licensed under the GNU Free Documentation
+License and the GNU General Public License.
+
+* Menu:
+
+* GNU Free Documentation License::
+* GNU General Public License::
+
+
+File: gjdoc.info,  Node: GNU General Public License,  Prev: GNU Free Documentation License,  Up: License
+
+GNU GENERAL PUBLIC LICENSE
+==========================
+
+                         Version 2, June 1991
+
+     Copyright (C) 1989, 1991 Free Software Foundation, Inc.
+     59 Temple Place - Suite 330, Boston, MA  02111-1307, USA
+
+     Everyone is permitted to copy and distribute verbatim copies
+     of this license document, but changing it is not allowed.
+
+Preamble
+--------
+
+The licenses for most software are designed to take away your freedom
+to share and change it.  By contrast, the GNU General Public License is
+intended to guarantee your freedom to share and change free
+software--to make sure the software is free for all its users.  This
+General Public License applies to most of the Free Software
+Foundation's software and to any other program whose authors commit to
+using it.  (Some other Free Software Foundation software is covered by
+the GNU Library General Public License instead.)  You can apply it to
+your programs, too.
+
+ When we speak of free software, we are referring to freedom, not
+price.  Our General Public Licenses are designed to make sure that you
+have the freedom to distribute copies of free software (and charge for
+this service if you wish), that you receive source code or can get it
+if you want it, that you can change the software or use pieces of it in
+new free programs; and that you know you can do these things.
+
+ To protect your rights, we need to make restrictions that forbid
+anyone to deny you these rights or to ask you to surrender the rights.
+These restrictions translate to certain responsibilities for you if you
+distribute copies of the software, or if you modify it.
+
+ For example, if you distribute copies of such a program, whether
+gratis or for a fee, you must give the recipients all the rights that
+you have.  You must make sure that they, too, receive or can get the
+source code.  And you must show them these terms so they know their
+rights.
+
+ We protect your rights with two steps: (1) copyright the software, and
+(2) offer you this license which gives you legal permission to copy,
+distribute and/or modify the software.
+
+ Also, for each author's protection and ours, we want to make certain
+that everyone understands that there is no warranty for this free
+software.  If the software is modified by someone else and passed on, we
+want its recipients to know that what they have is not the original, so
+that any problems introduced by others will not reflect on the original
+authors' reputations.
+
+ Finally, any free program is threatened constantly by software
+patents.  We wish to avoid the danger that redistributors of a free
+program will individually obtain patent licenses, in effect making the
+program proprietary.  To prevent this, we have made it clear that any
+patent must be licensed for everyone's free use or not licensed at all.
+
+ The precise terms and conditions for copying, distribution and
+modification follow.
+
+    TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+  0. This License applies to any program or other work which contains a
+     notice placed by the copyright holder saying it may be distributed
+     under the terms of this General Public License.  The "Program",
+     below, refers to any such program or work, and a "work based on
+     the Program" means either the Program or any derivative work under
+     copyright law: that is to say, a work containing the Program or a
+     portion of it, either verbatim or with modifications and/or
+     translated into another language.  (Hereinafter, translation is
+     included without limitation in the term "modification".)  Each
+     licensee is addressed as "you".
+
+     Activities other than copying, distribution and modification are
+     not covered by this License; they are outside its scope.  The act
+     of running the Program is not restricted, and the output from the
+     Program is covered only if its contents constitute a work based on
+     the Program (independent of having been made by running the
+     Program).  Whether that is true depends on what the Program does.
+
+  1. You may copy and distribute verbatim copies of the Program's
+     source code as you receive it, in any medium, provided that you
+     conspicuously and appropriately publish on each copy an appropriate
+     copyright notice and disclaimer of warranty; keep intact all the
+     notices that refer to this License and to the absence of any
+     warranty; and give any other recipients of the Program a copy of
+     this License along with the Program.
+
+     You may charge a fee for the physical act of transferring a copy,
+     and you may at your option offer warranty protection in exchange
+     for a fee.
+
+  2. You may modify your copy or copies of the Program or any portion
+     of it, thus forming a work based on the Program, and copy and
+     distribute such modifications or work under the terms of Section 1
+     above, provided that you also meet all of these conditions:
+
+       a. You must cause the modified files to carry prominent notices
+          stating that you changed the files and the date of any change.
+
+       b. You must cause any work that you distribute or publish, that
+          in whole or in part contains or is derived from the Program
+          or any part thereof, to be licensed as a whole at no charge
+          to all third parties under the terms of this License.
+
+       c. If the modified program normally reads commands interactively
+          when run, you must cause it, when started running for such
+          interactive use in the most ordinary way, to print or display
+          an announcement including an appropriate copyright notice and
+          a notice that there is no warranty (or else, saying that you
+          provide a warranty) and that users may redistribute the
+          program under these conditions, and telling the user how to
+          view a copy of this License.  (Exception: if the Program
+          itself is interactive but does not normally print such an
+          announcement, your work based on the Program is not required
+          to print an announcement.)
+
+     These requirements apply to the modified work as a whole.  If
+     identifiable sections of that work are not derived from the
+     Program, and can be reasonably considered independent and separate
+     works in themselves, then this License, and its terms, do not
+     apply to those sections when you distribute them as separate
+     works.  But when you distribute the same sections as part of a
+     whole which is a work based on the Program, the distribution of
+     the whole must be on the terms of this License, whose permissions
+     for other licensees extend to the entire whole, and thus to each
+     and every part regardless of who wrote it.
+
+     Thus, it is not the intent of this section to claim rights or
+     contest your rights to work written entirely by you; rather, the
+     intent is to exercise the right to control the distribution of
+     derivative or collective works based on the Program.
+
+     In addition, mere aggregation of another work not based on the
+     Program with the Program (or with a work based on the Program) on
+     a volume of a storage or distribution medium does not bring the
+     other work under the scope of this License.
+
+  3. You may copy and distribute the Program (or a work based on it,
+     under Section 2) in object code or executable form under the terms
+     of Sections 1 and 2 above provided that you also do one of the
+     following:
+
+       a. Accompany it with the complete corresponding machine-readable
+          source code, which must be distributed under the terms of
+          Sections 1 and 2 above on a medium customarily used for
+          software interchange; or,
+
+       b. Accompany it with a written offer, valid for at least three
+          years, to give any third party, for a charge no more than your
+          cost of physically performing source distribution, a complete
+          machine-readable copy of the corresponding source code, to be
+          distributed under the terms of Sections 1 and 2 above on a
+          medium customarily used for software interchange; or,
+
+       c. Accompany it with the information you received as to the offer
+          to distribute corresponding source code.  (This alternative is
+          allowed only for noncommercial distribution and only if you
+          received the program in object code or executable form with
+          such an offer, in accord with Subsection b above.)
+
+     The source code for a work means the preferred form of the work for
+     making modifications to it.  For an executable work, complete
+     source code means all the source code for all modules it contains,
+     plus any associated interface definition files, plus the scripts
+     used to control compilation and installation of the executable.
+     However, as a special exception, the source code distributed need
+     not include anything that is normally distributed (in either
+     source or binary form) with the major components (compiler,
+     kernel, and so on) of the operating system on which the executable
+     runs, unless that component itself accompanies the executable.
+
+     If distribution of executable or object code is made by offering
+     access to copy from a designated place, then offering equivalent
+     access to copy the source code from the same place counts as
+     distribution of the source code, even though third parties are not
+     compelled to copy the source along with the object code.
+
+  4. You may not copy, modify, sublicense, or distribute the Program
+     except as expressly provided under this License.  Any attempt
+     otherwise to copy, modify, sublicense or distribute the Program is
+     void, and will automatically terminate your rights under this
+     License.  However, parties who have received copies, or rights,
+     from you under this License will not have their licenses
+     terminated so long as such parties remain in full compliance.
+
+  5. You are not required to accept this License, since you have not
+     signed it.  However, nothing else grants you permission to modify
+     or distribute the Program or its derivative works.  These actions
+     are prohibited by law if you do not accept this License.
+     Therefore, by modifying or distributing the Program (or any work
+     based on the Program), you indicate your acceptance of this
+     License to do so, and all its terms and conditions for copying,
+     distributing or modifying the Program or works based on it.
+
+  6. Each time you redistribute the Program (or any work based on the
+     Program), the recipient automatically receives a license from the
+     original licensor to copy, distribute or modify the Program
+     subject to these terms and conditions.  You may not impose any
+     further restrictions on the recipients' exercise of the rights
+     granted herein.  You are not responsible for enforcing compliance
+     by third parties to this License.
+
+  7. If, as a consequence of a court judgment or allegation of patent
+     infringement or for any other reason (not limited to patent
+     issues), conditions are imposed on you (whether by court order,
+     agreement or otherwise) that contradict the conditions of this
+     License, they do not excuse you from the conditions of this
+     License.  If you cannot distribute so as to satisfy simultaneously
+     your obligations under this License and any other pertinent
+     obligations, then as a consequence you may not distribute the
+     Program at all.  For example, if a patent license would not permit
+     royalty-free redistribution of the Program by all those who
+     receive copies directly or indirectly through you, then the only
+     way you could satisfy both it and this License would be to refrain
+     entirely from distribution of the Program.
+
+     If any portion of this section is held invalid or unenforceable
+     under any particular circumstance, the balance of the section is
+     intended to apply and the section as a whole is intended to apply
+     in other circumstances.
+
+     It is not the purpose of this section to induce you to infringe any
+     patents or other property right claims or to contest validity of
+     any such claims; this section has the sole purpose of protecting
+     the integrity of the free software distribution system, which is
+     implemented by public license practices.  Many people have made
+     generous contributions to the wide range of software distributed
+     through that system in reliance on consistent application of that
+     system; it is up to the author/donor to decide if he or she is
+     willing to distribute software through any other system and a
+     licensee cannot impose that choice.
+
+     This section is intended to make thoroughly clear what is believed
+     to be a consequence of the rest of this License.
+
+  8. If the distribution and/or use of the Program is restricted in
+     certain countries either by patents or by copyrighted interfaces,
+     the original copyright holder who places the Program under this
+     License may add an explicit geographical distribution limitation
+     excluding those countries, so that distribution is permitted only
+     in or among countries not thus excluded.  In such case, this
+     License incorporates the limitation as if written in the body of
+     this License.
+
+  9. The Free Software Foundation may publish revised and/or new
+     versions of the General Public License from time to time.  Such
+     new versions will be similar in spirit to the present version, but
+     may differ in detail to address new problems or concerns.
+
+     Each version is given a distinguishing version number.  If the
+     Program specifies a version number of this License which applies
+     to it and "any later version", you have the option of following
+     the terms and conditions either of that version or of any later
+     version published by the Free Software Foundation.  If the Program
+     does not specify a version number of this License, you may choose
+     any version ever published by the Free Software Foundation.
+
+ 10. If you wish to incorporate parts of the Program into other free
+     programs whose distribution conditions are different, write to the
+     author to ask for permission.  For software which is copyrighted
+     by the Free Software Foundation, write to the Free Software
+     Foundation; we sometimes make exceptions for this.  Our decision
+     will be guided by the two goals of preserving the free status of
+     all derivatives of our free software and of promoting the sharing
+     and reuse of software generally.
+
+                                NO WARRANTY
+ 11. BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO
+     WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE
+     LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
+     HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT
+     WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT
+     NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+     FITNESS FOR A PARTICULAR PURPOSE.  THE ENTIRE RISK AS TO THE
+     QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU.  SHOULD THE
+     PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY
+     SERVICING, REPAIR OR CORRECTION.
+
+ 12. IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN
+     WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY
+     MODIFY AND/OR REDISTRIBUTE THE PROGRAM AS PERMITTED ABOVE, BE
+     LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL,
+     INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR
+     INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF
+     DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU
+     OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY
+     OTHER PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN
+     ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+                      END OF TERMS AND CONDITIONS
+How to Apply These Terms to Your New Programs
+---------------------------------------------
+
+If you develop a new program, and you want it to be of the greatest
+possible use to the public, the best way to achieve this is to make it
+free software which everyone can redistribute and change under these
+terms.
+
+ To do so, attach the following notices to the program.  It is safest
+to attach them to the start of each source file to most effectively
+convey the exclusion of warranty; and each file should have at least
+the "copyright" line and a pointer to where the full notice is found.
+
+     ONE LINE TO GIVE THE PROGRAM'S NAME AND A BRIEF IDEA OF WHAT IT DOES.
+     Copyright (C) YEAR  NAME OF AUTHOR
+
+     This program is free software; you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+     the Free Software Foundation; either version 2 of the License, or
+     (at your option) any later version.
+
+     This program is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     GNU General Public License for more details.
+
+     You should have received a copy of the GNU General Public License
+     along with this program; if not, write to the Free Software Foundation,
+     Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+ Also add information on how to contact you by electronic and paper
+mail.
+
+ If the program is interactive, make it output a short notice like this
+when it starts in an interactive mode:
+
+     Gnomovision version 69, Copyright (C) YEAR NAME OF AUTHOR
+     Gnomovision comes with ABSOLUTELY NO WARRANTY; for details
+     type `show w'.
+     This is free software, and you are welcome to redistribute it
+     under certain conditions; type `show c' for details.
+
+ The hypothetical commands `show w' and `show c' should show the
+appropriate parts of the General Public License.  Of course, the
+commands you use may be called something other than `show w' and `show
+c'; they could even be mouse-clicks or menu items--whatever suits your
+program.
+
+ You should also get your employer (if you work as a programmer) or your
+school, if any, to sign a "copyright disclaimer" for the program, if
+necessary.  Here is a sample; alter the names:
+
+     Yoyodyne, Inc., hereby disclaims all copyright interest in the program
+     `Gnomovision' (which makes passes at compilers) written by James Hacker.
+
+     SIGNATURE OF TY COON, 1 April 1989
+     Ty Coon, President of Vice
+
+ This General Public License does not permit incorporating your program
+into proprietary programs.  If your program is a subroutine library,
+you may consider it more useful to permit linking proprietary
+applications with the library.  If this is what you want to do, use the
+GNU Library General Public License instead of this License.
+
+
+File: gjdoc.info,  Node: GNU Free Documentation License,  Next: GNU General Public License,  Up: License
+
+GNU Free Documentation License
+==============================
+
+                      Version 1.2, November 2002
+
+     Copyright (C) 2000,2001,2002 Free Software Foundation, Inc.
+     59 Temple Place, Suite 330, Boston, MA  02111-1307, USA
+
+     Everyone is permitted to copy and distribute verbatim copies
+     of this license document, but changing it is not allowed.
+
+  0. PREAMBLE
+
+     The purpose of this License is to make a manual, textbook, or other
+     functional and useful document "free" in the sense of freedom: to
+     assure everyone the effective freedom to copy and redistribute it,
+     with or without modifying it, either commercially or
+     noncommercially.  Secondarily, this License preserves for the
+     author and publisher a way to get credit for their work, while not
+     being considered responsible for modifications made by others.
+
+     This License is a kind of "copyleft", which means that derivative
+     works of the document must themselves be free in the same sense.
+     It complements the GNU General Public License, which is a copyleft
+     license designed for free software.
+
+     We have designed this License in order to use it for manuals for
+     free software, because free software needs free documentation: a
+     free program should come with manuals providing the same freedoms
+     that the software does.  But this License is not limited to
+     software manuals; it can be used for any textual work, regardless
+     of subject matter or whether it is published as a printed book.
+     We recommend this License principally for works whose purpose is
+     instruction or reference.
+
+  1. APPLICABILITY AND DEFINITIONS
+
+     This License applies to any manual or other work, in any medium,
+     that contains a notice placed by the copyright holder saying it
+     can be distributed under the terms of this License.  Such a notice
+     grants a world-wide, royalty-free license, unlimited in duration,
+     to use that work under the conditions stated herein.  The
+     "Document", below, refers to any such manual or work.  Any member
+     of the public is a licensee, and is addressed as "you".  You
+     accept the license if you copy, modify or distribute the work in a
+     way requiring permission under copyright law.
+
+     A "Modified Version" of the Document means any work containing the
+     Document or a portion of it, either copied verbatim, or with
+     modifications and/or translated into another language.
+
+     A "Secondary Section" is a named appendix or a front-matter section
+     of the Document that deals exclusively with the relationship of the
+     publishers or authors of the Document to the Document's overall
+     subject (or to related matters) and contains nothing that could
+     fall directly within that overall subject.  (Thus, if the Document
+     is in part a textbook of mathematics, a Secondary Section may not
+     explain any mathematics.)  The relationship could be a matter of
+     historical connection with the subject or with related matters, or
+     of legal, commercial, philosophical, ethical or political position
+     regarding them.
+
+     The "Invariant Sections" are certain Secondary Sections whose
+     titles are designated, as being those of Invariant Sections, in
+     the notice that says that the Document is released under this
+     License.  If a section does not fit the above definition of
+     Secondary then it is not allowed to be designated as Invariant.
+     The Document may contain zero Invariant Sections.  If the Document
+     does not identify any Invariant Sections then there are none.
+
+     The "Cover Texts" are certain short passages of text that are
+     listed, as Front-Cover Texts or Back-Cover Texts, in the notice
+     that says that the Document is released under this License.  A
+     Front-Cover Text may be at most 5 words, and a Back-Cover Text may
+     be at most 25 words.
+
+     A "Transparent" copy of the Document means a machine-readable copy,
+     represented in a format whose specification is available to the
+     general public, that is suitable for revising the document
+     straightforwardly with generic text editors or (for images
+     composed of pixels) generic paint programs or (for drawings) some
+     widely available drawing editor, and that is suitable for input to
+     text formatters or for automatic translation to a variety of
+     formats suitable for input to text formatters.  A copy made in an
+     otherwise Transparent file format whose markup, or absence of
+     markup, has been arranged to thwart or discourage subsequent
+     modification by readers is not Transparent.  An image format is
+     not Transparent if used for any substantial amount of text.  A
+     copy that is not "Transparent" is called "Opaque".
+
+     Examples of suitable formats for Transparent copies include plain
+     ASCII without markup, Texinfo input format, LaTeX input format,
+     SGML or XML using a publicly available DTD, and
+     standard-conforming simple HTML, PostScript or PDF designed for
+     human modification.  Examples of transparent image formats include
+     PNG, XCF and JPG.  Opaque formats include proprietary formats that
+     can be read and edited only by proprietary word processors, SGML or
+     XML for which the DTD and/or processing tools are not generally
+     available, and the machine-generated HTML, PostScript or PDF
+     produced by some word processors for output purposes only.
+
+     The "Title Page" means, for a printed book, the title page itself,
+     plus such following pages as are needed to hold, legibly, the
+     material this License requires to appear in the title page.  For
+     works in formats which do not have any title page as such, "Title
+     Page" means the text near the most prominent appearance of the
+     work's title, preceding the beginning of the body of the text.
+
+     A section "Entitled XYZ" means a named subunit of the Document
+     whose title either is precisely XYZ or contains XYZ in parentheses
+     following text that translates XYZ in another language.  (Here XYZ
+     stands for a specific section name mentioned below, such as
+     "Acknowledgements", "Dedications", "Endorsements", or "History".)
+     To "Preserve the Title" of such a section when you modify the
+     Document means that it remains a section "Entitled XYZ" according
+     to this definition.
+
+     The Document may include Warranty Disclaimers next to the notice
+     which states that this License applies to the Document.  These
+     Warranty Disclaimers are considered to be included by reference in
+     this License, but only as regards disclaiming warranties: any other
+     implication that these Warranty Disclaimers may have is void and
+     has no effect on the meaning of this License.
+
+  2. VERBATIM COPYING
+
+     You may copy and distribute the Document in any medium, either
+     commercially or noncommercially, provided that this License, the
+     copyright notices, and the license notice saying this License
+     applies to the Document are reproduced in all copies, and that you
+     add no other conditions whatsoever to those of this License.  You
+     may not use technical measures to obstruct or control the reading
+     or further copying of the copies you make or distribute.  However,
+     you may accept compensation in exchange for copies.  If you
+     distribute a large enough number of copies you must also follow
+     the conditions in section 3.
+
+     You may also lend copies, under the same conditions stated above,
+     and you may publicly display copies.
+
+  3. COPYING IN QUANTITY
+
+     If you publish printed copies (or copies in media that commonly
+     have printed covers) of the Document, numbering more than 100, and
+     the Document's license notice requires Cover Texts, you must
+     enclose the copies in covers that carry, clearly and legibly, all
+     these Cover Texts: Front-Cover Texts on the front cover, and
+     Back-Cover Texts on the back cover.  Both covers must also clearly
+     and legibly identify you as the publisher of these copies.  The
+     front cover must present the full title with all words of the
+     title equally prominent and visible.  You may add other material
+     on the covers in addition.  Copying with changes limited to the
+     covers, as long as they preserve the title of the Document and
+     satisfy these conditions, can be treated as verbatim copying in
+     other respects.
+
+     If the required texts for either cover are too voluminous to fit
+     legibly, you should put the first ones listed (as many as fit
+     reasonably) on the actual cover, and continue the rest onto
+     adjacent pages.
+
+     If you publish or distribute Opaque copies of the Document
+     numbering more than 100, you must either include a
+     machine-readable Transparent copy along with each Opaque copy, or
+     state in or with each Opaque copy a computer-network location from
+     which the general network-using public has access to download
+     using public-standard network protocols a complete Transparent
+     copy of the Document, free of added material.  If you use the
+     latter option, you must take reasonably prudent steps, when you
+     begin distribution of Opaque copies in quantity, to ensure that
+     this Transparent copy will remain thus accessible at the stated
+     location until at least one year after the last time you
+     distribute an Opaque copy (directly or through your agents or
+     retailers) of that edition to the public.
+
+     It is requested, but not required, that you contact the authors of
+     the Document well before redistributing any large number of
+     copies, to give them a chance to provide you with an updated
+     version of the Document.
+
+  4. MODIFICATIONS
+
+     You may copy and distribute a Modified Version of the Document
+     under the conditions of sections 2 and 3 above, provided that you
+     release the Modified Version under precisely this License, with
+     the Modified Version filling the role of the Document, thus
+     licensing distribution and modification of the Modified Version to
+     whoever possesses a copy of it.  In addition, you must do these
+     things in the Modified Version:
+
+       A. Use in the Title Page (and on the covers, if any) a title
+          distinct from that of the Document, and from those of
+          previous versions (which should, if there were any, be listed
+          in the History section of the Document).  You may use the
+          same title as a previous version if the original publisher of
+          that version gives permission.
+
+       B. List on the Title Page, as authors, one or more persons or
+          entities responsible for authorship of the modifications in
+          the Modified Version, together with at least five of the
+          principal authors of the Document (all of its principal
+          authors, if it has fewer than five), unless they release you
+          from this requirement.
+
+       C. State on the Title page the name of the publisher of the
+          Modified Version, as the publisher.
+
+       D. Preserve all the copyright notices of the Document.
+
+       E. Add an appropriate copyright notice for your modifications
+          adjacent to the other copyright notices.
+
+       F. Include, immediately after the copyright notices, a license
+          notice giving the public permission to use the Modified
+          Version under the terms of this License, in the form shown in
+          the Addendum below.
+
+       G. Preserve in that license notice the full lists of Invariant
+          Sections and required Cover Texts given in the Document's
+          license notice.
+
+       H. Include an unaltered copy of this License.
+
+       I. Preserve the section Entitled "History", Preserve its Title,
+          and add to it an item stating at least the title, year, new
+          authors, and publisher of the Modified Version as given on
+          the Title Page.  If there is no section Entitled "History" in
+          the Document, create one stating the title, year, authors,
+          and publisher of the Document as given on its Title Page,
+          then add an item describing the Modified Version as stated in
+          the previous sentence.
+
+       J. Preserve the network location, if any, given in the Document
+          for public access to a Transparent copy of the Document, and
+          likewise the network locations given in the Document for
+          previous versions it was based on.  These may be placed in
+          the "History" section.  You may omit a network location for a
+          work that was published at least four years before the
+          Document itself, or if the original publisher of the version
+          it refers to gives permission.
+
+       K. For any section Entitled "Acknowledgements" or "Dedications",
+          Preserve the Title of the section, and preserve in the
+          section all the substance and tone of each of the contributor
+          acknowledgements and/or dedications given therein.
+
+       L. Preserve all the Invariant Sections of the Document,
+          unaltered in their text and in their titles.  Section numbers
+          or the equivalent are not considered part of the section
+          titles.
+
+       M. Delete any section Entitled "Endorsements".  Such a section
+          may not be included in the Modified Version.
+
+       N. Do not retitle any existing section to be Entitled
+          "Endorsements" or to conflict in title with any Invariant
+          Section.
+
+       O. Preserve any Warranty Disclaimers.
+
+     If the Modified Version includes new front-matter sections or
+     appendices that qualify as Secondary Sections and contain no
+     material copied from the Document, you may at your option
+     designate some or all of these sections as invariant.  To do this,
+     add their titles to the list of Invariant Sections in the Modified
+     Version's license notice.  These titles must be distinct from any
+     other section titles.
+
+     You may add a section Entitled "Endorsements", provided it contains
+     nothing but endorsements of your Modified Version by various
+     parties--for example, statements of peer review or that the text
+     has been approved by an organization as the authoritative
+     definition of a standard.
+
+     You may add a passage of up to five words as a Front-Cover Text,
+     and a passage of up to 25 words as a Back-Cover Text, to the end
+     of the list of Cover Texts in the Modified Version.  Only one
+     passage of Front-Cover Text and one of Back-Cover Text may be
+     added by (or through arrangements made by) any one entity.  If the
+     Document already includes a cover text for the same cover,
+     previously added by you or by arrangement made by the same entity
+     you are acting on behalf of, you may not add another; but you may
+     replace the old one, on explicit permission from the previous
+     publisher that added the old one.
+
+     The author(s) and publisher(s) of the Document do not by this
+     License give permission to use their names for publicity for or to
+     assert or imply endorsement of any Modified Version.
+
+  5. COMBINING DOCUMENTS
+
+     You may combine the Document with other documents released under
+     this License, under the terms defined in section 4 above for
+     modified versions, provided that you include in the combination
+     all of the Invariant Sections of all of the original documents,
+     unmodified, and list them all as Invariant Sections of your
+     combined work in its license notice, and that you preserve all
+     their Warranty Disclaimers.
+
+     The combined work need only contain one copy of this License, and
+     multiple identical Invariant Sections may be replaced with a single
+     copy.  If there are multiple Invariant Sections with the same name
+     but different contents, make the title of each such section unique
+     by adding at the end of it, in parentheses, the name of the
+     original author or publisher of that section if known, or else a
+     unique number.  Make the same adjustment to the section titles in
+     the list of Invariant Sections in the license notice of the
+     combined work.
+
+     In the combination, you must combine any sections Entitled
+     "History" in the various original documents, forming one section
+     Entitled "History"; likewise combine any sections Entitled
+     "Acknowledgements", and any sections Entitled "Dedications".  You
+     must delete all sections Entitled "Endorsements."
+
+  6. COLLECTIONS OF DOCUMENTS
+
+     You may make a collection consisting of the Document and other
+     documents released under this License, and replace the individual
+     copies of this License in the various documents with a single copy
+     that is included in the collection, provided that you follow the
+     rules of this License for verbatim copying of each of the
+     documents in all other respects.
+
+     You may extract a single document from such a collection, and
+     distribute it individually under this License, provided you insert
+     a copy of this License into the extracted document, and follow
+     this License in all other respects regarding verbatim copying of
+     that document.
+
+  7. AGGREGATION WITH INDEPENDENT WORKS
+
+     A compilation of the Document or its derivatives with other
+     separate and independent documents or works, in or on a volume of
+     a storage or distribution medium, is called an "aggregate" if the
+     copyright resulting from the compilation is not used to limit the
+     legal rights of the compilation's users beyond what the individual
+     works permit.  When the Document is included an aggregate, this
+     License does not apply to the other works in the aggregate which
+     are not themselves derivative works of the Document.
+
+     If the Cover Text requirement of section 3 is applicable to these
+     copies of the Document, then if the Document is less than one half
+     of the entire aggregate, the Document's Cover Texts may be placed
+     on covers that bracket the Document within the aggregate, or the
+     electronic equivalent of covers if the Document is in electronic
+     form.  Otherwise they must appear on printed covers that bracket
+     the whole aggregate.
+
+  8. TRANSLATION
+
+     Translation is considered a kind of modification, so you may
+     distribute translations of the Document under the terms of section
+     4.  Replacing Invariant Sections with translations requires special
+     permission from their copyright holders, but you may include
+     translations of some or all Invariant Sections in addition to the
+     original versions of these Invariant Sections.  You may include a
+     translation of this License, and all the license notices in the
+     Document, and any Warrany Disclaimers, provided that you also
+     include the original English version of this License and the
+     original versions of those notices and disclaimers.  In case of a
+     disagreement between the translation and the original version of
+     this License or a notice or disclaimer, the original version will
+     prevail.
+
+     If a section in the Document is Entitled "Acknowledgements",
+     "Dedications", or "History", the requirement (section 4) to
+     Preserve its Title (section 1) will typically require changing the
+     actual title.
+
+  9. TERMINATION
+
+     You may not copy, modify, sublicense, or distribute the Document
+     except as expressly provided for under this License.  Any other
+     attempt to copy, modify, sublicense or distribute the Document is
+     void, and will automatically terminate your rights under this
+     License.  However, parties who have received copies, or rights,
+     from you under this License will not have their licenses
+     terminated so long as such parties remain in full compliance.
+
+ 10. FUTURE REVISIONS OF THIS LICENSE
+
+     The Free Software Foundation may publish new, revised versions of
+     the GNU Free Documentation License from time to time.  Such new
+     versions will be similar in spirit to the present version, but may
+     differ in detail to address new problems or concerns.  See
+     `http://www.gnu.org/copyleft/'.
+
+     Each version of the License is given a distinguishing version
+     number.  If the Document specifies that a particular numbered
+     version of this License "or any later version" applies to it, you
+     have the option of following the terms and conditions either of
+     that specified version or of any later version that has been
+     published (not as a draft) by the Free Software Foundation.  If
+     the Document does not specify a version number of this License,
+     you may choose any version ever published (not as a draft) by the
+     Free Software Foundation.
+
+ADDENDUM: How to use this License for your documents
+----------------------------------------------------
+
+To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and license
+notices just after the title page:
+
+       Copyright (C)  YEAR  YOUR NAME.
+       Permission is granted to copy, distribute and/or modify this document
+       under the terms of the GNU Free Documentation License, Version 1.2
+       or any later version published by the Free Software Foundation;
+       with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+       A copy of the license is included in the section entitled ``GNU
+       Free Documentation License''.
+
+ If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+replace the "with...Texts." line with this:
+
+         with the Invariant Sections being LIST THEIR TITLES, with
+         the Front-Cover Texts being LIST, and with the Back-Cover Texts
+         being LIST.
+
+ If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+
+ If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License, to
+permit their use in free software.
+
+
+File: gjdoc.info,  Node: Option Index,  Next: Keyword Index,  Prev: Gjdoc Concepts,  Up: Top
+
+Option Index
+************
+
+Gjdoc's command line options are indexed here without any initial `-'
+or `--'.
+
+ [index ]
+* Menu:
+
+* addstylesheet:                         Decoration Options.  (line  38)
+* all:                                   Source Set Options.  (line  27)
+* author:                                Generation Options.  (line 117)
+* bootclasspath:                         Virtual Machine Options.
+                                                              (line  28)
+* bottom:                                Decoration Options.  (line  33)
+* breakiterator:                         Source Format Options.
+                                                              (line  25)
+* charset:                               Output Control Options.
+                                                              (line  32)
+* classpath:                             Virtual Machine Options.
+                                                              (line  14)
+* d:                                     Output Control Options.
+                                                              (line   7)
+* docencoding:                           Output Control Options.
+                                                              (line  49)
+* docfilessubdirs:                       Generation Options.  (line 144)
+* doclet:                                Doclet Options.      (line  14)
+* docletpath:                            Doclet Options.      (line   7)
+* doctitle:                              Decoration Options.  (line  16)
+* encoding:                              Source Format Options.
+                                                              (line  17)
+* exclude:                               Source Set Options.  (line  39)
+* excludedocfilessubdir:                 Generation Options.  (line 153)
+* footer:                                Decoration Options.  (line  29)
+* group:                                 Decoration Options.  (line  52)
+* header:                                Decoration Options.  (line  24)
+* helpfile:                              Decoration Options.  (line 105)
+* J:                                     Virtual Machine Options.
+                                                              (line  34)
+* licensetext:                           Generation Options.  (line 131)
+* link:                                  Interlinking Options.
+                                                              (line   7)
+* linkoffline:                           Interlinking Options.
+                                                              (line  25)
+* linksource:                            Generation Options.  (line  95)
+* locale:                                Output Control Options.
+                                                              (line  14)
+* nocomment:                             Generation Options.  (line  85)
+* nodeprecated:                          Generation Options.  (line  61)
+* nodeprecatedlist:                      Generation Options.  (line  69)
+* nohelp:                                Generation Options.  (line  55)
+* noindex:                               Generation Options.  (line  47)
+* nonavbar:                              Generation Options.  (line  77)
+* noqualifier:                           Interlinking Options.
+                                                              (line  42)
+* nosince:                               Generation Options.  (line  31)
+* notree:                                Generation Options.  (line  39)
+* overview:                              Decoration Options.  (line  78)
+* package:                               Generation Options.  (line  15)
+* packages:                              Source Set Options.  (line  45)
+* private:                               Generation Options.  (line  19)
+* protected:                             Generation Options.  (line  11)
+* public:                                Generation Options.  (line   7)
+* quiet:                                 Verbosity Options.   (line   7)
+* source:                                Source Format Options.
+                                                              (line   7)
+* sourcefiles:                           Source Set Options.  (line  48)
+* sourcepath:                            Source Set Options.  (line   9)
+* splitindex:                            Generation Options.  (line  23)
+* stylesheetfile:                        Decoration Options.  (line  95)
+* subpackages:                           Source Set Options.  (line  34)
+* tag:                                   Taglet Options.      (line  29)
+* taglet:                                Taglet Options.      (line  14)
+* tagletpath:                            Taglet Options.      (line   7)
+* title:                                 Decoration Options.  (line 102)
+* use:                                   Generation Options.  (line 104)
+* validhtml:                             Output Control Options.
+                                                              (line  58)
+* verbose:                               Verbosity Options.   (line  10)
+* version:                               Generation Options.  (line 124)
+* windowtitle:                           Decoration Options.  (line   7)
+
+
+File: gjdoc.info,  Node: Keyword Index,  Next: License,  Prev: Option Index,  Up: Top
+
+Keyword Index
+*************
+
+ [index ]
+* Menu:
+
+* AbstractDoclet:                        Using AbstractDoclet.  (line 6)
+* Built-in Doclets:                      Built-in Doclets.      (line 6)
+* command options <1>:                   Invoking the Standard Doclet.
+                                                                (line 6)
+* command options:                       Invoking Gjdoc.        (line 6)
+* DocBook Doclet:                        DocBook Doclet.        (line 6)
+* FDL, GNU Free Documentation License:   GNU Free Documentation License.
+                                                                (line 6)
+* First Sentence Detector <1>:           Adding Custom Resources.
+                                                                (line 6)
+* First Sentence Detector:               First Sentence Detector.
+                                                                (line 6)
+* Gjdoc command options <1>:             Invoking the Standard Doclet.
+                                                                (line 6)
+* Gjdoc command options:                 Invoking Gjdoc.        (line 6)
+* Gjdoc Options:                         Gjdoc Option Summary.  (line 6)
+* GNU Doclet SPI, Service Provider, SPI: GNU Doclet SPI.        (line 6)
+* HtmlDoclet <1>:                        Using DebugDoclet.     (line 6)
+* HtmlDoclet:                            Using XmlDoclet.       (line 6)
+* introduction:                          Top.                   (line 6)
+* IspellDoclet:                          Using IspellDoclet.    (line 6)
+* JUnitDoclet:                           JUnitDoclet.           (line 6)
+* license:                               License.               (line 6)
+* options, Gjdoc command <1>:            Invoking the Standard Doclet.
+                                                                (line 6)
+* options, Gjdoc command:                Invoking Gjdoc.        (line 6)
+* PDFDoclet:                             PDFDoclet.             (line 6)
+* Taglet <1>:                            Writing Doclets.       (line 6)
+* Taglet:                                Taglets.               (line 6)
+* TexiDoclet:                            Using TexiDoclet.      (line 6)
+* Third-party Doclets:                   Third-party Doclets.   (line 6)
+* XHTML Fragments:                       XHTML Fragments.       (line 6)
+
+
+
+Tag Table:
+Node: Top3808
+Node: Invoking Gjdoc4370
+Node: Invoking the Standard Doclet6237
+Node: Option Summary by Type7448
+Node: Source Set Options9905
+Node: Source Format Options11770
+Node: Interlinking Options13285
+Node: Generation Options16063
+Node: Taglet Options22161
+Node: Doclet Options24371
+Node: Decoration Options25926
+Node: Output Control Options30018
+Node: Verbosity Options33551
+Node: Virtual Machine Options33898
+Node: Invoking a Custom Doclet35293
+Node: Gjdoc Option Summary35967
+Node: Other Doclets36148
+Node: Built-in Doclets36366
+Node: Using TexiDoclet36618
+Node: Using XmlDoclet36864
+Node: Using IspellDoclet37059
+Node: Using DebugDoclet37285
+Node: Third-party Doclets37482
+Node: DocBook Doclet37695
+Node: PDFDoclet37835
+Node: JUnitDoclet37985
+Node: Gjdoc Concepts38116
+Node: Taglets38371
+Node: Writing Doclets38575
+Node: Doclet Invocation Interface38888
+Node: Using AbstractDoclet39671
+Node: GNU Doclet SPI42646
+Node: XHTML Fragments44105
+Node: First Sentence Detector45517
+Node: Adding Custom Resources47263
+Node: License48948
+Node: GNU General Public License49223
+Node: GNU Free Documentation License68378
+Node: Option Index90778
+Node: Keyword Index96141
+
+End Tag Table

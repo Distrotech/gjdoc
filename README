@@ -1,0 +1,203 @@
+
+    gjdoc - A documentation generation framework for java source files.
+    Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+
+
+    gjdoc was made possible by the contributions of many.
+    See the AUTHORS file for a full list of credits.
+
+gjdoc
+=====
+
+Documentation generation framework for java source files.
+
+Version 0.7.5
+(C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation
+
+Released under the GNU General Public License (GPL).
+
+1. Overview
+2. Installation
+3. Usage
+4. Missing Features
+5. Feedback
+
+1. Overview
+------------------------------------------------------------------------------
+
+Gjdoc provides a framework for generating documentation in various
+formats from java source files.  It implements all features of the
+traditional javadoc tool version 1.4 - except for one unimplemented
+option (-serialwarn), it is fully command-line compatible and it
+provides a compatible Doclet API (package com.sun.javadoc).
+
+In contrast to Javadoc, `gjdoc' does not perform syntax checking on
+the supplied sources. If necessary, use commands like `gcj
+-fsyntax-only` or `jikes +B' for checking the sources beforehand.
+
+The gjdoc package ships with a standard doclet for generating HTML
+output (the default).
+
+A debug doclet which just prints (not yet) all information to
+System.out and which can be used to explore the doclet interface.
+(enabled by -doclet gnu.classpath.tools.doclets.debugdoclet.DebugDoclet)
+
+And a doclet that generates output in XML format, which can then be
+postprocessed into other formats with xslt tools like xsltproc or the
+javax.xml.transform package of GNU JAXP and/or GNU Classpath.  (Only
+available when configured with --enable-xmldoclet and enabled by
+-doclet gnu.classpath.tools.doclets.xmldoclet.Driver)
+
+This tool is part of GNU Classpath-tools.
+See http://www.gnu.org/software/classpath/cp-tools/
+
+
+
+2. Installation
+------------------------------------------------------------------------------
+
+Generic installation instructions apply:
+./configure && make && sudo make install
+
+See INSTALL for further details.
+
+GNU make ("gmake") is required for building gjdoc.
+
+You will also need ANTLR 2.7.1 or better installed. See http://antlr.org/.
+
+When working from CVS you will also need the following tools:
+- GNU autoconf 2.59+
+- GNU automake 1.9+
+- GNU libtool 1.5+
+
+When working from CVS you can run the above tools by executing
+./autogen.sh in the source directory.
+
+Gjdoc is known to build with GNU GCJ 4.0 and jikes 1.21. It is known
+to run on GCJ 4.0, kaffe (CVS of February 5 2005) and jamvm 1.2.3.
+
+For a couple of known build and runtime problems please see the file
+TROUBLESHOOTING.
+
+
+3. Usage
+------------------------------------------------------------------------------
+
+USAGE: gjdoc [options] [packagenames] [sourcefiles] [@files]
+
+  --version                Show version information and exit
+  -all                     Process all source files found in the source path
+  -overview <file>         Read overview documentation from HTML file
+  -public                  Include only public classes and members
+  -protected               Include protected and public classes and members
+                           This is the default
+  -package                 Include package/protected/public classes and members
+  -private                 Include all classes and members
+  -help, --help            Show this information
+  -doclet <class>          Doclet class to use for generating output
+  -docletpath <classpath>  Specifies the search path for the doclet and
+                           dependencies
+  -source <release>        Provide source compatibility with specified
+                           release (1.4 to handle assertion)
+  -sourcepath <pathlist>   Where to look for source files
+  -s <pathlist>            Alias for -sourcepath
+  -subpackages <spkglist>  List of subpackages to recursively load
+  -exclude <pkglist>       List of packages to exclude
+  -verbose                 Output messages about what Gjdoc is doing [ignored]
+  -quiet                   Do not print non-error and non-warning messages
+  -locale <name>           Locale to be used, e.g. en_US or en_US_WIN
+  -encoding <name>         Source file encoding name
+  -breakiterator           Compute first sentence with BreakIterator
+  -classpath <pathlist>    Set the path used for loading auxilliary classes
+
+Standard doclet options:
+  -d                      Set target directory
+  -use                    Includes the 'Use' page for each documented class
+                          and package
+  -version                Includes the '@version' tag
+  -author                 Includes the '@author' tag
+  -splitindex             Splits the index file into multiple files
+  -windowtitle <text>     Browser window title
+  -doctitle <text>        Title near the top of the overview summary file
+                          (HTML allowed)
+  -title <text>           Title for this set of API documentation
+                          (deprecated, -doctitle should be used instead)
+  -header <text>          Text to include in the top navigation bar
+                          (HTML allowed)
+  -footer <text>          Text to include in the bottom navigation bar
+                          (HTML allowed)
+  -bottom <text>          Text to include at the bottom of each output file
+                          (HTML allowed)
+  -link <extdoc URL>      Link to external generated documentation at URL
+  -linkoffline <extdoc URL> <packagelistLoc>
+                          Link to external generated documentation for
+                          the specified package-list
+  -linksource             Creates an HTML version of each source file
+  -group <groupheading> <packagepattern:packagepattern:...>
+                          Separates packages on the overview page into groups
+  -nodeprecated           Prevents the generation of any deprecated API
+  -nodeprecatedlist       Prevents the generation of the file containing
+                          the list of deprecated APIs and the link to the
+                          navigation bar to that page
+  -nosince                Omit the '@since' tag
+  -notree                 Do not generate the class/interface hierarchy page
+  -noindex                Do not generate the index file
+  -nohelp                 Do not generate the help link
+  -nonavbar               Do not generate the navbar, header and footer
+  -helpfile <filen>       Path to an alternate help file
+  -stylesheetfile <file>  Path to an alternate CSS stylesheet
+  -addstylesheet <file>   Path to an additional CSS stylesheet
+  -serialwarn             Complain about missing '@serial' tags [ignored]
+  -charset <IANACharset>  Specifies the HTML charset
+  -docencoding <IANACharset>
+                          Specifies the encoding of the generated HTML files
+  -tag <tagname>:Xaoptcmf:"<taghead>"
+                          Enables gjdoc to interpret a custom tag
+  -taglet                 Adds a Taglet class to the map of taglets
+  -tagletpath             Sets the CLASSPATH to load subsequent Taglets from
+  -docfilessubdirs        Enables deep copy of 'doc-files' directories
+  -excludedocfilessubdir <name1:name2:...>
+                          Excludes 'doc-files' subdirectories with a give name
+  -noqualifier all|<packagename1:packagename2:...>
+                          Do never fully qualify given package names
+  -nocomment              Suppress the entire comment body including the main
+                          description and all tags, only generate declarations
+
+Gjdoc extension options:
+  -reflection             Use reflection for resolving unqualified class names
+  -licensetext            Include license text from source files
+  -validhtml              Use valid HTML/XML names (breaks compatibility)
+  -baseurl <url>          Hardwire the given base URL into generated pages
+
+
+4. Missing Features
+------------------------------------------------------------------------------
+
+- No Javadoc 1.5 functionality. 
+  Generics, annotations and static imports are not supported.
+
+- The -serialwarn option is currently not implemented.
+
+
+5. Feedback
+------------------------------------------------------------------------------
+
+Please file bugs at
+http://gcc.gnu.org/bugzilla/enter_bug.cgi?product=classpath 
+for component `gjdoc'.
+
+Send comments and suggestions to <cp-tools-discuss@gnu.org>.

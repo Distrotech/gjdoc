@@ -1,0 +1,3276 @@
+2008-04-21  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* configure.ac:
+	Change version to 0.7.9.
+	* NEWS:
+	Add changes in 0.7.9.
+	
+2008-03-17  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java:
+	(ClassComponent.process(Parser,char[],int,int)): Skip
+	enums with nested blocks.
+	
+2007-05-14  Michael Koch  <konqueror@gmx.de>
+
+	* Makefile.am:
+	Merge two JAR lines into one.
+	
+2007-05-14  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* Makefile.am:
+	Include javadoc.manifest in dist.
+	
+2007-05-14  Michael Koch  <konqueror@gmx.de>
+
+       * javadoc.manifest: New manifest file for com-sun-javadoc.jar.
+       * Makefile.am: com-sun-javadoc.jar: Use javadoc.manifest as manifest.
+
+2007-05-12  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* NEWS: Updated.
+
+2007-05-11  Michael Koch  <konqueror@gmx.de>
+
+	* Makefile.am:
+	Update JAR file creation.
+	* src/com/sun/tools/javadoc/Main.java:
+	New file.
+	
+2007-04-21  Mark Wielaard  <mark@klomp.org>
+
+	* autogen.sh: Recognize Automake 1.10.
+	* Makefile.am (gjdoc_LINK): Add gjdoc_LDFLAGS.
+
+2007-04-21  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* NEWS,
+	* configure.ac:
+	Updated for 0.7.8
+	
+2007-04-15  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java:
+	(BraceComponent.process(Parser,char[],int,int)): Reformatted.
+	(ClassComponent.process(Parser,char[],int,int)): Skip
+	enum constants.
+	(processSourceFile(File,boolean,String,String)):
+	Add log message if stack is not empty or file is ignored.
+	(parse(char[],int[],SourceComponent[])): Update debugging
+	level.
+	(classOpened(char[],int,int)): Add debug messages and
+	include non-annotations.
+	(classClosed()): Add debug messages.
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java:
+	(specifiedClasses()): Create array when called.
+	(specifiedPackages()): Likewise.
+	(build()): Don't generate arrays until later.
+
+2007-04-10  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java:
+	Add enumeration support and allow whitespace in
+	type variables.
+	* src/gnu/classpath/tools/gjdoc/Parser.java:
+	Add commented-out line for printing file being
+	processed.
+
+2007-04-09  Stephan Michels  <stephan@apache.org>
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java,
+	* src/gnu/classpath/tools/gjdoc/Parser.java:
+	Add basic annotation support.
+	
+2007-02-14  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* autogen.sh:
+	Allow for autoconf 2.6+.
+	
+2007-01-24  Stephan Michels  <stephan@apache.org>
+
+	PR gjdoc/24723
+	src/gnu/classpath/tools/gjdoc/RootDocImpl.java
+	(ResolvedImportNotFound.match): Also check name against
+	importSpecifier.
+	(ResolvedImportReflectionClass.match): Also check name against
+	full clazz name.
+
+2006-07-13  Ben Konrath  <bkonrath@redhat.com>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: Allow 
+	gjdoc to be run from Eclipse.
+
+2005-12-24  Dalibor Topic  <robilad@kaffe.org>
+
+	* m4/ac_check_junit.m4: Removed unused check.
+
+2005-12-19  Andrew Overholt  <overholt@redhat.com>
+
+	* src/gnu/classpath/tools/gjdoc/expr/.cvsignore: Add antlr-generated 
+	files.
+	* .classpath: Change Eclipse output directory from bin to eclipse-bin.
+	* .cvsignore: Add eclipse-bin.
+	* .externalToolBuilders/GjdocAntlr.launch: Call generate-source upon 
+	project clean.  Make antlr-generated files go into src.
+
+2005-12-19  Tom Tromey  <tromey@redhat.com>
+
+	* .externalToolBuilders/GcjdocAntlr.launch: New file.
+	* .classpath, .project: New files.
+	* .cvsignore: Updated.
+
+2005-12-18  Michael Koch  <konqueror@gmx.de>
+
+	* configure.ac (AC_INIT): Set version to 0.7.7.
+
+2005-12-18  Mark Wielaard  <mark@klomp.org>
+
+	* NEWS: Add bug fixed this release.
+	* AUTHORS: Add new people contributing.
+
+2005-11-30  Stephan Michels  <stephan@apache.org>
+
+	PR gjdoc/24722:
+	* src/gnu/classpath/tools/gjdoc/ExecutableMemberDocImpl.java
+	(createFromSource): Handle closing ')'.
+	PR gjdoc/24507:
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java
+	(printNavBar): Link overview-summary page instead of index-noframes
+	page.
+	(printOverviewPage): Likewise.
+	(printFrameSetPage): Likewise.
+	PR gjdoc/24508:
+	* src/gnu/classpath/tools/gjdoc/Main.java
+	(startDoclet): Handle source files not in source path.
+
+2005-10-27  Julian Scheid  <julian@sektor37.de>
+
+	PR gjdoc/24553:
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java 
+	(findFieldRec, findFieldRec, findField): Added new methods.
+
+	* src/gnu/classpath/tools/gjdoc/SeeTagImpl.java (resolve):
+	Recursively resolve referenced superclass and interface fields.
+
+2005-10-25  Julian Scheid  <julian@sektor37.de>
+
+	PR gjdoc/24507:
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	Rename generated file 'index-noframes.html' to
+	'overview-summary.html'.
+
+2005-10-25  Stephan Michels  <stephan@apache.org>
+
+	PR gjdoc/24510:
+	* src/gnu/classpath/tools/doclets/htmldoclet/ExternalDocSet.java:
+	Append slash to URL string specified with -link, if missing.
+
+2005-10-25  Stephan Michels  <stephan@apache.org>
+
+	PR gjdoc/24509:
+	* src/gnu/classpath/tools/doclets/htmldoclet/ExternalDocSet.java:
+	Intercept FileNotFoundException so that a missing 'gjdoc.compat'
+	file doesn't break linking to javadoc-generated documentation.
+
+2005-10-25  Julian Scheid  <julian@sektor37.de>
+
+	PR gjdoc/24508:
+	* src/gnu/classpath/tools/gjdoc/Main.java: Only treat
+	class-or-package specifiers ending in ".java" as Java source files
+	if a corresponding non-directory file can be found.
+
+2005-10-24  Julian Scheid  <julian@sektor37.de>
+
+	PR gjdoc/24501:
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java:
+	Added missing import.
+
+2005-10-22  Julian Scheid  <julian@sektor37.de>
+
+	PR gjdoc/24501:
+	* src/gnu/classpath/tools/gjdoc/FieldDocImpl.java:
+	Added missing import.
+
+2005-10-22  Julian Scheid  <julian@sektor37.de>
+
+	PR gjdoc/24474:
+	* Makefile.am: added new class CircularExpressionException.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java
+	(findFieldValue): add new parameter for set of visited fields,
+	throw CircularExpressionException if inspected field has already
+	been visited.  Use new constantValue(Set) variant in FieldDocImpl.
+	(getValue): add new parameter for set of visited fields.
+	
+	* src/gnu/classpath/tools/gjdoc/FieldDocImpl.java:
+	(constantValue): new variant which accepts set of visited fields.
+	
+	* src/gnu/classpath/tools/gjdoc/expr/CircularExpressionException.java: 
+	added.
+	
+	* src/gnu/classpath/tools/gjdoc/expr/Context.java: add new field
+	visitedFields.
+	
+	* src/gnu/classpath/tools/gjdoc/expr/Evaluator.java (evaluate):
+	add new parameter for set of visited fields, pass parameter to
+	Context constructor.
+	
+	* src/gnu/classpath/tools/gjdoc/expr/EvaluatorEnvironment.java
+	(getValue): add new parameter for set of visited fields.
+	
+	* src/gnu/classpath/tools/gjdoc/expr/IdentifierExpression.java
+	(evaluate): pass set of visited fields to
+	EvaluatorEnvironment.getValue(), more details for thrown
+	IllegalExpressionException.	
+
+2005-10-20  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java
+	(getFullModifiers, getSummaryModifiers): Show abstract modifier in
+	method summary and detail.
+
+2005-10-20  Julian Scheid  <julian@sektor37.de>
+
+	PR gjdoc/24457:
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java
+	(renderSeeTag): Fix NPE when see tag doesn't reference a class or
+	member.
+
+2005-10-20  Julian Scheid  <julian@sektor37.de>
+
+	* configure.ac (AC_INIT): Set version to 0.7.6-cvs.
+
+2005-10-14  Mark Wielaard  <mark@klomp.org>
+
+	* configure.ac (AC_INIT): Set version to 0.7.6.
+
+2005-10-12  Julian Scheid  <julian@sektor37.de>
+
+	* NEWS: Added news for upcoming release 0.7.6.
+
+	* AUTHORS: Added recent contributors.
+
+	* README: Changed bug reporting information to reflect move to
+	bugzilla, updated Missing Features.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java
+	(printPackageTreeRec): Remove superfluous dot for classes in
+	unnamed package.
+	(printMemberDetails): Add href to overridden method name.
+
+	* src/resources/htmldoclet/gjdochtml-clean-layout.css: work around
+	Firefox rendering bug, lighten up summary descriptions, minor
+	enhancements.
+
+	* src/gnu/classpath/tools/gjdoc/PackageDocImpl.java (equals):
+	implemented.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java
+	(qualifiedTypeName): change != to !equals for unnamed package
+	comparisons.
+
+2005-09-20  Mark Wielaard  <mark@klomp.org>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java
+	(printAboutPage): Add generated on date.
+
+2005-10-10  Julian Scheid  <julian@sektor37.de>
+
+	PR gjdoc/24283:
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: Do not end current
+	tag when inline tag is encountered at beginning of line.
+
+2005-10-10  Julian Scheid  <julian@sektor37.de>
+
+	PR gjdoc/24213:
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: Ignore empty
+	standard tags (@param, @return, @throws, @see, etc.)
+	* src/gnu/classpath/tools/taglets/AuthorTaglet.java: Ignore empty
+	tags.	
+	* src/gnu/classpath/tools/taglets/CopyrightTaglet.java: Likewise.
+	* src/gnu/classpath/tools/taglets/SinceTaglet.java: Likewise.
+	* src/gnu/classpath/tools/taglets/VersionTaglet.java: Likewise,
+	and fixed formatting.
+
+2005-10-10  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: Treat
+	documentation sets which only consist of the unnamed package as
+	single-package documentation, i.e. do not generate package
+	overview.
+	
+2005-10-10  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: Do
+	not prefix URLs with '/' when documentation is generated in the
+	current directory (option -d omitted.)
+
+2005-10-10  Julian Scheid  <julian@sektor37.de>
+
+	PR gjdoc/23979:
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: Do
+	not show empty Nested Class section when implemented interfaces
+	have nested classes.
+
+2005-09-15  Julian Scheid  <julian@sektor37.de>
+
+	* ChangeLog: corrected bug reference from 22857 to 22879.
+
+2005-09-15  Julian Scheid  <julian@sektor37.de>
+
+	PR gjdoc/23719:
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	Fixed wrong link to nested class documentation page.
+
+2005-09-15  Ville Skytta <vskytta@gmail.com>
+
+	PR gjdoc/23249:
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java: Test
+	whether the JavaScript function contentPageLoaded() is available
+	before invoking it.  Use "parent" instead of "top" when
+	referencing contentPageLoaded().	
+	* src/resources/doctranslets/html/about.xsl: Likewise
+	* src/resources/doctranslets/html/alphaindex.xsl: Likewise
+	* src/resources/doctranslets/html/alphaindex_chunked.xsl: Likewise
+	* src/resources/doctranslets/html/classdoc.xsl: Likewise
+	* src/resources/doctranslets/html/deprecated.xsl: Likewise
+	* src/resources/doctranslets/html/fulltree.xsl: Likewise
+	* src/resources/doctranslets/html/help.xsl: Likewise
+	* src/resources/doctranslets/html/index_noframes.xsl: Likewise
+	* src/resources/doctranslets/html/packagedoc.xsl: Likewise
+	
+2005-09-15  Julian Scheid  <julian@sektor37.de>
+
+	PR gjdoc/22879:
+	* src/gnu/classpath/tools/gjdoc/Main.java: If no encoding is
+	specified, use the platform default encoding instead of US-ASCII.
+	The platform default encoding is determined using
+	System.getProperty("file.encoding")
+
+2005-09-14  Julian Scheid  <julian@sektor37.de>
+
+	PR gjdoc/23878:
+	* src/gnu/classpath/tools/gjdoc/Main.java: Command line usage will
+	now only be output if the command line is valid and option --help
+	(or -help) is specified.  If an invalid or empty command line is
+	specified, the usage is omitted and instead the notice "Try `gjdoc
+	--help' for more information." is printed.  Usage is now printed
+	to stdout instead of stderr.  The shell return code is now
+	successful (0) if option --help was specified.
+
+2005-08-13  Mark Wielaard  <mark@klomp.org>
+
+	* configure.ac: Add AC_CHECK_RQRD_CLASS check for
+	java.util.regex.Pattern.
+	* src/gnu/classpath/tools/gjdoc/AbstractTagImpl.java (toString):
+	New method.
+	* src/gnu/classpath/tools/taglets/CodeTaglet.java: Cleanup imports.
+	* src/gnu/classpath/tools/taglets/DeprecatedTaglet.java: Likewise.
+	* src/gnu/classpath/tools/taglets/DeprecatedTaglet.java: Likewise.
+	* src/gnu/classpath/tools/taglets/GenericTaglet.java: Likewise.
+	* src/gnu/classpath/tools/taglets/GenericTaglet.java: Likewise.
+	* src/gnu/classpath/tools/taglets/SinceTaglet.java: Likewise.
+	* src/gnu/classpath/tools/taglets/ValueTaglet.java: Likewise.
+	* src/gnu/classpath/tools/taglets/VersionTaglet.java: Likewise.
+
+2005-07-27  Tom Tromey  <tromey@redhat.com>
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java
+	(ResolvedImportNotFound.name): New field.
+	(ResolvedImportNotFound): Initialize it.
+	(ResolvedImportNotFound.match): Implemented.
+
+2005-07-01  Tom Tromey  <tromey@redhat.com>
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java
+	(PackageComponent.process): Don't add to importedStatementList.
+	(processSourceFile): Don't add java.lang.* to
+	importedStatementList.
+	(classOpened): Update importedStatementList here.
+
+2005-05-24  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java (findClass): New
+	method variant which accepts a dimension specifier and caches
+	results.
+
+	* src/gnu/classpath/tools/gjdoc/MemberDocImpl.java (resolve):
+	Optimized for reduced memory usage.
+
+	* src/gnu/classpath/tools/gjdoc/ParameterImpl.java (resolve):
+	Optimized for reduced memory usage.
+
+2005-05-23  Julian Scheid  <julian@sektor37.de>
+
+	* README: Usage information updated.
+
+2005-05-23  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	Implemented new option -baseurl.  Refactored to use newHtmlPage
+	factory methods.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java:
+	Likewise.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java (usage): Added usage
+	information for option -baseurl.
+
+	* docs/invoke.texi: Added documentation for options -validhtml and
+	-baseurl.
+
+	* README: Usage information updated.
+	
+2005-05-23  Julian Scheid  <julian@sektor37.de>
+
+	* src/resources/htmldoclet/gjdochtml-clean-layout.css: Minor
+	improvement to layout of class description.
+
+2005-05-23  Julian Scheid  <julian@sektor37.de>
+
+	* configure.ac: Bumped version to 0.7.3-cvs.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java
+	(anchorName): Output ID in addition to NAME attribute for anchors,
+	as per W3C recommendation.
+
+2005-05-23  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	Option -validhtml implemented.	
+	(getMemberDocURL): Now works for external documentation set.
+	(createTypeHref): Minor refactoring.
+	(getPackageURL): Now takes external documentation sets into
+	account.
+	(getClassURL): Likewise.
+	(renderSeeTag): Likewise.
+	(run): Capitalized warnings for options -serialwarn and
+	-title. Added warning for option -validhtml.  Now writes
+	gjdoc.properties to output directory.
+	(getMemberAnchor): Refactored to take -validhtml into account.
+	(transformReferencedMemberName): New method.
+	(writeGjdocProperties): New method.
+	(isJavadocCompatibleNames): New method.
+	
+	* src/gnu/classpath/tools/doclets/htmldoclet/ExternalDocSet.java
+	(load): Try to load gjdoc.properties from external documentation
+	for detecting the external set's compatibility mode.
+	(getClassDocURL): No longer throws a checked exception. 
+	(getPackageDocURL): New method.
+	(isJavadocCompatible): New Method.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java:
+	(usage): Added usage information for option -validhtml.
+
+	* README: Usage information updated.
+
+2005-05-23  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/MemberDocImpl.java: Honor
+	dimension when replacing ClassDocProxies with ClassDocImpl.
+
+	* src/gnu/classpath/tools/gjdoc/ParameterImpl.java: Likewise.
+
+2005-05-23  Julian Scheid  <julian@sektor37.de>
+
+	* src/resources/htmldoclet/xhtml11-strict-target10.dtd: Renamed to
+	xhtml11-target10.dtd.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	Rename DTD.
+		
+	* Makefile.am: Likewise.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java:
+	Likewise, and fixed link to DTD in DOCTYPE descriptor.
+
+2005-05-23  Julian Scheid  <julian@sektor37.de>
+
+	* Makefile.am: Moved new DTD resource to proper variable.
+	
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	Improved generated code for better XHTML compatibility.  Now falls
+	back to platform default charset if -charset hasn't been
+	specified.
+
+	* src/resources/htmldoclet/gjdochtml-clean-layout.css: Made the
+	new HTML structure display the same as the old ones.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/HtmlRepairer.java:
+	Omit text which occurs in invalid contexts (e.g. in a <ul>
+	element.)
+
+2005-05-23  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java:
+	Improved CSS class definitions for better XHTML compatibility.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java: Use
+	custom DTD (which includes the XHTML Target 1.0 extension) instead
+	of the plain XHTML DTD.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: Copy
+	the custom DTD to the output directory.
+
+	* src/resources/htmldoclet/xhtml11-strict-target10.dtd: Added.
+
+	* src/resources/htmldoclet/gjdochtml-clean-layout.css: Made the
+	new CSS class definitions display the same as the old ones.
+
+	* Makefile.am: Include the new DTD in the build.
+
+2005-05-22  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/FieldDocImpl.java
+	(createFromSource): Do not skip contents of strings when parsing
+	static field values.  Fixed a bug which would break parsing when a
+	backslash is encountered in single quotes.  See Savannah bug
+	#12816.
+
+2005-05-22  Julian Scheid  <julian@sektor37.de>
+
+	* gjdoc.sh.in: Removed bashism.  Verified to work with zsh, tcsh,
+	ksh, pdksh, bash, posh and sash.  See Debian bug #309903.
+
+2005-05-20  Mark Wielaard  <mark@klomp.org>
+
+	* README: Mention AUTHORS.
+
+2005-05-20  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java (start): Use stdout
+	instead of stderr for printing version information.
+	(main, execute, start, startDoclet): Do not immediately call
+	System.exit in case of error; instead, pass error count back to
+	entry method.  This allows the execute() method to be better used
+	via reflection.  For normal command line usage, this shouldn't
+	change anything.
+	(shutdown): Removed.
+
+	* src/gnu/classpath/tools/doclets/PackageMatcher.java (match):
+	Actually return true on a match.  This makes option -group work.
+	(toString) Added.
+	
+	* src/gnu/classpath/tools/taglets/ValueTaglet.java (toString):
+	Remove debug message.
+
+	* NEWS: Updated for these changes.
+
+2005-05-19  Julian Scheid  <julian@sektor37.de>
+
+	* configure.ac (AC_INIT): Set version to 0.7.5.
+
+	* AUTHORS: Initial version.
+
+	* NEWS: Update for 0.7.5 release.
+
+	* README: Update for 0.7.5 release. Rewording of section Overview.
+
+2005-05-19  Julian Scheid  <julian@sektor37.de>
+
+	* m4/ac_prog_antlr.m4: Look for antlr.jar in /usr/share/antlr/lib
+	as well.  This is where antlr.jar is located on Gentoo.  See
+	Savannah bug #12977.
+
+2005-05-18  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java (isValidJavaFile):
+	Implemented, removed static modifier.
+	(findPackages): Removed static modifier. Better handling of
+	default package.
+	(startDoclet): Better handling of default package.
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java
+	(build): Better handling of default package. Use Set instead of
+	List for collecting package names.
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java (classOpened): Better
+	reporting for ignored files. Better handling of default package.
+
+2005-05-11  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java
+	(findSourceFile, findOrCreatePackageDoc, build): Modified to
+	better handle multiple source directories.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java (startDoclet): Likewise.
+
+2005-05-05  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/ExecutableMemberDocImpl.java
+	(createFromSource): Do not require whitespace to separate type
+	dimension qualifier from member name.  Replace some uses of String
+	by StringBuffer.
+
+2005-05-05  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/ExecutableMemberDocImpl.java
+	(createFromSource): Do not require whitespace to separate type
+	dimension qualifier from member name.  Replace some uses of String
+	by StringBuffer.
+
+	* src/gnu/classpath/tools/gjdoc/MemberDocImpl.java
+	(parseModifiers): Likewise.
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java (addUsedBy):
+	Use TreeMap instead of HashMap for deterministic usage type sort
+	order.
+	(UsageType): Implements Comparable
+	(UsageType.compareTo): New method.
+
+2005-05-04  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Handle single quotes in
+	command files.
+
+2005-04-27  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Treat command line
+	flags as case-insensitive.
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: Likewise.
+
+2005-04-26  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/ExternalDocSet.java
+	(load): Throw a FileNotFoundException when URL.openStream()
+	returns null.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java
+	(run): When an external package-list cannot be retrieved, print a
+	warning instead of raising an exception.	
+
+2005-04-25  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/ParameterImpl.java (name): Fix
+	capitalized public keyword.
+
+2005-04-25  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/ParameterImpl.java (resolve): Do
+	not replace unresolvable ClassDocProxy with TypeImpl.
+
+2005-04-25  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java
+	(getTypeParameters): do not return "<>" string when type parameter
+	array is empty.
+
+2005-04-24  Mark Wielaard  <mark@klomp.org>
+
+	* configure.ac (AC_INIT): Set version to 0.7.4+cvs.
+
+2005-04-24  Mark Wielaard  <mark@klomp.org>
+
+	* configure.ac (AC_INIT): Set version to 0.7.4.
+	(jni_linkflag): Removed.
+
+2005-04-24  Julian Scheid  <julian@sektor37.de>
+
+	* Makefile.am: remove duplicate source files for native build.
+
+2005-04-24  Julian Scheid  <julian@sektor37.de>
+
+	* NEWS: Update for 0.7.4 release.
+
+	* README: Update for 0.7.4 release. Remove obsolete information
+	about -nocomment not working.
+
+2005-04-24  Julian Scheid  <julian@sektor37.de>
+
+	* gjdoc.sh.in: Fix a quoting issue by recursively invoking another
+	shell.
+
+2005-04-24  Julian Scheid  <julian@sektor37.de>
+
+	* Makefile.am: Add src/com/sun/javadoc/TypeVariable.java and
+	src/gnu/classpath/tools/gjdoc/TypeVariableImpl.java to sources.
+
+2005-04-24  Julian Scheid  <julian@sektor37.de>
+
+	* Makefile.am: Include XmlDoclet classes in bytecode version as
+	well when --enable-xmldoclet is specified.
+
+2005-04-24  Julian Scheid  <julian@sektor37.de>
+
+	* gjdoc.sh.in: Pass arguments prefixed with -J to the virtual
+	machine.
+
+2005-04-17  Andrew John Hughes  <gnu_andrew@member.fsf.org>
+
+	* src/com/sun/javadoc/ClassDoc.java:
+	(typeParameters()): New method for retrieving type variables.
+	* src/com/sun/javadoc/Type.java:
+	(asTypeVariable()): New method for casting to a type variable.
+	* src/com/sun/javadoc/TypeVariable.java:
+	New class to handle type variables.
+	(bounds()): New method to retrieve variable bounds.
+	(owner()): New method to retrieve owning class.
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	(printIndexEntry(HtmlPage,Doc)): Add type variables to class name.
+	(printClassPage(File,String,ClassDoc,ClassDoc,ClassDoc)):
+	Likewise.
+	(createTypeHref(HtmlPage,Type,boolean)): Likewise.
+	(getTypeParameters(ClassDoc)): New method to construct a String
+	containing the type parameters.
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java:
+	(asTypeVariable()): New method.
+	(createInstance(ClassDoc,PackageDoc,ClassDoc[],PackageDoc[],char[],
+	int,int,List)): Add parsing of type variables, which may contain ','.
+	(typeParameters()): New method to return the type parameters.
+	(parseTypeVariables(ClassDocImpl, String)): New method to parse
+	the type variables.
+	* src/gnu/classpath/tools/gjdoc/ClassDocProxy.java:
+	(asTypeVariable()): New method.
+	(typeParameters()): New method.
+	* src/gnu/classpath/tools/gjdoc/ClassDocReflectedImpl.java:
+	(asTypeVariable()): New method.
+	(typeParameters()): New method.
+	* src/gnu/classpath/tools/gjdoc/TypeImpl.java:
+	(asTypeVariable()): New variable to cast type variables.
+	* src/gnu/classpath/tools/gjdoc/TypeVariableImpl.java:
+	New class to represent type variables.
+	(TypeVariableImpl(String,String,String,ProgramElementDoc)):
+	New constructor, which also handles owning class.
+	(setBounds(List)): New method to set bounds.
+	(bounds()): New method to retrieve bounds.
+	(owner()): New method to retrieve owner.
+	
+2005-04-08  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/FieldDocImpl.java
+	(createFromSource): Reimplemented. Fixes a number of bugs, most
+	importantly comma-separated field lists are now recognized and
+	nested brackets/braces as well as comments are dealt with
+	properly. (createFieldDoc): added helper method.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java (isIncluded):
+	Include inner classes if outer class is included and access level
+	is covered according to command line options.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java
+	(printClassPage): Only output "Nested Classes" header if there are
+	nested classes to list.
+	
+2005-04-08  Julian Scheid  <julian@sektor37.de>
+
+	* Makefile.am, docs/Makefile.am: Modified man page generation to
+	avoid bug #12326 (make clean/distclean deletes too many files.)
+
+2005-03-14  Mark Wielaard  <mark@klomp.org>
+
+	* configure.ac: Set version to 0.7.3+cvs.
+
+2005-03-14  Mark Wielaard  <mark@klomp.org>
+
+	* Makefile.am (lib_com_sun_tools_doclets_Taglet_la_SOURCES):
+	Remove src/com/sun/tools/javadoc/Main.java.
+	* configure.ac: Set version to 0.7.3.
+
+2005-03-14  Julian Scheid  <julian@sektor37.de>
+
+        * NEWS: Removed reference to src/com/sun/tools/javadoc/Main.java.
+
+	* README: Updated version number to 0.7.3
+
+	* src/com/sun/tools/javadoc/Main.java: Removed.
+
+	* src/gnu/classpath/tools/java2xhtml/Java2xhtml.java: Added
+	license boilerplate; updated copyright and license in usage
+	output.
+	
+2005-03-13  Julian Scheid  <julian@sektor37.de>
+
+	* configure.ac: Bumped version to 0.7.3-cvs.
+
+2005-03-13  Julian Scheid  <julian@sektor37.de>
+
+	* gjdoc.sh.in: Fixed classpath to use jars from $(datadir)/java in
+	classpath; applied patch by Jerry Haltom which tries to use the VM
+	configured by environment variable JAVA first, then /usr/bin/java,
+	and only if this fails falls back to the VM used during build.
+
+	* Makefile.am: Added class com.sun.tools.javadoc.Main.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Added method
+	execute(String, String[]) and commented-out empty shells for
+	additional execute methods.  Thanks to Jerry Haltom.
+
+	* src/com/sun/tools/javadoc/Main.java: Initial version. Thanks to
+	Jerry Haltom.
+
+	* NEWS: Added news for release 0.7.3.
+
+2005-03-09  Julian Scheid  <julian@sektor37.de>
+
+	* README: update version number and command line options.
+
+2005-03-09  Julian Scheid  <julian@sektor37.de>
+
+	* NEWS: add news for release 0.7.2. 
+
+2005-03-08  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: add support for option
+	-reflection; disable reflection by default.
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: only use
+	reflection if enabled on command line.
+
+2005-03-08  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/ExecutableMemberDocImpl.java:
+	properly parse the thrown exception immediately preceding the
+	closing semicolon of an interface method declaration.
+
+	Reported by Robert Schuster
+
+2005-03-04  Julian Scheid  <julian@sektor37.de>
+
+	* Makefile.am: Put jar files into $(datadir)/java instead of
+	$(datadir)/java/ext.
+
+	Reported by Jerry Haltom and Michael Koch.
+
+	* src/gnu/classpath/tools/gjdoc/SeeTagImpl.java: Removed bogus
+	Thread.dumpStack() invocation.
+
+	Reported by Arnaud Vandyck
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Pass DocErrorReporter
+	in reflected invocation of Doclet's validOptions() method.
+
+	Reported by Christopher Oezbek
+
+	* configure.ac: Bumped version to 0.7.2-cvs.
+
+2005-02-22  Julian Scheid  <julian@sektor37.de>
+
+	* Makefile.am: use classes/ instead of genclasses/ for compiled
+	generated sources.
+
+2005-02-21  Julian Scheid  <julian@sektor37.de>
+
+	* NEWS: add news for release 0.7.1. 
+
+2005-02-21  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: fix
+	support for option -title.
+
+2005-02-18  Julian Scheid  <julian@sektor37.de>
+
+	* gjdoc.sh.in: Add antlr.jar to classpath.
+
+2005-02-18  Julian Scheid  <julian@sektor37.de>
+
+	* docs/gjdoc.texi: Renamed node 'Copying' to 'GNU General Public
+	License'.
+
+	* docs/gpl.text: likewise.
+
+2005-02-17  Julian Scheid  <julian@sektor37.de>
+
+	* docs/fdl.texi: Remove references to other nodes.
+
+	* docs/gjdoc.texi: Improve license information; comment out
+	publishing information; minor fixes.
+
+	* docs/invoke.texi: Add section 'Writing Doclets'; minor fixes.
+	
+2005-02-17  Michael Koch  <konqueror@gmx.de>
+
+	* docs/.cvsignore: Added files generated when building all docs.
+
+2005-02-14  Julian Scheid  <julian@sektor37.de>
+
+	* m4/ac_prog_jar.m4: fixed bug #11970: faulty Kaffe check in
+	gjdoc/m4/ac_prog_jar.m4. See bug details for follow-up
+	information.
+	
+	Reported by Kalle Olavi Niemitalo.
+
+	* src/gnu/classpath/tools/NotifyingInputStreamReader.java: fixed
+	bug #11989: ParseException with -encoding UTF-8.
+	
+	Reported by Kalle Olavi Niemitalo.
+
+2005-02-12  Julian Scheid  <julian@sektor37.de>
+
+	* m4/ac_prog_javac.m4: added reference to GCC bugzilla to warning
+	message. 
+	
+	Reported by Kalle Olavi Niemitalo.
+
+2005-02-11  Kalle Olavi Niemitalo  <kon@iki.fi>
+
+	* Makefile.am (gjdoc_resources): Added HTML, JS, and PNG files.
+        lib_gnu_classpath_tools_gjdoc_la_LIBADD includes these already.
+
+2005-02-11  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/NotifyingInputStreamReader.java:
+	correctly handle remaining undecoded bytes in the input buffer.
+
+	* src/gnu/classpath/tools/MalformedInputEvent.java: added
+	toString() method.
+	
+2005-02-11  Julian Scheid  <julian@sektor37.de>
+
+	* Makefile.am: remove bogus reference to docs/gjdoc.1 in
+	EXTRA_DIST.
+
+	* m4/ac_prog_javac.m4: test for jikes before guavac; test for ecj
+	as well; emit warning if "gcj -C" is being used.
+
+2005-02-11  Julian Scheid  <julian@sektor37.de>
+
+	* Makefile.am: remove bogus reference in EXTRA_DIST.
+
+2005-02-11  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: do not catch Throwable,
+	catch Exception instead so that Errors can fall through.
+
+2005-02-11  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Also exit with return
+	code 1 if the doclet raised any errors.
+
+2005-02-11  Michael Koch  <konqueror@gmx.de>
+
+	* docs/.cvsignore, src/resources/.cvsignore:
+	New files.
+
+2005-02-11  Michael Koch  <konqueror@gmx.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java
+	(main): Fixed typo.
+
+2005-02-11  Michael Koch  <konqueror@gmx.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java
+	(main): Exit with return code of '1' of execution is failing.
+
+2005-02-10  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	fix private field access.
+
+2005-02-10  Julian Scheid  <julian@sektor37.de>
+
+	* Makefile.am: put version.properties into Jar's top level folder.
+
+2005-02-10  Julian Scheid  <julian@sektor37.de>
+
+	* contrib/texi2pod.pl: initial version.
+
+2005-02-10  Julian Scheid  <julian@sektor37.de>
+
+	* configure.ac: added sub-directory docs.
+
+	* Makefile.am: added doc files to EXTRA_DIST.
+	
+	* docs/Makefile.am, docs/configure.ac, docs/fdl.texi,
+	docs/gcc-common.texi, docs/gjdoc.texi, docs/gpl.texi,
+	docs/invoke.texi: initial version.
+
+2005-02-10  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	force generation of overview page if a single package is
+	documented and either -title, -doctitle or -overview has been
+	specified.
+
+2005-02-10  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: output warning when
+	option -classpath hasn't been interceptded at the wrapper level;
+	add -serialwarn and -nocomment to usage; better usage message for
+	-serialwarn.
+
+	* README: regenerate usage.
+	
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	properly support optiosn -overview and -nocomment.  Replace option
+	-noserialwarn with -serialwarn.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java,
+	src/resources/htmldoclet/gjdochtml-clean-layout.css: add new style
+	for overview page.
+
+2005-02-10  Julian Scheid  <julian@sektor37.de>
+
+	* NEWS: add news for next prerelease.
+
+2005-02-09  Julian Scheid  <julian@sektor37.de>
+
+	* Makefile.am: correct jar parameters to fix "file not found"
+	error with Kaffe's jar tool; do not copy antlr.jar to build
+	directory; minor syntax fixes; fix dependency issues; do not
+	generate version.properties and gjdoc.mf.
+
+	* configure.ac: added src/resources/version.properties to config
+	files.
+
+	* src/resources/version.properties, gjdoc.manifest: extracted from
+	Makefile.am.
+ 
+2005-02-09  Julian Scheid  <julian@sektor37.de>
+
+	* m4/ac_prog_jar.m4: check for fastjar as well; warn if using
+	Kaffe's jar.
+
+	* m4/ac_prog_antlr.m4: if $ANTLR_JAR is set, use that for locating
+	antlr.jar; complain if $ANTLR_JAR specifies a non-existing file.
+
+	* configure.ac: set autoconf prerequisite version to 2.59; set
+	config macro directory; accept option --with-antlr-jar.
+	
+2005-02-09  Julian Scheid  <julian@sektor37.de>
+
+	* m4/ac_prog_java.m4: check for gij as well.
+
+2005-02-09  Julian Scheid  <julian@sektor37.de>
+
+	* autogen.sh: have aclocal include macros from m4/.
+	
+2005-02-09  Julian Scheid  <julian@sektor37.de>
+
+	* acinclude.m4: removed
+	* m4/ac_check_class.m4, m4/ac_check_classpath.m4,
+	m4/ac_check_home.m4, m4/ac_check_junit.m4,
+	m4/ac_check_rqrd_class.m4, m4/ac_java_options.m4,
+	m4/ac_prog_antlr.m4, m4/ac_prog_jar.m4, m4/ac_prog_java_cc.m4,
+	m4/ac_prog_javac.m4, m4/ac_prog_javac_works.m4,
+	m4/ac_prog_javadoc.m4, m4/ac_prog_javah.m4, m4/ac_prog_java.m4,
+	m4/ac_prog_java_works.m4, m4/ac_try_run_javac.m4,
+	m4/am_prog_gcj.m4: added.
+
+2005-02-09  Michael Koch  <konqueror@gmx.de>
+
+	* gjdoc.sh.in: Add version numbers to jars.
+
+2005-02-09  Julian Scheid  <julian@sektor37.de>
+
+	* README: added information about required tools when building
+	from CVS.
+
+2005-02-09  Michael Koch  <konqueror@gmx.de>
+
+	* gjdoc.sh.in: Exec VM executing gjdoc to replace shell process
+	executing gjdoc.sh.
+
+2005-02-09  Julian Scheid  <julian@sektor37.de>
+
+	* autogen.sh: replaced with modified version from Classpath.
+
+2005-02-09  Michael Koch  <konqueror@gmx.de>
+
+	* gjdoc.sh.in: Valid scripts need the the "#!/bin/sh" stuff in first
+	line.
+
+2005-02-09  Michael Koch  <konqueror@gmx.de>
+
+	* Makefile.am: Handle $(DESTDIR) when installing non-native gjdoc
+
+2005-02-09  Michael Koch  <konqueror@gmx.de>
+
+	* .cvsignore: Added more files to ingore.
+	* src/com/sun/javadoc/.cvsignore,
+	src/com/sun/tools/doclets/.cvsignore,
+	src/gnu/classpath/tools/.cvsignore,
+	src/gnu/classpath/tools/doclets/.cvsignore,
+	src/gnu/classpath/tools/doclets/debugdoclet/.cvsignore,
+	src/gnu/classpath/tools/doclets/htmldoclet/.cvsignore,
+	src/gnu/classpath/tools/doclets/xmldoclet/.cvsignore,
+	src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/.cvsignore,
+	src/gnu/classpath/tools/gjdoc/.cvsignore,
+	src/gnu/classpath/tools/gjdoc/expr/.cvsignore,
+	src/gnu/classpath/tools/java2xhtml/.cvsignore,
+	src/gnu/classpath/tools/taglets/.cvsignore:
+	New files.
+
+2005-02-09  Michael Koch  <konqueror@gmx.de>
+
+	* Makefile.am: Cleaned up to make "make distcheck" work.
+
+2005-02-09  Michael Koch  <konqueror@gmx.de>
+
+	* Makefile.am: Don't delete $(datadir).
+	* Makefile: Remove from CVS.
+
+2005-02-08  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java:
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java:
+	* src/gnu/classpath/tools/gjdoc/InheritDocTagImpl.java:
+	* src/gnu/classpath/tools/gjdoc/Parser.java:
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java:
+	* src/gnu/classpath/tools/gjdoc/TagImpl.java:
+	refactor so that jikes doesn't warn anymore.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java:
+	* src/resources/htmldoclet/gjdochtml-clean-layout.css:
+	some HTML output and CSS refactoring
+
+	* src/gnu/classpath/tools/java2xhtml/Java2xhtml.java:
+	s/numerical/numeric/g
+
+	* gjdoc.sh.in: use Tom Tromey's parameter passing workaround for
+	buggy shells.
+
+2005-02-07  Julian Scheid  <julian@sektor37.de>
+
+	* Makefile.am: add boilerplate license; removed manual generation
+	of gjdoc.sh.
+
+	* configure.ac: add boilerplate license; generate gjdoc.sh from
+	gjdoc.sh.in.
+
+	* gjdoc.sh.in: initial version.
+
+2005-02-07  Julian Scheid  <julian@sektor37.de>
+
+	* acinclude.m4: apply Thomas Zander's workaround for buggy
+	AC_PROG_JAVA macro as a temporary solution.
+
+2005-02-07  Julian Scheid  <julian@sektor37.de>
+
+	* acinclude.m4: added patched macro from gcj.m4.
+
+	* configure.ac: adjust for patched macro.
+
+2005-02-07  Julian Scheid  <julian@sektor37.de>
+
+	* acinclude.m4: add current directory to classpath when trying
+	whether a java compiler works.
+
+	* configure.ac: add test for java compiler; accept configure flag
+	--enable-native defaulting to yes; set variable ENABLE_NATIVE if
+	not disabled and gcj found.
+
+	* Makefile.am: use $(JAVAC) for compiling to bytecode instead of
+	$(GCJ); only generate binaries if ENABLE_NATIVE; if not
+	ENABLE_NATIVE, generate and install a start script.
+
+2005-02-07  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: make
+	links to classes on index page work correctly.
+
+2005-02-06  Julian Scheid  <julian@sektor37.de>
+
+	* src/resources/htmldoclet/gjdochtml-clean-layout.css: fix
+	navigation bar wrapping problem.
+
+2005-02-06  Julian Scheid  <julian@sektor37.de>
+
+	* README: replaced usage with latest output.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: add -s and
+	-addstylesheet to usage. Reword `path of' in usage to `path to'.
+	
+2005-02-06  Julian Scheid  <julian@sektor37.de>
+
+	* README: replaced usage with latest output; added -nocomment and
+	-serialwarn to Missing Features and adjusted wording re: command
+	line compatibility.
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: accept `-s'
+	as an alias for `-sourcepath'.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: accept `-s' as an alias
+	for `-sourcepath'; accept `--help' as an alias for `-help'. add
+	option '-all'; rearrange usage; remove
+	[ignored] from usage for option -locale; fix typos in usage;
+
+	* src/gnu/classpath/tools/java2xhtml/Java2xhtml.java: factor out
+	CSS class names; rename CSS classes for brevity.
+
+	* src/resources/htmldoclet/gjdochtml-clean-color1.css: CSS class
+	name refactoring.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: add
+	option -addstylesheet; fix option -stylesheetfile;
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java: have
+	beginPage() accept a list of stylesheets.
+
+2005-02-05  Mark Wielaard  <mark@klomp.org>
+
+	* README: Add last two lines of usage message.
+
+2005-02-05  Julian Scheid  <julian@sektor37.de>
+
+	* README:
+	* TROUBLESHOOTING:
+	* src/gnu/classpath/tools/gjdoc/Main.java:
+	applied documentation update patch by Mark Wielaard.
+
+2005-02-05  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	fixed bottom navigation bar on use pages.
+
+2005-02-05  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: make
+	-xmlonly the default mode.
+
+2005-02-05  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: collect
+	"implemented by" usage information for interfaces.
+	
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: add
+	"implemented by" information and summary description to use pages.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java: add
+	new classes for use pages.
+
+	* src/resources/htmldoclet/HtmlDoclet.properties: add text for
+	"implemented by" usage category.
+
+	* src/resources/htmldoclet/gjdochtml-clean-layout.css: add layout
+	for usage summary description.
+
+2005-02-05  Julian Scheid  <julian@sektor37.de>
+
+	* ChangeLog: correction.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: fix
+	typo in output.
+
+2005-02-05  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: more
+	information for uses pages; fixed bugs in navigation bar; add
+	decoration for source code page; link to next/previous index
+	letter; add message for empty use pages; several minor
+	improvements and bugfixes.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java: add
+	method getFile().
+	
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java: add
+	new CSS styles.
+
+	* src/gnu/classpath/tools/java2xhtml/Java2xhtml.java: better tag
+	nesting for line anchor.
+
+	* src/resources/htmldoclet/gjdochtml-clean-layout.css:
+	* src/resources/htmldoclet/gjdochtml-clean-color1.css: 
+	improved stylesheets.
+
+2005-02-04  Julian Scheid  <julian@sektor37.de>
+
+	* configure.ac: bump version to 0.7.1.
+
+	* README: update to reflect changes since previous release.
+
+	* Makefile.am: generate version.properties at compile-time and add
+	to jars and native executable.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: use version string from
+	generated /version.properties.
+	
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: add
+	message to deprecated page if there are no deprecated API
+	elements; make space between parameter type and parameter name
+	non-breaking; add meta-equiv keywords to class and package pages;
+	fix bug on deprecated page; add next/prev links and shortcuts to
+	navigation bar; improve formatting of method/constructor synopsis
+	in detail section; add "throws" information to method/constructor
+	synopsisl; use version string from /version.properties; remove
+	help page from output for now.
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: move
+	getDocletVersion() to HtmlDoclet.java.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java: add
+	new CSS classes; change tag for detail synopsis to "pre".
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java:
+	support keyword output.
+
+	* src/resources/htmldoclet/gjdochtml-clean-layout.css: some
+	polishing.
+
+	* src/resources/htmldoclet/help.xhtml: friendlier "no help
+	available" message.
+
+	* src/resources/htmldoclet/gjdoc.js: remove stylesheet-related
+	hacks for now.
+	
+2005-02-03  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: recognize option
+	-bootclasspath; output warning if -bootclasspath is specified.
+
+2005-02-03  Andrew Overholt  <overholt@redhat.com>
+
+	* Makefile.am: Add java-expression.g to EXTRA_DIST.  Add fixes for
+	distcheck.  Add necessary include to AM_GCJFLAGS for the
+	antlr-generated files.
+
+2005-02-03  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: add support for option
+	--version.
+
+2005-02-02  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java
+	(printPackageTreeRec): add parameter parentNode; don't output tree
+	parent in package interface tree implements list; prefix
+	implements list with "also implements:" for interfaces; remove
+	bogus whitespace in output.
+	(printClassTree, printInterfaceTree): pass parameter parentNode.
+	
+2005-02-02  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java (getCollator):
+	gracefully handle null return values from
+	Collator.getCollator(Locale); add documentation.
+
+2005-02-01  Andrew Overholt  <overholt@redhat.com>
+
+	* configure.ac: Add --enable-xmldoclet option (default to no).
+
+	* Makefile.am: Add required logic for above.  Minor tweaks for antlr.
+
+2005-01-14  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	add missing table row tags and table end tag on usage page.
+
+2004-12-21  Julian Scheid <julian@sektor37.de>
+
+	* acinclude.m4: remove dependency on grep supporting -o; do not
+	complain if no antlr.jar is found.
+
+2004-12-21  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: add
+	standard taglet for @return tags.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	properly output @return tags.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocReflectedImpl.java: add
+	method newInstance().
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: remove debug
+	output; add resolution mechanism for .* imports.
+
+2004-12-20  Julian Scheid <julian@sektor37.de>
+
+	* Makefile.am: add ClassDocReflectedImpl.java; set system property
+	"gnu.gcj.runtime.VMClassLoader.library_control=never" on link.
+
+	* src/gnu/classpath/tools/gjdoc/AbstractTagImpl.java: temporary
+	fix for inlineTags() sometimes returnining null.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: rewrite of
+	findClass(); findExecutableRec(), findConstructor() and
+	findMethod() no longer assume that the member is part of a
+	ClassDocImpl; add getter and setter for importStatementList.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocProxy.java: remove dead
+	code in compareTo(); resolve qualifiedName in constructor; minor
+	reformatting.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocReflectedImpl.java:
+	initial version.
+
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: use char[] instead
+	of StringBuffer; write raw comment into cache depending on
+	Main.isCacheRawComments(); cache source files.
+
+	* src/gnu/classpath/tools/gjdoc/ExecutableMemberDocImpl.java: no
+	longer assume that the member is part of a ClassDocImpl.
+
+	* src/gnu/classpath/tools/gjdoc/FieldDocImpl.java: remove debug
+	code.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: added
+	isCacheRawComments(); added System.exit(0) at end of main(); catch
+	Throwables in addition to Exceptions in main().
+
+	* src/gnu/classpath/tools/gjdoc/MemberDocImpl.java: fix bug which
+	would lead to an ArrayIndexOutOfBoundsException.
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java: add import statements
+	to ClassDocImpl; cope with empty statements at top-level; handle
+	escaped single and double quotes in field constants; accelerate
+	whitespace detection.
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: complete
+	overhaul of class resolution mechanism; introducing fall-back to
+	reflection if source code not available.
+
+	* src/gnu/classpath/tools/gjdoc/ThrowsTagImpl.java: no longer
+	assume that referenced exception is a ClassDocImpl.
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java:
+	optimizations to index building; removed debug message.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	fixed NPE.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java:
+	optimization test.
+
+	* TROUBLESHOOTING: added info on gcj hang.
+
+2004-12-17  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: added
+	methods isSinglePackage(), getSinglePackage().
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	output trimmed documentation if only one package is being
+	documented.
+
+2004-12-17  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java: fixed
+	method name.
+
+2004-12-17  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java: add
+	methods createHrefString(String,String) and
+	createHrefString(String,String,String).
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: add
+	method createTypeHref; add hyperlink to inherited member table
+	headers.
+
+2004-12-17  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: add method
+	getImplementedInterfaces().
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java: add
+	class for sub-table headers.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: list
+	inherited fields and inherited nested classes; show "member
+	summary" headers even if only inherited members are listed; use
+	smaller heading for inherited member table; add "class" or
+	"interface" to modifiers for nested classes.
+
+	* src/com/sun/javadoc/ClassDoc.java: add innerClasses(boolean).
+	
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: implement
+	innerClasses(boolean); treat inner classes as included when they
+	are protected, no matter what access level mask has been
+	specified.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocProxy.java: implement
+	innerClasses(boolean) dummy.
+
+	* src/gnu/classpath/tools/gjdoc/FieldDocImpl.java: treat fields as
+	public if they are members of an interface.
+
+	* src/gnu/classpath/tools/gjdoc/MemberDocImpl.java: remove
+	commented out code.
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java: support for
+	unfiltered inner classes; correctly filter inner classes.
+
+	* src/resources/htmldoclet/gjdochtml-clean-color1.css: add style
+	for sub-table headers.
+
+	* src/resources/htmldoclet/gjdochtml-clean-layout.css: likewise.
+
+2004-12-17  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: add
+	window title to all page titles if specified; sort member details
+	by name; output serialized form page; link to serialized form page
+	from class page.
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: register
+	serial tag; call tag output method even if tags are empty; add
+	findField() method.
+
+	* src/gnu/classpath/tools/doclets/debugdoclet/DebugDoclet.java:
+	output fields and serialized fields.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java: add
+	CSS classes for serialized form page.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java: add
+	method span(CssClass, String).
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlTagletContext.java: 
+	store whether context is serialized form page.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: fix a bug which
+	would result in an incorrect SourcePosition; add readExternal,
+	writeExternal, and writeObject to serialization methods.
+
+	* src/gnu/classpath/tools/gjdoc/MemberDocImpl.java: improved
+	comparison.
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java: treat readExternal,
+	writeExternal and writeObject as serialization method candidates.
+
+	* src/resources/htmldoclet/gjdochtml-clean-color1.css: add styles
+	for serialized form page.
+
+	* src/resources/htmldoclet/gjdochtml-clean-layout.css: likewise.
+	
+
+2004-12-16  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java:
+	tweaked CSS classes, added new class.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: hide
+	link to package overview on index page(s); categorize class menu
+	for packages.
+
+	* src/resources/htmldoclet/gjdochtml-clean-layout.css: smaller
+	font for menu pages.
+
+2004-12-16  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	remove commented code.
+
+2004-12-16  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: collect
+	implementing classes in separate pass.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	remove inefficient collection of implementing classes.
+
+2004-12-15  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java:
+	added new CSS classes.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	further improved generated HTML.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java:
+	added beginRow(CssClass).
+
+	* src/resources/htmldoclet/gjdochtml-clean-color1.css: various
+	improvements.
+
+	* src/resources/htmldoclet/gjdochtml-clean-layout.css: likewise.
+
+2004-12-15  Julian Scheid <julian@sektor37.de>
+
+	* Makefile.am: added new files.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java:
+	added various CSS classes.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	improved generated HTML.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java:
+	include default CSS stylesheets.
+
+	* src/resources/htmldoclet/gjdochtml-clean-color1.css:
+	* src/resources/htmldoclet/gjdochtml-clean-layout.css:
+	* src/resources/htmldoclet/inherit.png:
+	initial version.
+
+2004-12-15  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/NotifyingInputStreamReader.java: fix bug
+	which would result in an endless loop under certain conditions;
+	fix bug in event listener registration/deregistration.
+
+	* src/gnu/classpath/tools/IOToolkit.java: add methods
+	getLineFromFile(), getColumnDisplayLine().
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java: output warning on
+	malformed input.
+
+2004-12-15  Julian Scheid <julian@sektor37.de>
+
+	* Makefile.am: add new files.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: fix
+	window title, omit title for menu pages; copy resources to own
+	subdirectory; copy javascript file.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java:
+	include javascript; invoke javascript function when page is
+	loaded.
+
+	* src/resources/htmldoclet/gjdoc.js: copied from
+	src/resources/doctranslets/html/res/gjdoc.js; only set title if
+	not null.
+
+2004-12-15  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	support @linkplain tags.
+
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: likewise.
+
+	* src/gnu/classpath/tools/gjdoc/LinkTagImpl.java: likewise.
+
+	* src/gnu/classpath/tools/gjdoc/SeeTagImpl.java: fix bug in label
+	detection.
+
+2004-12-15  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: add
+	navigation bar to about page and help page.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java: add
+	method insert(Reader).
+
+	* src/resources/htmldoclet/help.xhtml: replaced outer body tag by
+	p tag.
+
+2004-12-15  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: added
+	getThrownExceptions(), isUncheckedException().
+
+	* src/gnu/classpath/tools/doclets/debugdoclet/DebugDoclet.java:
+	output thrown exceptions.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	output "throws" information for unchecked exceptions. remove debug
+	output.
+
+2004-12-15  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: added
+	getSortedMethods(), getSortedConstructors(), getSortedFields(),
+	getSortedInnerClasses(); removed bogus comment; special handling
+	for standard taglets.
+
+	* src/gnu/classpath/tools/doclets/DocletOptionPackageWildcard.java:
+	add isSpecified().
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java: added
+	various CSS classes.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: list
+	inhertited methods properly for interfaces; fix bug in "specified
+	by" list; sort methods/fields/constructors; add inline deprecated
+	information; add see also information; list nested classes;
+	improved layout.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: remove
+	interface sorting; properly handle empty method and constructor
+	signatures; improved comparison.
+
+	* src/gnu/classpath/tools/gjdoc/ExecutableMemberDocImpl.java:
+	improved comparison.
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java: removed array
+	sorting.
+
+	* src/gnu/classpath/tools/gjdoc/SeeTagImpl.java: improved
+	reference resolution.
+
+	* src/gnu/classpath/tools/taglets/ValueTaglet.java: corrected
+	copyright notice.
+
+2004-12-14  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: support option
+	-classpath.
+
+2004-12-14  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/debugdoclet/DebugDoclet.java:
+	Initial version.
+	
+2004-12-14  Julian Scheid <julian@sektor37.de>
+
+	* Makefile.am: add new files.
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: made
+	tagletMap accessible to subclasses; pass tag renderer to
+	SinceTaglet; adapt to new TagletContext architecture; collect
+	information about relationship between classes interfaces.
+
+	* src/gnu/classpath/tools/taglets/TagletContext.java: revamped
+	Taglet rendering.
+		
+	* src/gnu/classpath/tools/taglets/SinceTaglet.java: likewise.
+
+	* src/gnu/classpath/tools/gjdoc/TagImpl.java: likewise.
+
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: likewise.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: likewise.
+
+	* src/gnu/classpath/tools/gjdoc/SeeTagImpl.java: allow access to
+	reference text; remove debug code.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: improve
+	sorting; allow multiple "extends" for interfaces; make all
+	interface members public.
+
+	* src/gnu/classpath/tools/doclets/InlineTagRenderer.java: 
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlTagletContext.java:
+	* src/gnu/classpath/tools/gjdoc/ValueTagImpl.java:
+	* src/gnu/classpath/tools/taglets/CodeTaglet.java:
+	* src/gnu/classpath/tools/taglets/GnuExtendedTaglet.java:
+	initial version.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java: added
+	various CSS classes.
+
+	* src/gnu/classpath/tools/gjdoc/expr/ConstantInteger.java: return
+	new Integer instead of new Long().
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	various improvements to generated HTML code; improve tag
+	rendering; show superinterfaces, subinterfaces, implementing
+	classes;
+
+2004-12-13  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: remove debug
+	output.
+
+2004-12-13  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: add missing
+	imports.
+
+	* src/gnu/classpath/tools/doclets/DocletOptionPackageWildcard.java:
+	likewise.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: remove support for
+	class names on command line and update usage information; complain
+	if no classes can be found.
+
+	* src/gnu/classpath/tools/gjdoc/ParseException.java: add default
+	constructor.
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java: compare specified
+	package name and actual package name in source file, ignore source
+	and emit warning on mismatch.
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: likewise.
+	
+2004-12-13  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: removed
+	bogus comment at eof.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	added options -title for backwards compatibility; added dummy
+	implementation of -noserialwarn; removed "Running HtmlDoclet"
+	notice.
+
+2004-12-13  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	implemented option -nocomment.
+
+2004-12-13  Julian Scheid <julian@sektor37.de>
+
+	* Makefile.am: added new files.
+
+	* src/gnu/classpath/tools/doclets/PackageMatcher.java
+	
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: minor
+	refactoring due to above.
+	
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: likewise.
+	
+	* src/gnu/classpath/tools/doclets/DocletOptionPackageWildcard.java:
+	add missing import; catch InvalidPackageWildcardException; minor
+	refactoring.
+
+2004-12-13  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/DocletOptionColonSeparated.java:
+	replace "subdirs" naming with the more neutral "components".
+
+	* src/gnu/classpath/tools/doclets/DocletOptionPackageWildcard.java:
+	initial version.
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: implemented
+	option -noqualifier.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	likewise.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: add option -noqualifier
+	to usage.
+
+2004-12-13  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: added missing
+	imports.
+	
+2004-12-13  Julian Scheid <julian@sektor37.de>
+
+	* Makefile.am: added new classes; added antlr-specific stuff.
+
+	* acinclude.m4: added AC_PROG_ANTLR macro.
+
+	* configure.ac: added call to AC_PROG_ANTLR macro.
+
+	* src/build.xml: added antlr-specific stuff; some obsolete changes
+	to gcj handling.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	added border to all tables except navigation bar; added tooltip to
+	type links; added some missing CSS classes; added "implements" to
+	tree; improved tree formatting; added links to package trees from
+	full tree; added "All Classes" link to package menu; fixed
+	double-slash in URLs;general HTML improvements; italics for
+	interfaces in class menu; added inheritance tree to class page;
+	added "enclosing class" to class page; added missing type to field
+	details; only output parameters if @param tag is present; better
+	status output. show "(package private)" for package private
+	elements.
+	
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java: added
+	new CSS classes; support for templates with two nested tags (inner
+	elements).
+	
+	* src/com/sun/javadoc/FieldDoc.java: added method
+	constantValueExpression()
+
+	* src/com/sun/javadoc/Type.java: added method isPrimitive().
+
+	* src/gnu/classpath/tools/taglets/SinceTaglet.java: fixed wrong
+	HTML close tag.
+
+	* src/gnu/classpath/tools/taglets/VersionTaglet.java: changed CSS
+	class in HTML code.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: implemented
+	isPrimitive(); minor reformatting; added methods getValue(),
+	findFieldValue().
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocProxy.java: implemented
+	isPrimitive(); properly implemented compareTo(Object).
+
+	* src/gnu/classpath/tools/gjdoc/FieldDocImpl.java: support for
+	field value literal extraction; minor reformatting; implements
+	constantValue(), constantValueExpression(); override isStatic()
+	and isFinal() to always return true for fields in interfaces.
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java: support for field
+	value literal extraction.
+
+	* src/gnu/classpath/tools/gjdoc/ProgramElementDocImpl.java: fix
+	swapped package private/private modifier; use isStatic() and
+	isFinal() methods instead of isStatic and isFinal fields for
+	determining modifier.
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: minor
+	reformatting.
+
+	* src/gnu/classpath/tools/gjdoc/TypeImpl.java: implement
+	isPrimitive().
+
+	* src/gnu/classpath/tools/gjdoc/expr/AdditionExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/AndExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/BinaryBitwiseExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/BinaryComputationExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/BinaryEqualityExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/BinaryExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/BinaryLogicalExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/BinaryRelationExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/BinaryShiftExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/BitShiftRightExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ConditionalExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ConstantBoolean.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ConstantByte.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ConstantChar.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ConstantDouble.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ConstantExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ConstantFloat.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ConstantInteger.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ConstantLong.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ConstantNull.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ConstantShort.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ConstantString.java:
+	* src/gnu/classpath/tools/gjdoc/expr/Context.java:
+	* src/gnu/classpath/tools/gjdoc/expr/DivisionExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/EqualExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/Evaluator.java:
+	* src/gnu/classpath/tools/gjdoc/expr/EvaluatorEnvironment.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ExclusiveOrExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/Expression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/GreaterThanExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/GreaterThanOrEqualExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/IdentifierExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/IllegalExpressionException.java:
+	* src/gnu/classpath/tools/gjdoc/expr/InclusiveOrExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/LessThanExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/LessThanOrEqualExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/LogicalAndExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/LogicalNotExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/LogicalOrExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ModuloExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/MultiplicationExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/NegateExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/NotEqualExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/NotExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ShiftLeftExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/ShiftRightExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/SubtractionExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/Type.java:
+	* src/gnu/classpath/tools/gjdoc/expr/TypeCastExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/UnaryExpression.java:
+	* src/gnu/classpath/tools/gjdoc/expr/UnknownIdentifierException.java:
+	* src/gnu/classpath/tools/gjdoc/expr/java-expression.g:
+	Initial version.
+	
+2004-12-11  Julian Scheid <julian@sektor37.de>
+
+	* TROUBLESHOOTING: initial version.
+
+2004-12-11  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/java2xhtml/Java2xhtml.java: removed
+	unnecessary toString() call; sized output StringBuffer more
+	generously.
+
+2004-12-10  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: handle
+	multiple source directories.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	likewise.
+
+2004-12-10  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: fix NPE when empty
+	directories are examined.
+
+	* src/gnu/classpath/tools/java2xhtml/Java2xhtml.java: fix
+	StringIndexOutOfBoundsException.
+	
+2004-12-10  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: move
+	license text above bottom navigation bar.
+
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: fix bug which would
+	copy license text only for documented classes.
+
+2004-12-10  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: add option
+	-licensetext, add to usage.
+
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: only copy license if
+	option -licensetext has been given on the command line.
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java: only detect license
+	comment if it contains the string "copyright", case-insensitive.
+
+2004-12-10  Julian Scheid <julian@sektor37.de>
+
+	* Makefile.am: added new files.
+
+	* src/gnu/classpath/tools/IOToolkit.java: added method
+	readFully(Reader).
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java: use
+	NotifyingInputStreamReader for reading source files; extract
+	boilerplate comment.
+
+	* src/gnu/classpath/tools/gjdoc/PackageDocImpl.java: add null
+	boilerplate parameter to invocation of parseCommentTags().
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: add null
+	boilerplate parameter to invocation of parseCommentTags().
+
+	* src/gnu/classpath/tools/gjdoc/AbstractTagImpl.java: likewise.
+
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: improved detection
+	of firstCommentTags. add support for boilerplate text.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: updated usage text;
+	default locate now US english; default source encoding now
+	temporarily US-ASCII; use BreakIterator by default for
+	non-english languages.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/HtmlRepairer.java: add
+	parameter for dropping leading <p> tag.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: pass
+	additional parameter to HtmlRepairer constructor.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java: add
+	CSS class for boilerplate; support suggested attributes for divs.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java:
+	support output encoding; support suggested attributes.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	support output encoding and charset; support boilerplate text;
+	repair HTML code;
+
+	
+2004-12-10  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/MalformedInputEvent.java:
+	* src/gnu/classpath/tools/MalformedInputListener.java:
+	* src/gnu/classpath/tools/NotifyingInputStreamReader.java: 
+	Initial version.
+
+2004-12-08  Julian Scheid <julian@sektor37.de>
+
+	* Makefile.am: added new files.
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: allow run()
+	to throw DocletConfigurationException; use printError() instead of
+	System.err.println() for error message output.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	generate package-list file; implement options -link, -linkoffset.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/ExternalDocSet.java:
+	initial version.
+
+2004-12-08  Julian Scheid <julian@sektor37.de>
+
+	* Makefile.am: Add new files.
+
+2004-12-08  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/StringToolkit.java: initial version.
+
+2004-12-08  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	implement tag {@docRoot}.
+
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: fix handling of
+	generic inline tags.
+
+2004-12-08  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: omit unnamed
+	package from index; add method getAllPackages().
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java: add
+	new CSS classes for overriding information.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: show
+	overriding information; show field type; properly handle classes
+	in the unnamed package; add link to package overview page to
+	package class list; use getAllPackages() instead of
+	rootDoc.specifiedPackages() for package menu and overview page;
+	handle case when source files are not located in the proper
+	package directory.
+
+	* src/gnu/classpath/tools/gjdoc/ExecutableMemberDocImpl.java:
+	remove dead code.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: emit warning when -J
+	option is ignored; simulate option -JD (set system property);
+	allow user to specify Java source files on the command line.
+
+	* src/gnu/classpath/tools/gjdoc/PackageDocImpl.java: use TreeSet
+	instead of ArrayList for set of all classes.
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java: have
+	processSourceFile() return the resulting ClassDoc.
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: handle source
+	files specified on command line.
+
+	* src/gnu/classpath/tools/FileSystemClassLoader.java: remove debug
+	output and dead code.
+
+2004-12-07  Andrew Overholt  <overholt@redhat.com>
+
+	* configure.ac: Fix CLASSPATH for proprietary JVMs.
+	* Makefile.am: Add new files.
+
+2004-12-07  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java: sort methods, fields,
+	and constructors.
+
+	* src/gnu/classpath/tools/gjdoc/ExecutableMemberDocImpl.java: fix
+	problems with final parameters and whitespace within array
+	dimension specifiers.
+	
+2004-12-07  Julian Scheid <julian@sektor37.de>
+
+	* src/com/sun/javadoc/ClassDoc.java: add methods fields(boolean),
+	methods(boolean) and constructors(boolean).
+
+	* src/com/sun/javadoc/FieldDoc.java: add method constantValue().
+
+	* src/gnu/classpath/tools/FileSystemClassLoader.java: consider
+	Class-Path manifest attribute in jar files; add support for
+	finding resources.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java: add
+	classes for return type and specifying interfaces.
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: show
+	return type, specifying interfaces. output arbitrary inline tags.
+
+	* src/gnu/classpath/tools/gjdoc/AbstractTagImpl.java:
+	implement interface TagContainer; pass context member and context
+	tag to tag parser.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: add support for
+	unfiltered method, field and constructor arrays; implement
+	methods(boolean), fields(boolean) and constructors(boolean);
+	implement getFieldDoc, getMethodDoc, getConstructorDoc.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocProxy.java: implement
+	methods(boolean), fields(boolean) and constructors(boolean).
+
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: consider context
+	member and context tag in tag parser; add support for comment
+	inheritance.
+
+	* src/gnu/classpath/tools/gjdoc/FieldDocImpl.java: add dummy
+	implementation for constantValue().
+
+	* src/gnu/classpath/tools/gjdoc/InheritDocTagImpl.java: initial
+	version.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: ignore options starting
+	with -J; properly support -docletpath option.
+
+	* src/gnu/classpath/tools/gjdoc/MemberDocImpl.java: override
+	resolveComments() with support for automatic comment inheritance.
+
+	* src/gnu/classpath/tools/gjdoc/MethodDocImpl.java: remove
+	special-case handling of comment inheritance.
+
+	* src/gnu/classpath/tools/gjdoc/PackageDocImpl.java: pass null
+	context member and context tag to tag parser.
+
+	* src/gnu/classpath/tools/gjdoc/ParamTagImpl.java: support context
+	member and context tag.
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java: support unfiltered
+	fields, methods and constructors.
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: don't close
+	rawCommentCache before doclet has run.
+
+	* src/gnu/classpath/tools/gjdoc/SeeTagImpl.java: remove debug
+	code.
+
+	* src/gnu/classpath/tools/gjdoc/SerialFieldTagImpl.java: support
+	for context member and context tag.
+
+	* src/gnu/classpath/tools/gjdoc/TagImpl.java: likewise.
+
+	* src/gnu/classpath/tools/gjdoc/ThrowsTagImpl.java: likewise.
+
+	* src/gnu/classpath/tools/gjdoc/TagContainer.java: initial
+	version.
+	
+2004-12-04  Andrew Overholt  <overholt@redhat.com>
+
+	* configure.ac: Allow installation of gnujaxp.jar in $PREFIX.
+
+2004-12-03  Andrew Overholt  <overholt@redhat.com>
+
+	* Makefile.am: Update.
+
+2004-12-03  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/MethodDocImpl.java: inherit
+	documentation from superclass if possible.
+	
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: add getter for
+	tagMap.
+	
+2004-12-03  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java: if
+	the -group's don't cover all packages, put remaining packages into
+	section "Other Packages" on the overview page.
+	
+2004-12-03  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java: changed
+	directory name "docfiles" to "doc-files".
+	
+2004-12-03  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	fixed a NPE if a ThrowsTag doesn't resolve an exception
+	
+2004-12-03  Julian Scheid <julian@sektor37.de>
+
+	* src/resources/htmldoclet/HtmlDoclet.properties:
+	* src/resources/htmldoclet/gjdochtml-vanilla.css:
+	* src/resources/htmldoclet/help.xhtml:
+	initial version.
+
+2004-12-03  Julian Scheid <julian@sektor37.de>
+
+	* examples/Makefile: add new classes and resources.
+
+2004-12-03  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java:
+	accommodate for moved classes; tweak output XML code.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslate.java:
+	accommodate for moved classes.
+	
+	* src/gnu/classpath/tools/doclets/DocletOptionColonSeparated.java
+	added missing package specification and imports.
+
+	* src/gnu/classpath/tools/doclets/StandardTaglet.java: made
+	public.
+
+2004-12-03  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: remember source
+	position for classes; fix isIncluded(); properly resolve parameter
+	types in link tags
+
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: remove <p>...</p>
+	around firstSentenceTags; add setter for source position
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: pass all options to
+	doclet, including those handled by gjdoc; change standard doclet
+	to HtmlDoclet; minor fixes in usage output;
+
+	* src/gnu/classpath/tools/gjdoc/PackageDocImpl.java: cache
+	allClasses, ordinaryClasses and exceptions.
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: sort classes;
+	work around Classpath's writeUTF() performance issue; fix
+	isIncluded().
+
+	* src/gnu/classpath/tools/gjdoc/SeeTagImpl.java: fix resolution of
+	java.lang classes.
+
+	* src/gnu/classpath/tools/gjdoc/TextTagImpl.java: add getter for
+	text.
+
+	* src/gnu/classpath/tools/gjdoc/TypeImpl.java: fix isIncluded().
+
+	* src/gnu/classpath/tools/taglets/AuthorTaglet.java: 
+	* src/gnu/classpath/tools/taglets/SinceTaglet.java: 
+	improve emitted HTML.
+	
+2004-12-03  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/FileSystemClassLoader.java:
+	* src/gnu/classpath/tools/doclets/PackageGroup.java:
+	* src/gnu/classpath/tools/doclets/PackageMatcher.java:
+	* src/gnu/classpath/tools/doclets/InvalidPackageWildcardException.java:
+	* src/gnu/classpath/tools/doclets/StandardTaglet.java:
+	moved from src/gnu/classpath/tools/doclets/xmldoclet
+
+	* src/gnu/classpath/tools/IOToolkit.java:
+	* src/gnu/classpath/tools/doclets/AbstractDoclet.java:
+	* src/gnu/classpath/tools/doclets/DocletConfigurationException.java:
+	* src/gnu/classpath/tools/doclets/DocletOption.java:
+	* src/gnu/classpath/tools/doclets/DocletOptionColonSeparated.java:
+	* src/gnu/classpath/tools/doclets/DocletOptionFile.java:
+	* src/gnu/classpath/tools/doclets/DocletOptionFlag.java:
+	* src/gnu/classpath/tools/doclets/DocletOptionString.java:
+	* src/gnu/classpath/tools/doclets/TagletPrinter.java:
+	* src/gnu/classpath/tools/doclets/htmldoclet/CssClass.java:
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlDoclet.java:
+	* src/gnu/classpath/tools/doclets/htmldoclet/HtmlPage.java:
+	* src/gnu/classpath/tools/taglets/TagletContext.java:
+	initial version.
+	
+	* src/gnu/classpath/tools/doclets/xmldoclet/FileSystemClassLoader.java:
+	* src/gnu/classpath/tools/doclets/xmldoclet/InvalidPackageWildcardException.java:
+	* src/gnu/classpath/tools/doclets/xmldoclet/PackageGroup.java:
+	* src/gnu/classpath/tools/doclets/xmldoclet/PackageMatcher.java:
+	* src/gnu/classpath/tools/doclets/xmldoclet/StandardTaglet.java:
+	removed.
+	
+2004-11-29  Julian Scheid <julian@sektor37.de>
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: don't
+	emit HTML repairing terminating text prematurely.
+
+2004-11-29  Julian Scheid <julian@sektor37.de>
+	* src/resources/doctranslets/html/classdoc.xsl: added workaround
+	for a problem in gnujaxp.
+	
+2004-11-29  Julian Scheid <julian@sektor37.de>
+
+	* src/resources/doctranslets/html/gjdoc.xsl: fixed XSL syntax
+	error.
+
+2004-11-29  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTransletException.java:
+	use reflection to set the root cause if possible.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslet.java:
+	use DOMResult instead of StreamResult for output file list, thus
+	improving performance and working around a bug in Aelfred.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: output
+	serializable fields; output root cause on exception.
+
+	* src/resources/doctranslets/html/deprecated.xsl: correct filename
+	in copyright header.
+
+	* src/resources/doctranslets/html/gjdoc.xsl: add serialized page
+	to output file list. correct condition for tree page.
+
+	* src/resources/doctranslets/html/serialized.xsl: initial version.
+
+	* examples/Makefile: add serialized.xsl to resources.
+	
+2004-11-27  Julian Scheid <julian@sektor37.de>
+
+	* src/resources/doctranslets/html/alphaindex.xsl: 
+	* src/resources/doctranslets/html/alphaindex_chunked.xsl:
+	* src/resources/doctranslets/html/classdoc.xsl:
+	* src/resources/doctranslets/html/deprecated.xsl:
+	* src/resources/doctranslets/html/fulltree.xsl:
+	* src/resources/doctranslets/html/help.xsl:
+	pass document title to javascript.
+
+	* src/resources/doctranslets/html/packagedoc.xsl: pass document
+	title to javascript; make XPath expression compatible with
+	GNUJAXP.
+
+	* src/resources/doctranslets/html/classdoc.xsl: pass document
+	title to javascript; improve handling of <pre> tags.
+
+	* src/resources/doctranslets/html/res/gjdoc.js: new handling of
+	document title.
+
+	* src/resources/doctranslets/html/html_common.xsl: minor
+	refactoring.	
+
+2004-11-26  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: support
+	option -group; allow use of options -tag and -taglet for
+	specifying the order in which generic tags, user-specified tags
+	and standard tags appear in the output document; minor
+	refactoring; tidy comment indentation.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: added option -group to
+	usage information.
+
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: honor inline tag
+	types instead of forcing all inline tags to {@link}; fix problem
+	with inline tags that do not have a value; fix bug which produced
+	invalid parameter names.
+	
+	* src/resources/doctranslets/html/classdoc.xsl: show deprecation
+	information correctly in both summary and detail section.
+
+	* src/resources/doctranslets/html/index_noframes.xsl: support
+	grouped packages.
+
+	* src/resources/doctranslets/html/packagedoc.xsl: tidy indentation
+	in template output-classes-summary.
+
+	* src/resources/doctranslets/html/gjdoc.xsl: fixed path to
+	gjdoc.js resource.
+
+	* src/resources/doctranslets/html/index.xsl: add common includes
+	so that gjdoc.js is loaded.
+
+	* src/resources/doctranslets/html/index_noframes.xsl: fixed page
+	title.
+
+	* src/resources/doctranslets/html/deprecated.xsl: fixed page
+	title.
+
+	* src/resources/doctranslets/html/res/gjdoc.js: copy page title to
+	browser title on page load.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/InvalidPackageWildcardException.java:
+	* src/gnu/classpath/tools/doclets/xmldoclet/PackageGroup.java:
+	* src/gnu/classpath/tools/doclets/xmldoclet/PackageMatcher.java:
+	* src/gnu/classpath/tools/doclets/xmldoclet/StandardTaglet.java:
+	initial version.
+	
+2004-11-25  Andrew Overholt  <overholt@redhat.com>
+
+	* Makefile.am: Clean up and add missing resource compilations.
+
+2004-11-25  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/taglets/AuthorTaglet.java: added a
+	workaround for a bug in classpath regex handling.
+
+2004-11-25  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: fix NPEs
+	if superclasses have empty field or method lists.
+
+2004-11-25  Andrew Overholt  <overholt@redhat.com>
+
+	* Makefile.am: Add txt files as resources.
+
+2004-11-25  Julian Scheid <julian@sektor37.de>
+	* Makefile.am:
+	* configure.ac:
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver1_4.java:
+	* src/gnu/classpath/tools/gjdoc/ClassDocProxy.java:
+	apply latest patches by Andrew Overholt.
+
+2004-11-25  Julian Scheid <julian@sektor37.de>
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: output
+	isOrdinaryClass for clasdocs; output full superclass information,
+	including inherited fields and methods; output full package
+	documentation; output usage information; support option -uses.
+	* src/gnu/classpath/tools/doclets/xmldoclet/HtmlRepairer.java:
+	improved heuristics for detecting non-escaped ampersands.
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslet.java:
+	pass option -uses to stylesheets; create directory structure for
+	usage pages if necessary.
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTransletOptions.java:
+	add field for option -uses.
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: implement
+	method hashCode().
+	* src/gnu/classpath/tools/gjdoc/Parser.java: support comments
+	between class declaration and opening brace in scanned source
+	files.
+	* src/resources/doctranslets/gjdoc_common.xsl: support option
+	-uses.
+	* src/resources/doctranslets/html/about.xsl: initial version.
+	* src/resources/doctranslets/html/allclasses.xsl:
+	* src/resources/doctranslets/html/packageclasses.xsl:
+	* src/resources/doctranslets/html/allpackages.xsl: call javascript
+	function when document is loaded; add CSS classes to header and
+	links.
+	* src/resources/doctranslets/html/alphaindex.xsl: 
+	* src/resources/doctranslets/html/alphaindex_chunked.xsl: 
+	* src/resources/doctranslets/html/deprecated.xsl:
+	* src/resources/doctranslets/html/fulltree.xsl:
+	* src/resources/doctranslets/html/help.xsl:
+	* src/resources/doctranslets/html/index_noframes.xsl:
+	call javascript function when document is loaded; set currently
+	selected item in navbar; improved XHTML structure.
+	* src/resources/doctranslets/html/classdoc-source.xsl: use
+	template for title.
+	* src/resources/doctranslets/html/classdoc-uses.xsl: initial
+	version.
+	* src/resources/doctranslets/html/classdoc.xsl: 
+	call javascript function when document is loaded; set currently
+	selected item in navbar; improved XHTML structure; link to source
+	and usage; fixed output of enclosing class; implemented output of
+	inherited methods and fields;
+	* src/resources/doctranslets/html/gjdoc.xsl: support option -uses;
+	copy alternate stylesheets; output about page.
+	* src/resources/doctranslets/html/html_common.xsl: add javascript
+	file and alternate stylesheets to template include_common;
+	improved navigation bar.
+	* src/resources/doctranslets/html/index.xsl: make left frame
+	slightly smaller.
+	* src/resources/doctranslets/html/packagedoc.xsl: call javascript
+	function when document is loaded; set currently selected item in
+	navbar; improved XHTML structure; split class list into
+	interfaces, classes, exceptions and errors; output full package
+	documentation.
+	* src/resources/doctranslets/html/res/gjdochtml.css:
+	fixed comment format; moved styles to gjdochtml-clean.css.
+	* src/resources/doctranslets/html/res/gjdoc.js:
+	* src/resources/doctranslets/html/res/gjdochtml-clean.css:
+	* src/resources/doctranslets/html/res/gjdochtml-sclara.css:
+	* src/resources/doctranslets/html/res/gjdochtml-fixed.css:
+	initial version.
+	
+2004-11-23  Julian Scheid <julian@sektor37.de>
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: output
+	sub-tags for @deprecated tags; support @deprecated tags; support
+	options -nodeprecated and -nodeprecatedlist; output coarse-grained
+	deprecation information to index.xml.
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslet.java:
+	pass option -nodeprecatedlist to stylesheet.
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTransletOptions.java:
+	add field for option -nodeprecatedlist.
+	* src/gnu/classpath/tools/gjdoc/Main.java: add options -tag,
+	-nodeprecated, -nodeprecatedlist to usage.
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: remove debugging
+	output.
+	* src/gnu/classpath/tools/taglets/DeprecatedTaglet.java: initial
+	version.	
+	* src/resources/doctranslets/gjdoc_common.xsl: support for option
+	-nodeprecatedlist.
+	* src/resources/doctranslets/html/classdoc.xsl: move templates
+	get_qualified_type, resolve_parameter_list and output_link_tag to
+	html_common.xsl.
+	* src/resources/doctranslets/html/deprecated.xsl: initial version.
+	* src/resources/doctranslets/html/gjdoc.xsl: implement list of
+	deprecated API entries.
+	* src/resources/doctranslets/html/html_common.xsl: add entry for
+	deprecated list to navbar; templates get_qualified_type,
+	resolve_parameter_list and output_link_tag moved here.
+
+2004-11-23  Julian Scheid <julian@sektor37.de>
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: support
+	-doctitle option; output RootDoc documentation (if -overview
+	given).
+	* src/gnu/classpath/tools/doclets/xmldoclet/HtmlRepairer.java: fix
+	NPE when outside class context; fix StringOutOfBoundsException
+	when handling incomplete HTML tags like "</".
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslet.java:
+	pass option -doctitle to stylesheet.
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTransletOptions.java:
+	add field for option -doctitle.
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: fix problem with
+	non-comment documentation like in overview page.
+	* src/gnu/classpath/tools/gjdoc/Main.java: support -overview option.
+	* src/resources/doctranslets/gjdoc_common.xsl: support -doctitle option.
+	* src/resources/doctranslets/html/index_noframes.xsl: implement
+	-doctitle and -overview option.
+	* src/resources/doctranslets/html/res/gjdochtml.css: add CSS
+	classes for overview page.
+	
+2004-11-23  Julian Scheid <julian@sektor37.de>
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: use
+	Doc.compareTo() instead of explicitly comparing Doc names.
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: move comparison
+	function to DocImpl.java.
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: use locale-dependent
+	Collator for comparing names of Docs.
+	* src/gnu/classpath/tools/gjdoc/Main.java: provide a Collator
+	using the user-specified locale.
+	
+2004-11-23  Julian Scheid <julian@sektor37.de>
+	* src/gnu/classpath/tools/gjdoc/Main.java: support option
+	-breakiterator; initial support for option -locale.
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: implement option
+	-breakiterator.
+	
+2004-11-23  Julian Scheid <julian@sektor37.de>
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: rename
+	option -stylesheet to -stylesheetfile; support options -header,
+	-footer, -bottom.
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslet.java:
+	pass options -header, -footer, -bottom to stylesheet.
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTransletOptions.java:
+	add fields for options -header, -footer, -bottom.
+	* src/gnu/classpath/tools/gjdoc/Main.java: add options -header,
+	-footer, -bottom to usage; fix problem when -subpackages are
+	specified but no other packages or classes are specified
+	explicitly.
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: add method
+	hasSpecifiedPackagesOrClasses().
+	* src/resources/doctranslets/gjdoc_common.xsl: support options
+	-header, -footer, -bottom.
+	* src/resources/doctranslets/html/alphaindex.xsl:
+	* src/resources/doctranslets/html/alphaindex_chunked:
+	* src/resources/doctranslets/html/classdoc.xsl:
+	* src/resources/doctranslets/html/fulltree.xsl:
+	* src/resources/doctranslets/html/help.xsl:
+	* src/resources/doctranslets/html/html_common.xsl:
+	* src/resources/doctranslets/html/index_noframes.xsl:
+	* src/resources/doctranslets/html/packagedoc.xsl: 
+	add bottom navigation bar.
+	* src/resources/doctranslets/html/res/gjdochtml.css: improve
+	navigation bar appearance.
+
+2004-11-23  Julian Scheid <julian@sektor37.de>
+	* src/gnu/classpath/tools/gjdoc/Main.java: Implemented options
+	-subpackages and -exclude.
+
+2004-11-23  Julian Scheid <julian@sektor37.de>
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java:
+	Implemented option -tag.
+	* src/gnu/classpath/tools/taglets/GenericTaglet.java: initial
+	version.
+	
+2004-11-23  Julian Scheid <julian@sektor37.de>
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java:
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslet.java:
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTransletOptions.java:
+	* src/gnu/classpath/tools/gjdoc/Main.java:
+	* src/resources/doctranslets/gjdoc_common.xsl:
+	* src/resources/doctranslets/html/gjdoc.xsl:
+	Renamed option -stylesheet to -stylesheetfile.
+
+2004-11-23  Julian Scheid <julian@sektor37.de>
+	* src/com/sun/javadoc/Doc.java: add support for SourcePosition.
+	* src/com/sun/javadoc/SourcePosition.java: initial version.
+	* src/gnu/classpath/tools/java2xhtml/Java2xhtml.java: initial
+	version.
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: sorted
+	imports; made DocTransletOptions a field instead of a variable;
+	added support for options -linksource, -windowtitle, -helpfile,
+	-stylesheet; output source position in XML files; added
+	copyStream(Reader, Writer).
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslet.java:
+	pass options -linksource, -windowtitle, -helpfile, -stylesheet to
+	stylesheets; move copyStream(InputStream, OutputStream) to
+	Driver.java.
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTransletOptions.java:
+	added fields for options -linksource, -windowtitle, -helpfile,
+	-stylesheet
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: 
+	* src/gnu/classpath/tools/gjdoc/ConstructorDocImpl.java:
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java:
+	* src/gnu/classpath/tools/gjdoc/ExecutableMemberDocImpl.java:
+	* src/gnu/classpath/tools/gjdoc/FieldDocImpl.java:
+	* src/gnu/classpath/tools/gjdoc/MemberDocImpl.java:
+	* src/gnu/classpath/tools/gjdoc/MethodDocImpl.java:
+	* src/gnu/classpath/tools/gjdoc/PackageDocImpl.java:
+	* src/gnu/classpath/tools/gjdoc/ProgramElementDocImpl.java:
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java:
+	add support for source position.
+	* src/gnu/classpath/tools/gjdoc/SourcePositionImpl.java: initial
+	version.
+	* src/resources/doctranslets/gjdoc_common.xsl: add support for
+	options -linksource, -windowtitle, -helpfile, -stylesheet;
+	* src/resources/doctranslets/html/allclasses.xsl: add CSS class to
+	link tags.
+	* src/resources/doctranslets/html/alphaindex.xsl: use template for
+	title; add quick access links for all categories.
+	* src/resources/doctranslets/html/alphaindex_chunked.xsl: use
+	template for title; add CSS class for quick access links.
+	* src/resources/doctranslets/html/classdoc-source.xsl: initial
+	version.
+	* src/resources/doctranslets/html/classdoc.xsl: use template for
+	title; add links to source code.
+	* src/resources/doctranslets/html/fulltree.xsl: 
+	* src/resources/doctranslets/html/gjdoc.xsl: support options
+	-linksource, -stylesheet.
+	* src/resources/doctranslets/html/help.xsl: support -helpfile
+	option.
+	* src/resources/doctranslets/html/html_common.xsl: introduce
+	template for outputting title which supports option -windowtitle;
+	improve navigation bar.
+	* src/resources/doctranslets/html/index.xsl: fix problem with
+	default pages with single-package docs 
+	* src/resources/doctranslets/html/index_noframes.xsl: use template
+	for title; disable home button.
+	* src/resources/doctranslets/html/packagedoc.xsl: use template for
+	title.
+	* src/resources/doctranslets/html/res/gjdochtml.css: improve
+	visual appearance.
+
+2004-11-22  Julian Scheid <julian@sektor37.de>
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: support
+	VersionTaglet and SinceTaglet; support -version and -nosince
+	options; fix -author option.
+	* src/gnu/classpath/tools/gjdoc/Main.java: add options -version
+	and -nosince to usage.
+	* src/resources/doctranslets/html/classdoc.xsl: remove explicit
+	handling of @since tags.
+	* src/gnu/classpath/tools/taglets/SinceTaglet.java
+	* src/gnu/classpath/tools/taglets/VersionTaglet.java: Initial
+	version.
+	
+2004-11-22  Julian Scheid <julian@sektor37.de>
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: pass
+	options -nohelp and -splitindex to DocTranslet; implement
+	alphabetic index export.
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslet.java:
+	make parameters from command line available to gjdoc.xsl as well;
+	cope with empty <info/> elements in gjdoc.
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTransletOptions.java:
+	add fields for -nohelp and -splitindex options.
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: fix
+	implementation of isOrdinaryClass(); cope with null methods and
+	constructors;
+	* src/gnu/classpath/tools/gjdoc/Main.java: add options
+	-splitindex, -notree, -noindex and -nohelp to usage.
+	* src/resources/doctranslets/gjdoc_common.xsl: support -splitindex
+	option.
+	* src/resources/doctranslets/html/html_common.xsl: add central
+	template for rendering the navigation bar.
+	* src/resources/doctranslets/html/classdoc.xsl:
+	* src/resources/doctranslets/html/index_noframes.xsl:
+	* src/resources/doctranslets/html/packagedoc.xsl:
+	* src/resources/doctranslets/html/fulltree.xsl: use template code
+	for showing navigation bar.
+	* src/resources/dtd/gjdoc-alphaindex.dtd
+	* src/resources/doctranslets/html/help.xsl:
+	* src/resources/doctranslets/html/alphaindex.xsl:
+	* src/resources/doctranslets/html/alphaindex_chunked.xsl
+	* src/resources/doctranslets/html/res/default_help_en.html:
+	Initial version.
+	
+2004-11-22  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/HtmlRepairer.java: fix
+	filename in copyright notice.
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslet.java:
+	accept options from command line; set options for XSL transformation.
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTransletOptions.java:
+	initial version.
+	* src/gnu/classpath/tools/gjdoc/Main.java: support option
+	-encoding; output warning for ignored options -verbose, -locale;
+	add options -docletpath, -source, -verbose, -locale, -encoding,
+	-author, -title, -nonavbar, -docfilessubdirs and
+	-excluddocfilesdubdirs to usage.
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/Driver.java:
+	support options -docfilessubdirs and -excluddocfilesdubdirs;
+	support option -author; don't output tag data if it is null; pass
+	on options -nonavbar, -noindex, -notree and -nocomment to
+	DocTranslet;
+	* src/gnu/classpath/tools/taglets/AuthorTaglet.java: support
+	enabling and disabling of output;
+	* src/gnu/classpath/tools/gjdoc/Parser.java: support input
+	encodings; fix a bug which would reuse the class comment for the
+	first class method if the method doesn't have a comment itself.
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: support input
+	encodings; output warning if there's a mismatch between a class
+	name and the name of the file it's residing in; print notice
+	instead of warning if a package description can't be found.
+	* src/resources/doctranslets/gjdoc_common.xsl: support for command
+	line options -nonavbar, -noindex, -notree, -nohelp, -nocomment.
+	* src/resources/doctranslets/html/classdoc.xsl: implement command
+	line option -nonavbar.
+	* src/resources/doctranslets/html/packagedoc.xsl: implement
+	command line option -nonavbar.	
+	* src/resources/doctranslets/html/index.xsl: don't generate
+	package overview pages if only one package is being documented.
+	* src/resources/doctranslets/html/gjdoc.xsl: don't generate
+	package overview pages if only one package is being documented.
+	
+2004-11-21  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/taglets/AuthorTaglet.java: remove call
+	to assert() for compatiblity with pre-1.4 compilers.
+	* src/gnu/classpath/tools/doclets/xmldoclet/DocTransletException.java: 
+	remove call to Exception(String, Throwable) and
+	Exception(Throwable) for compatiblity with pre-1.4 compilers (as
+	per Debian patch 06_no1.4classpath).
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: fall back
+	to current directory if no target directory has been specified (as
+	per Debian patch 07_default_out_dir.dpatch).
+
+2004-11-21  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java:
+	don't keep package data in memory during XSLT transformation.
+	* src/gnu/classpath/tools/gjdoc/ErrorReporter.java: remember
+	output channel in constructor; avoid infinite recursion in
+	conjunction with XSLT error redireciton.
+
+2004-11-21  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslet.java:
+	redirect stderr while transforming so that stylesheet messages are
+	handled by the DocErrorReporter.
+	* src/resources/java.lang-classes-1.2.txt: initial version.
+	* src/resources/java.lang-classes-1.3.txt: initial version.
+	* src/resources/java.lang-classes-1.4.txt: initial version.
+	* src/resources/java.lang-classes-1.5.txt: initial version.
+	* src/gnu/classpath/tools/gjdoc/Main.java: use
+	DocErrorReporter.printNotice() for reporting warning and error
+	count; add dummy classes for package java.lang; implement option
+	-quiet; flush rootDoc instead of releasing the reference.
+	
+2004-11-21  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: allow various
+	fields to be null.
+	* src/gnu/classpath/tools/gjdoc/GjdocPackageDoc.java: initial
+	version.
+	* src/gnu/classpath/tools/gjdoc/GjdocRootDoc.java: initial
+	version.
+	* src/gnu/classpath/tools/gjdoc/PackageDocImpl.java: implement
+	GjdocPackageDoc; add getter and setter for package directory.
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: implement
+	GjdocRootDoc; remove notice about core source code being required;
+	set directory for scanned packages; add flush() method.
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: remove
+	BackupErrorReporter (continue to use RootDoc for error reporting);
+	cope with null fields in ClassDocImpl; improve error message
+	related to @throws tags; avoid error with -xmlonly if DTD
+	directory already exists; copy data-dir directory.
+	
+2004-11-21  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: don't skip HTML tags
+	when skipping whitespace. Fixes bug #8810 (no html tag as first
+	word of @param tag).
+	* src/resources/doctranslets/html/classdoc.xsl: specify doctype;
+	use copy-of instead of value-of for copying tag contents,
+	preserving any nested HTML tags.
+	* src/resources/doctranslets/html/index_noframes.xsl: specify
+	doctype; use apply-templates instead of value-of for copying
+	package comment, preserving any nested HTML tags.
+	
+2004-11-21  Julian Scheid <julian@sektor37.de>
+
+	* examples/classpath.packages: removed duplicate entry
+	"java.awt.geom" as per bug #9375. Thanks to David Gilbert.
+	* src/gnu/classpath/tools/taglets/AuthorTaglet.java: fixed problem in 
+	regexp which would barf on real names with more than two words.
+	* src/gnu/classpath/tools/gjdoc/ErrorReporter.java: added method 
+	setQuiet().
+
+2004-11-20  Arnaud Vandyck <avdyk@gnu.org>
+
+	* src/gnu/classpath/tools/gjdoc/Main: Eclipse reformat, added some javadoc,
+	added every options gjdoc should support in a commentary. '-locale' and
+	'-encoding' needs an additional argument. Added options to be registered in
+	the docRoot: '-docletpath', more to come...
+
+2004-11-20  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: register
+	AuthorTaglet; accept configuration options for AuthorTaglet.
+	* src/resources/doctranslets/html/classdoc.xsl: remove hardwired
+	handling of @author tags; add missing handling of taglet tags; fix 
+	transformation of taglet tags.
+	* src/gnu/classpath/tools/taglets/AuthorTaglet.java: added.
+	* src/gnu/classpath/tools/gjdoc/Main.java: added new options to usage.
+	
+2004-11-20  Julian Scheid <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslet.java:
+	avoid setting XSL parameters with null values
+	* src/resources/doctranslets/html/classdoc.xsl: added dummies for
+	missing templates "output_superclass_fields" and
+	"output_superclass_methods", enabling compilation of classdoc.xsl
+	on strict transformer implementations.
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java:
+	create target directory if it doesn't exist.
+
+2004-11-18  Arnaud Vandyck <avdyk@gnu.org>
+
+	* src/com/sun/javadoc/RootDoc: Eclipse reformat and added some javadoc.
+
+2004-10-11  Arnaud Vandyck <avdyk@gnu.org>
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocProxy: removed unnecessary
+	assignation (see patch#1964 at Savannah's cp-tools project).
+	* src/gnu/classpath/tools/gjdoc/Main.java: avoid the NPE with
+	-help argument (see patch#2333 at Savannah's cp-tools
+	project). The patch applied was the one from Nektarios
+	K. Papadopoulos (see patch#3079).
+	* src/gnu/classpath/tools/gjdoc/SerialFieldTagImpl: added not null
+	test against fieldName, fieldType and description.
+	* src/resources/doctranslets/html/allclasses.xsl, allpackages.xsl,
+	classdoc.xsl, descriptor.xsl, doctranslet.xsl, fulltree.xsl,
+	gjdoc.xsl, index.xsl, index_noframes.xsl, packageclasses.xsl,
+	packagedoc.xsl: I18n patch by Takashi Okamoto (see patch#3013 at
+	Savannah's cp-tools project) (it's utf-8, not utf8).
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslet.java:
+	(apply) Handle system boot class loader (see patch#3078 at
+	Savannah's cp-tools project).
+	
+2004-10-04  Alex Lancaster  <alexl AT gnu.org>
+
+	* README: Update URL for project to point to classpath and note
+	that it is a subproject.  Add 2004 to copyright date.
+
+2004-09-29  Andrew Overholt  <overholt@redhat.com>
+
+	* .cvsignore: New file.
+
+2004-09-28  Andrew Overholt  <overholt@redhat.com>
+
+	* AUTHORS: New file.
+	* NEWS: Likewise.
+	* INSTALL: Likewise.
+	* acinclude.m4: Likewise.
+	* autogen.sh: Likewise.
+	* Makefile.am: Likewise.
+	* configure.ac: Likewise.
+
+2003-03-08  Julian Scheid  <julian@sektor37.de>
+
+	* src/build.xml: Fixed bogus dependency.
+	
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: Changed
+	default behaviour for -fixhtml. Now must specify -nofixhtml to
+	prevent HTML salvation.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslet.java: 
+	Likewise.
+	
+	* src/gnu/classpath/tools/gjdoc/Main.java: Likewise.
+
+2003-03-07  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/TypeImpl.java: Added assertion.
+
+	* src/gnu/classpath/tools/gjdoc/TemporaryStore.java: Minor
+	documention correction.
+
+	* src/gnu/classpath/tools/gjdoc/ParameterImpl.java: Fixed bug
+	which would sometimes duplicate dimension information.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Removed superfluous
+	error output. Added missing linefeed to usage information.
+
+	* src/gnu/classpath/tools/gjdoc/ExecutableMemberDoc.java: Added
+	missing dimension information to type signatures.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Added class comment,
+	removed commented-out code.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: Added
+	Taglet support. Removed XsltDriver kludge. Added DocTranslet
+	support. Now outputs <isError/>, <isException/> and <isInterface/>
+	in index file as well. Added context to outputTags(), required by
+	Taglet support. Fixed bug that would output bogus characters.
+	Temporarily removed DOCTYPE output (FIXME). Generation date now
+	formatted more nicely.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/TargetContext.java:
+	Removed XsltDriver kludge.  Added DocTranslet support.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/HtmlRepairer.java:
+	Fixed bug in tag name extraction.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/PostprocessDriver.java:
+	Removed.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/PostprocessException.java:
+	Removed.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/XsltDriver.java:
+	Removed.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/XsltprocDriver.java:
+	Removed.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/FileSystemClassLoader.java:
+	Initial check-in.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTranslet.java:
+	Initial check-in.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTransletException.java:
+	Initial check-in.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/DocTransletConfigurationException.java:
+	Initial check-in.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/JarClassLoader.java:
+	Initial check-in.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/OutputFileInfo.java:
+	Initial check-in.
+	
+	* src/gnu/classpath/tools/doclets/xmldoclet/doctranslet/package.html:
+	Initial check-in.
+
+	* src/gnu/classpath/tools/taglets/CopyrightTaglet.java: Initial
+	check-in.
+
+	* src/com/sun/tools/doclets/Taglet.java: Initial check-in.
+
+	* src/resources/rng/gjdoc-index.rng: Accommodated for changes in
+	Driver.java.
+
+	* src/resources/rng/gjdoc-common.rng: Accommodated for changes in
+	Driver.java.
+
+	* src/resources/doctranslets/gjdoc_common.xsl: Initial check-in.
+	
+	* src/resources/doctranslets/html/*.xsl: Initial check-in (splitted up
+	from src/resources/xsl/gjdocxml2html.xsl.)
+
+	* src/resources/doctranslets/html/res/gjdochtml.css: Initial
+	check-in (moved here from src/resources/html/gjdochtml.css.)
+	
+	* src/resources/xsl/gjdocxml2html.xsl: Removed. (Now splitted up
+	in a DocTranslet.)
+	
+	* src/resources/html/gjdochtml.css: Moved to DocTranslet.
+
+	* src/build.xml: Supports gcj/Libxmlj build.
+	
+2003-02-05  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: Carry
+	pending close tags until end of tag list when -fixhtml is enabled.
+	Added -gendocbook option.  Updated references to HtmlWell.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/HtmlRepairer.java:
+	Renamed class HtmlWell to HtmlRepairer.  Renamed method htmlWell
+	to getWellformedHTML.  Improved missing end tag insertion.  Fixed
+	bug which would prevent end tags to be recognized correctly.
+
+2003-02-03  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Fixed bug which would
+	cause NegativeArraySizeException when unknown arguments are
+	encountered on the command line.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: Fixed bug
+	which prevented -xmlonly argument from being recognized.
+
+2003-02-03  Julian Scheid  <julian@sektor37.de>
+
+	* src/resources/rng/gjdoc-classdoc.rng: Added Relax NG grammar for
+	Gjdoc output XML.
+	* src/resources/rng/gjdoc-common.rng: Likewise.
+	* src/resources/rng/gjdoc-index.rng: Likewise.
+
+2003-01-17  Julian Scheid  <julian@sektor37.de>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Rename option
+	'-xsltsheet' to '-xslsheet'.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: Rename
+	'copyResourceToTempFile' to 'copyResourceToFile'.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: Now
+	copies CSS file into HTML target context.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/TargetContext.java:
+	Rename 'copyResourceToTempFile' to 'copyResourceToFile'.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/TargetContext.java:
+	Add code for copying resources to XSLT target directory.
+	
+	* src/resources/xsl/gjdocxml2html.xsl: Drop common/ subdirectory
+	in HTML target directory.
+
+	* src/build.xml: Notify gcj users about required thread support.
+
+	* src/gnu/classpath/tools/gjdoc/ThrowsTagImpl.java: Improved
+	warning message.
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: Message about
+	including core source directories now notice not warning.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Updated usage
+	information.
+
+	* src/gnu/classpath/tools/gjdoc/Driver.java: Make HTML default
+	target.
+
+	* src/gnu/classpath/tools/gjdoc/Driver.java: Fixed problem with
+	target directory.
+
+	* README: Updated for 0.4.1 release.
+
+	* examples/classpath-docs.sh: Initial check-in.
+
+	* examples/gjdoc-docs.sh: Initial check-in.
+
+	* examples/classpath.packages: Fixed CRLF problem.
+
+2003-01-16  Julian Scheid  <julian@sektor37.de>
+
+	* src/build.xml: Notify gcj users about required thread support.
+
+	* src/resources/xsl/gjdocxml2html.xsl: Drop common/ subdirectory
+	  in HTML target directory.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/XsltprocDriver.java:
+	  Rename 'copyResourceToTempFile' to 'copyResourceToFile'.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/TargetContext.java:
+	  Rename 'copyResourceToTempFile' to 'copyResourceToFile'.  Add
+	  code for copying resources to XSLT target directory.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: Rename
+	  'copyResourceToTempFile' to 'copyResourceToFile'.  Now copies
+	  CSS file into HTML target context.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Rename option
+	  '-xsltsheet' to '-xslsheet'.
+	
+	* xslt/common/gjdochtml.css: Moved to src/resources/html.
+	* xslt/common/images/tree-branch.png: Moved to src/resources/html.
+	* xslt/common/images/tree-empty.png: Moved to src/resources/html.
+	* xslt/common/images/tree-final-node.png Moved to
+	  src/resources/html.
+	* xslt/common/images/tree-node.png: Moved to src/resources/html.
+	* xslt/gjdocxml2html.xsl: Moved to src/resources/html.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: Directory
+	  rename.
+	
+	* src/build.xml: PNG images no longer needed for HTML pages,
+	  removed.
+	
+	* src/resources/html/gjdochtml.css: Moved here from xslt/common.
+	* src/build.xml: Renamed gcjres to gcjres.sh.
+	* src/build-tools/gcjres.sh: Initial check-in.
+	* src/build.xml: Added targets for Jar file and Gcj executable.
+	* src/resources/dtd/dbcentx.mod Initial check-in.
+	* src/resources/dtd/ent/iso-amsa.ent Initial check-in.
+	* src/resources/dtd/ent/iso-amsb.ent Initial check-in.
+	* src/resources/dtd/ent/iso-amsc.ent Initial check-in.
+	* src/resources/dtd/ent/iso-amsn.ent Initial check-in.
+	* src/resources/dtd/ent/iso-amso.ent Initial check-in.
+	* src/resources/dtd/ent/iso-amsr.ent Initial check-in.
+	* src/resources/dtd/ent/iso-box.ent Initial check-in.
+	* src/resources/dtd/ent/iso-cyr1.ent: Initial check-in.
+	* src/resources/dtd/ent/iso-cyr2.ent: Initial check-in.
+	* src/resources/dtd/ent/iso-dia.ent: Initial check-in.
+	* src/resources/dtd/ent/iso-grk1.ent: Initial check-in.
+	* src/resources/dtd/ent/iso-grk2.ent: Initial check-in.
+	* src/resources/dtd/ent/iso-grk3.ent: Initial check-in.
+	* src/resources/dtd/ent/iso-grk4.ent: Initial check-in.
+	* src/resources/dtd/ent/iso-lat1.ent: Initial check-in.
+	* src/resources/dtd/ent/iso-lat2.ent: Initial check-in.
+	* src/resources/dtd/ent/iso-num.ent: Initial check-in.
+	* src/resources/dtd/ent/iso-pub.ent: Initial check-in.
+	* src/resources/dtd/ent/iso-tech.ent: Initial check-in.
+	* src/resources/dtd/gjdoc.dtd: Initial check-in.
+
+	* src/resources/xsl/gjdocxml2html.xsl: Moved here from
+	xslt/gjdocxml2html.xsl.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/XsltprocDriver.java:
+	Moved resource locations.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: Moved
+	resource locations.  Use DocErrorReporter if possible.
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java Removed debug
+	message.
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java: Removed debug
+	message.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/PostprocessException.java:
+	Resolved Gcj incompatibility.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/XsltprocDriver.java:
+	Resolved Gcj incompatibility.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Changed usage
+	information.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Debug message removed.
+	Added support for '@' parameter files.
+
+	* src/build.xml: * Initial check-in.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java:
+	Removed syntax error.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/XsltprocDriver.java:
+	Removed superfluous XSL parameters.
+
+	* xslt/gjdocxml2html.xsl: Version number corrected.
+
+	* README: Updated for 0.4 release.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: Removed
+	debug messages.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Updated Usage
+	information.
+
+	* xslt/gjdocxml2html.xsl: Do not escape output HTML text.  Set
+	window title correctly
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/PostprocessDriver.java:
+	Initial check-in.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/PostprocessException.java:
+	Initial check-in.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/TargetContext.java:
+	Initial check-in.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/XsltDriver.java:
+	Initial check-in.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/XsltprocDriver.java:
+	Initial check-in.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/HtmlWell.java:
+	Better handling of HTML entities.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: Now uses
+	ErrorReporter.  Post-processing stage implemented.  Outputs
+	classes and packages specified by user on command line.  Better
+	memory management.
+
+	* src/gnu/classpath/tools/gjdoc/MemberDocImpl.java: Minor
+	refactoring.
+
+	* src/gnu/classpath/tools/gjdoc/PackageDocImpl.java: Minor
+	refactoring.
+
+	* src/gnu/classpath/tools/gjdoc/ErrorReporter.java: Initial
+	check-in.
+
+	* src/gnu/classpath/tools/gjdoc/TemporaryStore.java: Initial
+	check-in.
+
+	* src/gnu/classpath/tools/gjdoc/TextTagImpl.java: Added toString()
+	method.
+
+	* src/gnu/classpath/tools/gjdoc/RootDocImpl.java: Moved code
+	portions from Main to here.
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java: Some refactoring
+	("destaticizing") and indentation.
+
+	* src/gnu/classpath/tools/gjdoc/Main.java: Now uses ErrorReporter
+	interface.  Now uses XmlDoclet as default doclet.  Refactored:
+	part of code moved to RootDocImpl.  Better memory management.
+
+	* src/gnu/classpath/tools/gjdoc/DocImpl.java: Fixed problem with
+	lost characters at EOL.
+
+	* src/gnu/classpath/tools/gjdoc/ClassDocImpl.java: Deal with
+	superclass not loaded
+
+2002-11-26  Ross Burton  <ross@burtonini.com>
+
+	* src/gnu/classpath/tools/gjdoc/Main.java (initOptions): Throw an
+	exception if a sourcepath does not exist.
+
+	* src/gnu/classpath/tools/gjdoc/Parser.java (match): Allow no
+	whitespace between "static" and "{".
+
+	* src/gnu/classpath/tools/gjdoc/Debug.java (Debug): Take the
+	'final' modifier of the commented out logLevel, so that just
+	uncommenting it works.
+
+	* src/gnu/classpath/tools/doclets/xmldoclet/Driver.java: Handle
+	ProgramElements with private scope.
+
+	* bin/gjdocxml2html.sh: Add a missing \ to the end of a line, so
+	that the script runs correctly.
+
+2002-10-06  Alex Lancaster  <alexl@users.sourceforge.net>
+
+	* bin/gjdocxml2html.sh: Skip DTD loading by default, using
+	"--novalid" option to xsltproc.
+	(SGML_CATALOG_FILES): Replace with XML_CATALOG_FILES. 
+	Remove "--catalogs" option to xsltproc, we only use XML catalogs.
+
+2002-10-06  Mark Wielaard  <mark@klomp.org>
+
+	* com/sun/jvadoc/ClassDoc.java: New file imported from GNU Classpath.
+	* com/sun/javadoc/ConstructorDoc.java: Likewise.
+	* com/sun/javadoc/Doc.java: Likewise.
+	* com/sun/javadoc/DocErrorReporter.java: Likewise.
+	* com/sun/javadoc/Doclet.java: Likewise.
+	* com/sun/javadoc/ExecutableMemberDoc.java: Likewise.
+	* com/sun/javadoc/FieldDoc.java: Likewise.
+	* com/sun/javadoc/MemberDoc.java: Likewise.
+	* com/sun/javadoc/MethodDoc.java: Likewise.
+	* com/sun/javadoc/PackageDoc.java: Likewise.
+	* com/sun/javadoc/ParamTag.java: Likewise.
+	* com/sun/javadoc/Parameter.java: Likewise.
+	* com/sun/javadoc/ProgramElementDoc.java: Likewise.
+	* com/sun/javadoc/RootDoc.java: Likewise.
+	* com/sun/javadoc/SeeTag.java: Likewise.
+	* com/sun/javadoc/SerialFieldTag.java: Likewise.
+	* com/sun/javadoc/Tag.java: Likewise.
+	* com/sun/javadoc/ThrowsTag.java: Likewise.
+	* com/sun/javadoc/Type.java: Likewise.
+
+	* README (Build Installation): Updated.
